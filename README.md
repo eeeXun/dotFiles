@@ -19,7 +19,3 @@
 ## polybar
 - sudo pacman -S ttf-font-awesome
 - sudo pacman -S noto-fonts-emoji
-
-:::info
-hello
-:::
