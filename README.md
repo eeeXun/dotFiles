@@ -7,6 +7,8 @@
 - sudo pacman -S ripgrep (for CocSearch)
 - sudo pip3 install -U jedi (for coc-python)
 - sudo pacman -S ccls
+> Vundle with markdown-preview
+>> call mkdp#util#install()
 
 ## bspwm
 - sudo pacman -S dmenu

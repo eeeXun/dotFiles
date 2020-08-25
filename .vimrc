@@ -14,6 +14,7 @@ Plugin 'stsewd/fzf-checkout.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'preservim/nerdcommenter'
 Plugin 'bling/vim-bufferline'
+Plugin 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
 "color
 Plugin 'morhetz/gruvbox'
@@ -161,6 +162,10 @@ let g:bufferline_echo = 0
 "bracket-pair
 autocmd filetype cpp,c inoremap <buffer>{<CR> {<CR>}<ESC>O
 
+"markdown_preview
+let g:mkdp_refresh_slow = 1
+let g:mkdp_auto_close = 0
+
 nnoremap <F5> :call Execute_program()<CR>
 func! Execute_program()
     if &filetype=='cpp'
@@ -169,5 +174,7 @@ func! Execute_program()
         exec "w" | exec "!clear && python3 %"
     elseif &filetype=='html'
         exec "w" | exec "!google-chrome-stable %"
+    elseif &filetype=='markdown'
+        exec "MarkdownPreview"
     endif
 endfunc
