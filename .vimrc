@@ -86,7 +86,6 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 nnoremap <C-h> :bp<CR>
 nnoremap <C-l> :bn<CR>
-vnoremap X "_d
 nnoremap <C-a> ggvG$
 vnoremap <Tab> >gv=gv
 vnoremap <S-Tab> <gv=gv
