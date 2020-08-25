@@ -163,6 +163,7 @@ let g:bufferline_echo = 0
 autocmd filetype cpp,c inoremap <buffer>{<CR> {<CR>}<ESC>O
 
 "markdown_preview
+let g:mkdp_browser = 'firefox'
 let g:mkdp_refresh_slow = 1
 let g:mkdp_auto_close = 0
 
