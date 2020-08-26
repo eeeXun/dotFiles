@@ -10,6 +10,13 @@
 > Vundle with markdown-preview
 >> call mkdp#util#install()
 
+## neovim
+
+```
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+```
+
 ## bspwm
 - sudo pacman -S dmenu
 - sudo pacman -S feh
