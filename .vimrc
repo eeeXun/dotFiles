@@ -90,6 +90,9 @@ nnoremap <C-a> ggvG$
 vnoremap <Tab> >gv=gv
 vnoremap <S-Tab> <gv=gv
 nnoremap <Leader>m :w<CR>
+
+"terminal
+tnoremap <C-n> <C-\><C-n>
 nnoremap <Leader>`j :cd %:p:h<CR>:bel term<CR><C-w>:resize 10<CR>
 nnoremap <Leader>`l :cd %:p:h<CR>:rightb vert term<CR>
 
