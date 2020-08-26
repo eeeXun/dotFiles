@@ -165,11 +165,11 @@ let g:mkdp_auto_close = 0
 nnoremap <F5> :call Execute_program()<CR>
 func! Execute_program()
     if &filetype=='cpp'
-        exec "w" | exec "!clear && g++ % -o %:r.exe && %:p:r.exe"
+        exec "w" | exec "!g++ % -o %:r.exe && %:p:r.exe"
     elseif &filetype=='python'
-        exec "w" | exec "!clear && python3 %"
+        exec "w" | exec "!python3 %"
     elseif &filetype=='html'
-        exec "w" | exec "!google-chrome-stable %"
+        exec "w" | exec "!firefox %"
     elseif &filetype=='markdown'
         exec "MarkdownPreview"
     endif

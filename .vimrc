@@ -176,7 +176,7 @@ func! Execute_program()
     elseif &filetype=='python'
         exec "w" | exec "!clear && python3 %"
     elseif &filetype=='html'
-        exec "w" | exec "!google-chrome-stable %"
+        exec "w" | exec "!firefox %"
     elseif &filetype=='markdown'
         exec "MarkdownPreview"
     endif
