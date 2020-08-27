@@ -86,8 +86,8 @@ nnoremap <Leader>m :w<CR>
 
 "terminal
 tnoremap <C-n> <C-\><C-n>
-nnoremap <Leader>`j :cd %:p:h<CR>:bo 10sp<CR>:term<CR>
-nnoremap <Leader>`l :cd %:p:h<CR>:bo vsp<CR>:term<CR>
+nnoremap <Leader>`j :cd %:p:h<CR>:bel 10sp<CR>:term<CR>
+nnoremap <Leader>`l :cd %:p:h<CR>:bel vsp<CR>:term<CR>
 
 "netrw
 let g:netrw_banner = 0
