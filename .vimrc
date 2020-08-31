@@ -117,10 +117,12 @@ nnoremap <Leader>j :wincmd j<CR>
 nnoremap <Leader>k :wincmd k<CR>
 nnoremap <Leader>l :wincmd l<CR>
 
+"Undotree
+nnoremap <Leader>u :UndotreeToggle<CR>
+
 "fzf
 nnoremap <Leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
 nnoremap <Leader>phw :h <C-R>=expand("<cword>")<CR><CR>
-nnoremap <Leader>u :UndotreeToggle<CR>
 nnoremap <Leader>ps :cd %:p:h<CR>:Rg<SPACE>
 nnoremap <C-p> :cd %:p:h<CR>:GFiles<CR>
 nnoremap <Leader>pf :cd %:p:h<CR>:Files<CR>
