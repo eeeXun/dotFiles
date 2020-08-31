@@ -85,7 +85,7 @@ vnoremap <S-Tab> <gv=gv
 nnoremap <Leader>m :w<CR>
 
 "terminal
-tnoremap <C-n> <C-\><C-n>
+tnoremap <C-\> <C-\><C-n>
 nnoremap <Leader>`j :cd %:p:h<CR>:bel 10sp<CR>:term<CR>
 nnoremap <Leader>`l :cd %:p:h<CR>:bel vsp<CR>:term<CR>
 
