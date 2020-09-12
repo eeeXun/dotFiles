@@ -102,7 +102,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) |Vex| endif
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-let  g:airline_symbols.branch=''
+let g:airline_symbols.branch=''
 
 "windows_switch
 nnoremap <Leader>h :wincmd h<CR>
@@ -156,13 +156,13 @@ vmap -- <plug>NERDCommenterUncomment
 "bufferline
 let g:bufferline_echo = 0
 
-"bracket-pair
-autocmd filetype cpp,c inoremap <buffer>{<CR> {<CR>}<ESC>O
-
 "markdown_preview
 let g:mkdp_browser = 'firefox'
 let g:mkdp_refresh_slow = 1
 let g:mkdp_auto_close = 0
+
+"bracket-pair
+autocmd filetype cpp,c inoremap <buffer>{<CR> {<CR>}<ESC>O
 
 nnoremap <F5> :call Execute_program()<CR>
 func! Execute_program()
