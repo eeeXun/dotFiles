@@ -124,7 +124,7 @@ let g:fzf_layout = { 'window': { 'width':0.8, 'height': 0.8 } }
 let $FZF_DEFAULT_OPTS='--reverse'
 
 "fzf_checkout
-nnoremap <Leader>gb :GCheckout<CR>
+nnoremap <Leader>gb :GBranches<CR>
 
 "polyglot
 let g:go_highlight_build_constraints = 1
