@@ -167,7 +167,7 @@ autocmd filetype cpp,c inoremap <buffer>{<CR> {<CR>}<ESC>O
 nnoremap <F5> :call Execute_program()<CR>
 func! Execute_program()
     if &filetype=='cpp'
-        exec "w" | exec "!g++ % -o %:r.exe && %:p:r.exe"
+        exec "w" | exec "!g++ % -o /tmp/a.out && /tmp/a.out"
     elseif &filetype=='python'
         exec "w" | exec "!python3 %"
     elseif &filetype=='html'
