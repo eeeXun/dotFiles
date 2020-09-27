@@ -32,6 +32,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 - git clone https://github.com/ohmyzsh/ohmyzsh ~/.oh-my-zsh
 - chsh -s /bin/zsh
 
-## polybar
+## font
 - sudo pacman -S ttf-font-awesome
 - sudo pacman -S noto-fonts-emoji
+- sudo pacman -S wqy-microhei
