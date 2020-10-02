@@ -13,7 +13,6 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'stsewd/fzf-checkout.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'preservim/nerdcommenter'
-Plugin 'bling/vim-bufferline'
 Plugin 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
 "color
@@ -110,6 +109,8 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 let  g:airline_symbols.branch=''
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#buffer_nr_show=1
 
 "windows_switch
 nnoremap <Leader>h :wincmd h<CR>
@@ -159,9 +160,6 @@ nmap <Leader>rn <Plug>(coc-rename)
 "commenter
 vmap ++ <plug>NERDCommenterComment
 vmap -- <plug>NERDCommenterUncomment
-
-"bufferline
-let g:bufferline_echo = 0
 
 "bracket-pair
 autocmd filetype cpp,c inoremap <buffer>{<CR> {<CR>}<ESC>O
