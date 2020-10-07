@@ -156,7 +156,7 @@ let g:go_auto_sameids = 1
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 nnoremap <Leader>gd :call CocAction('jumpDefinition', 'vsplit')<CR>
-nnoremap <leader>sh :CocSearch <C-R>=expand("<cword>")<CR><CR>
+nnoremap <Leader>sh :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nmap <Leader>rn <Plug>(coc-rename)
 
 "comment
