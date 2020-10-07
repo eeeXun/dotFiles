@@ -7,7 +7,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'preservim/nerdcommenter'
+Plug 'tomtom/tcomment_vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
 "color
@@ -149,12 +149,11 @@ let g:go_auto_sameids = 1
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 nnoremap <Leader>gd :call CocAction('jumpDefinition', 'vsplit')<CR>
-nnoremap <leader>sh :CocSearch <C-R>=expand("<cword>")<CR><CR>
+nnoremap <Leader>sh :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nmap <Leader>rn <Plug>(coc-rename)
 
-"commenter
-vmap ++ <plug>NERDCommenterComment
-vmap -- <plug>NERDCommenterUncomment
+"comment
+vnoremap <Leader>cm :TComment<CR>
 
 "markdown_preview
 let g:mkdp_browser = 'firefox'

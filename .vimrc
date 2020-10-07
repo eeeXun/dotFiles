@@ -12,7 +12,7 @@ Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
 Plugin 'stsewd/fzf-checkout.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'preservim/nerdcommenter'
+Plugin 'tomtom/tcomment_vim'
 Plugin 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
 "color
@@ -159,9 +159,8 @@ nnoremap <Leader>gd :call CocAction('jumpDefinition', 'vsplit')<CR>
 nnoremap <leader>sh :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nmap <Leader>rn <Plug>(coc-rename)
 
-"commenter
-vmap ++ <plug>NERDCommenterComment
-vmap -- <plug>NERDCommenterUncomment
+"comment
+vnoremap <Leader>cm :TComment<CR>
 
 "bracket-pair
 autocmd filetype cpp,c inoremap <buffer>{<CR> {<CR>}<ESC>O
