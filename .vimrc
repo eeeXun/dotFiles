@@ -159,9 +159,6 @@ nnoremap <Leader>gd :call CocAction('jumpDefinition', 'vsplit')<CR>
 nnoremap <Leader>sh :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nmap <Leader>rn <Plug>(coc-rename)
 
-"comment
-vnoremap <Leader>cm :TComment<CR>
-
 "bracket-pair
 autocmd filetype cpp,c inoremap <buffer>{<CR> {<CR>}<ESC>O
 

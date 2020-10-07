@@ -157,9 +157,6 @@ nnoremap <Leader>gd :call CocAction('jumpDefinition', 'vsplit')<CR>
 nnoremap <leader>sh :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nmap <Leader>rn <Plug>(coc-rename)
 
-"comment
-vnoremap <Leader>cm :TComment<CR>
-
 "markdown_preview
 let g:mkdp_browser = 'firefox'
 let g:mkdp_refresh_slow = 1
