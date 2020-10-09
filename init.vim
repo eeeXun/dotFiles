@@ -85,6 +85,7 @@ nnoremap <C-a> ggvG$
 vnoremap <Tab> >gv=gv
 vnoremap <S-Tab> <gv=gv
 nnoremap <Leader>m :w<CR>
+nnoremap <Leader>phw :h <C-R>=expand("<cword>")<CR><CR>
 
 "terminal
 tnoremap <C-\> <C-\><C-n>
@@ -119,8 +120,7 @@ nnoremap <Leader>l :wincmd l<CR>
 nnoremap <Leader>u :UndotreeToggle<CR>
 
 "fzf
-nnoremap <Leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
-nnoremap <Leader>phw :h <C-R>=expand("<cword>")<CR><CR>
+nnoremap <Leader>pw :cd %:p:h<CR>:Rg <C-R>=expand("<cword>")<CR><CR>
 nnoremap <Leader>ps :cd %:p:h<CR>:Rg<SPACE>
 nnoremap <C-p> :cd %:p:h<CR>:GFiles<CR>
 nnoremap <Leader>pf :cd %:p:h<CR>:Files<CR>
@@ -171,6 +171,8 @@ func! Execute_program()
         exec "w" | exec "!python3 %"
     elseif &filetype=='html'
         exec "w" | exec "!firefox %"
+    elseif &filetype=="javascript"
+        exec "w" | exec "!node %"
     elseif &filetype=='markdown'
         exec "MarkdownPreview"
     endif
