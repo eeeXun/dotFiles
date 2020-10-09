@@ -70,7 +70,7 @@ let loaded_matchparen = 1
 let mapleader = " "
 
 "normal
-map <C-c> <ESC>
+inoremap <C-c> <ESC>
 nnoremap Y y$
 nnoremap <Leader>+ :resize +5<CR>
 nnoremap <Leader>_ :resize -5<CR>
@@ -148,7 +148,6 @@ let g:go_highlight_variable_declarations = 1
 let g:go_auto_sameids = 1
 
 "coc
-nnoremap <Leader>cr :CocRestart<CR>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 nnoremap <Leader>gd :call CocAction('jumpDefinition', 'vsplit')<CR>
