@@ -160,7 +160,7 @@ let g:mkdp_refresh_slow = 1
 let g:mkdp_auto_close = 0
 
 "bracket-pair
-autocmd filetype cpp,c inoremap <buffer>{<CR> {<CR>}<ESC>O
+autocmd filetype cpp,c,javascript inoremap <buffer>{<CR> {<CR>}<ESC>O
 
 nnoremap <F5> :call Execute_program()<CR>
 func! Execute_program()
