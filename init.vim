@@ -85,6 +85,7 @@ nnoremap <C-a> ggvG$
 vnoremap <Tab> >gv=gv
 vnoremap <S-Tab> <gv=gv
 nnoremap <Leader>m :w<CR>
+nnoremap <Leader>fn /<C-R>=expand("<cword>")<CR><CR>
 nnoremap <Leader>phw :h <C-R>=expand("<cword>")<CR><CR>
 
 "terminal
