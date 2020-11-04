@@ -4,7 +4,6 @@ import os
 def main():
     undo_dir='/home/xun/.vim/undodir/'
     undo_file_list=os.listdir(undo_dir)
-
     print('Delete undo file:')
     for undo_file in undo_file_list:
         real_file='/'.join(undo_file.split('%'))
