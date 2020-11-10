@@ -25,6 +25,8 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 - sudo pacman -S dmenu
 - sudo pacman -S feh
 - sudo pacman -S flameshot
+- sudo pacman -S compton
+    - `touch ~/.config/compton.conf`
 
 # zsh
 - git clone https://github.com/ohmyzsh/ohmyzsh ~/.oh-my-zsh

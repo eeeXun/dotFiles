@@ -12,3 +12,4 @@ ibus-daemon -d &
 mate-power-manager &
 nm-applet &
 feh --bg-scale ~/Pictures/background.jpg &
+compton &
