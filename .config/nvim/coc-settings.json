@@ -11,5 +11,7 @@
             }
         }
     },
-    "suggest.labelMaxLength":50
+    "suggest.labelMaxLength":50,
+    "python.linting.pylintEnabled":false,
+    "python.linting.mypyEnabled":true
 }
