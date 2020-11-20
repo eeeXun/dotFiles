@@ -13,12 +13,11 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 "color
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
-Plug 'flazz/vim-colorschemes'
 call plug#end()
 
 syntax on
 
-set mouse=a
+" set mouse=a
 set guicursor=
 set noshowmatch
 set relativenumber
@@ -175,5 +174,7 @@ func! Execute_program()
         exec "w" | exec "!node %"
     elseif &filetype=='markdown'
         exec "MarkdownPreview"
+    elseif &filetype=='sh'
+        exec "w" | exec "! %"
     endif
 endfunc
