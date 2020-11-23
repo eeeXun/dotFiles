@@ -162,6 +162,16 @@ let g:mkdp_auto_close = 0
 "bracket-pair
 autocmd filetype cpp,c,javascript inoremap <buffer>{<CR> {<CR>}<ESC>O
 
+"Create file in netrw
+autocmd filetype netrw call Netrw_mappings()
+function! Netrw_mappings()
+  noremap <buffer>% :call CreateFileInPreview()<CR>
+endfunction
+function! CreateFileInPreview()
+    let filename = input("Create a file in ".b:netrw_curdir.": ")
+    exec "silent !touch ".b:netrw_curdir."/".filename
+endfunc
+
 nnoremap <F5> :call Execute_program()<CR>
 func! Execute_program()
     if &filetype=='cpp'
