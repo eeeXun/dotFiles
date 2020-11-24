@@ -56,8 +56,8 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 let g:gruvbox_contrast_dark = 'hard'
 if exists('+termguicolors')
-    let &t_8f = "\<ESC>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<ESC>[48;2;%lu;%lu;%lum"
+    let &t_8f = '\<ESC>[38;2;%lu;%lu;%lum'
+    let &t_8b = '\<ESC>[48;2;%lu;%lu;%lum'
 endif
 
 colorscheme gruvbox
@@ -66,7 +66,7 @@ set background=dark
 "disable parenthesis highlighting
 let loaded_matchparen = 1
 
-let mapleader = " "
+let mapleader = ' '
 
 "normal
 inoremap <C-c> <ESC>
@@ -163,28 +163,26 @@ let g:mkdp_auto_close = 0
 autocmd filetype cpp,c,javascript inoremap <buffer>{<CR> {<CR>}<ESC>O
 
 "Create file in netrw
-autocmd filetype netrw call Netrw_mappings()
-function! Netrw_mappings()
-  noremap <buffer>% :call CreateFileInPreview()<CR>
+autocmd filetype netrw noremap <buffer>% :call CreateFileInNetrw()<CR>
+function! CreateFileInNetrw()
+    let filename = input('Create a file in '.b:netrw_curdir.': ')
+    exec 'silent !touch '.b:netrw_curdir.'/'.filename
+    exec 'e '.b:netrw_curdir
 endfunction
-function! CreateFileInPreview()
-    let filename = input("Create a file in ".b:netrw_curdir.": ")
-    exec "silent !touch ".b:netrw_curdir."/".filename
-endfunc
 
 nnoremap <F5> :call Execute_program()<CR>
-func! Execute_program()
+function! Execute_program()
     if &filetype=='cpp'
-        exec "w" | exec "!g++ % -o /tmp/a.out && /tmp/a.out"
+        exec 'w' | exec '!g++ % -o /tmp/a.out && /tmp/a.out'
     elseif &filetype=='python'
-        exec "w" | exec "!python3 %"
+        exec 'w' | exec '!python3 %'
     elseif &filetype=='html'
-        exec "w" | exec "!firefox %"
-    elseif &filetype=="javascript"
-        exec "w" | exec "!node %"
+        exec 'w' | exec '!firefox %'
+    elseif &filetype=='javascript'
+        exec 'w' | exec '!node %'
     elseif &filetype=='markdown'
-        exec "MarkdownPreview"
+        exec 'MarkdownPreview'
     elseif &filetype=='sh'
-        exec "w" | exec "! %"
+        exec 'w' | exec '! %'
     endif
-endfunc
+endfunction
