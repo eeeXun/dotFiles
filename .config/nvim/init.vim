@@ -111,6 +111,7 @@ endif
 let g:airline_symbols.branch=''
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#buffer_nr_show=1
+let g:airline#extensions#tabline#ignore_bufadd_pat = '!|undotree'
 
 "windows_switch
 nnoremap <Leader>h :wincmd h<CR>
