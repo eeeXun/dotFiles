@@ -18,6 +18,8 @@ call plug#end()
 syntax on
 
 " set mouse=a
+noremap <Up> <nop>
+noremap <Down> <nop>
 set guicursor=
 set noshowmatch
 set relativenumber
@@ -160,10 +162,10 @@ let g:mkdp_refresh_slow = 1
 let g:mkdp_auto_close = 0
 
 "bracket-pair
-autocmd filetype cpp,c,javascript inoremap <buffer>{<CR> {<CR>}<ESC>O
+autocmd filetype cpp,c,sh,javascript,javascriptreact inoremap <buffer>{<CR> {<CR>}<ESC>O
 
 "Create file in netrw
-autocmd filetype netrw noremap <buffer>% :call CreateFileInNetrw()<CR>
+autocmd filetype netrw nnoremap <buffer>% :call CreateFileInNetrw()<CR>
 function! CreateFileInNetrw()
     let filename = input('Create a file in '.b:netrw_curdir.': ')
     exec 'silent !touch '.b:netrw_curdir.'/'.filename
@@ -177,12 +179,12 @@ function! Execute_program()
     elseif &filetype=='python'
         exec 'w' | exec '!python3 %'
     elseif &filetype=='html'
-        exec 'w' | exec '!firefox %'
+        exec 'w' | exec 'silent !firefox %'
     elseif &filetype=='javascript'
         exec 'w' | exec '!node %'
     elseif &filetype=='markdown'
         exec 'MarkdownPreview'
     elseif &filetype=='sh'
-        exec 'w' | exec '! %'
+        exec 'w' | exec '! %:p'
     endif
 endfunction
