@@ -102,7 +102,8 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 20
 let g:netrw_bufsettings = 'noma nomod nowrap nu ro nobl'
 nnoremap <Leader>pv :Vex<CR>
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) |Vex| endif
+autocmd VimEnter * if argc() == 0 |Vex| endif
+autocmd VimEnter * if argc() == 1 && isdirectory(argv(0)) |bd|exec "Vex ".argv(0)| endif
 
 "airline
 if !exists('g:airline_symbols')
