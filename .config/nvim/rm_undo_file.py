@@ -9,8 +9,11 @@ def main():
     for undo_file in undo_file_list:
         real_file='/'.join(undo_file.split('%'))
         if not os.path.exists(real_file):
-            print('=>',undo_dir+undo_file)
-            os.remove(undo_dir+undo_file)
+            undo_path=undo_dir+undo_file
+            print('=>',end=' ')
+            print('({:.2f}k)'.format(os.stat(undo_path).st_size/1024),end=' ')
+            print(undo_file)
+            os.remove(undo_path)
             total+=1
     print('Total: {}'.format(total))
 
