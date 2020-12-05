@@ -2,6 +2,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mbbill/undotree'
+Plug 'preservim/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -73,8 +74,8 @@ let mapleader = ' '
 "normal
 inoremap <C-c> <ESC>
 nnoremap Y y$
-nnoremap <Leader>+ :resize +5<CR>
-nnoremap <Leader>_ :resize -5<CR>
+nnoremap <Leader>] :resize +5<CR>
+nnoremap <Leader>[ :resize -5<CR>
 nnoremap <Leader>= :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <Leader>rp :resize 100<CR>
@@ -82,7 +83,7 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 nnoremap <C-h> :bp<CR>
 nnoremap <C-l> :bn<CR>
-nnoremap <C-a> ggvG$
+nnoremap <C-a> gg0vG$
 vnoremap <Tab> >gv=gv
 vnoremap <S-Tab> <gv=gv
 nnoremap <Leader>m :w<CR>
@@ -94,16 +95,12 @@ tnoremap <C-\> <C-\><C-n>
 nnoremap <Leader>`j :cd %:p:h<CR>:bel 10sp<CR>:term<CR>
 nnoremap <Leader>`l :cd %:p:h<CR>:bel vsp<CR>:term<CR>
 
-"netrw
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 20
-let g:netrw_bufsettings = 'noma nomod nowrap nu ro nobl'
-nnoremap <Leader>pv :Vex<CR>
-autocmd VimEnter * if argc() == 0 |Vex| endif
-autocmd VimEnter * if argc() == 1 && isdirectory(argv(0)) |bd|exec "Vex ".argv(0)| endif
+"NERDTree
+nnoremap <Leader>n :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+let NERDTreeShowLineNumbers=1
+autocmd VimEnter * if argc() == 0 |NERDTree| endif
+autocmd VimEnter * if argc() == 1 && isdirectory(argv(0)) |bd|exec 'NERDTree '.argv(0)| endif
 
 "airline
 if !exists('g:airline_symbols')
@@ -165,14 +162,6 @@ let g:mkdp_auto_close = 0
 
 "bracket-pair
 autocmd filetype cpp,c,sh,javascript,javascriptreact inoremap <buffer>{<CR> {<CR>}<ESC>O
-
-"Create file in netrw
-autocmd filetype netrw nnoremap <buffer>% :call CreateFileInNetrw()<CR>
-function! CreateFileInNetrw()
-    let filename = input('Create a file in '.b:netrw_curdir.': ')
-    exec 'silent !touch '.b:netrw_curdir.'/'.filename
-    exec 'e '.b:netrw_curdir
-endfunction
 
 nnoremap <F5> :call Execute_program()<CR>
 function! Execute_program()
