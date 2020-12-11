@@ -97,8 +97,10 @@ nnoremap <Leader>`l :cd %:p:h<CR>:bel vsp<CR>:term<CR>
 
 "NERDTree
 nnoremap <Leader>n :NERDTreeToggle<CR>
+nnoremap <Leader>pv :cd %:p:h<CR>:NERDTreeCWD<CR>
 let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1
+let NERDTreeMinimalUI=1
 autocmd VimEnter * if argc() == 0 |NERDTree| endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv(0)) |bd|exec 'NERDTree '.argv(0)| endif
 
@@ -118,6 +120,7 @@ nnoremap <Leader>k :wincmd k<CR>
 nnoremap <Leader>l :wincmd l<CR>
 
 "Undotree
+let g:undotree_HelpLine=0
 nnoremap <Leader>u :UndotreeToggle<CR>
 
 "fzf
@@ -170,7 +173,7 @@ function! Execute_program()
     elseif &filetype=='python'
         exec 'w' | exec '!python3 %'
     elseif &filetype=='html'
-        exec 'w' | exec 'silent !firefox %'
+        exec 'w' | exec 'silent !firefox % &'
     elseif &filetype=='javascript'
         exec 'w' | exec '!node %'
     elseif &filetype=='markdown'
