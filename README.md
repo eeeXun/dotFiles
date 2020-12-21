@@ -4,6 +4,7 @@
 - sudo pacman -S yarn (for coc.nvim)
 - sudo pacman -S ripgrep (for CocSearch)
 - sudo pip3 install -U jedi (for coc-python)
+- pip3 install neovim (for coc-snippets)
 - sudo pacman -S ccls
 > Vundle with markdown-preview
 >> call mkdp#util#install()
