@@ -87,7 +87,6 @@ nnoremap <C-a> gg0vG$
 vnoremap <Tab> >gv=gv
 vnoremap <S-Tab> <gv=gv
 nnoremap <Leader>m :w<CR>
-nnoremap <Leader>fn /<C-R>=expand("<cword>")<CR><CR>
 nnoremap <Leader>phw :h <C-R>=expand("<cword>")<CR><CR>
 
 "terminal
@@ -129,6 +128,8 @@ nnoremap <Leader>ps :cd %:p:h<CR>:Rg<SPACE>
 nnoremap <C-p> :cd %:p:h<CR>:GFiles<CR>
 nnoremap <Leader>pf :cd %:p:h<CR>:Files<CR>
 nnoremap <Leader>gs :G<CR>
+nnoremap <Leader>gh :diffget //2<CR>
+nnoremap <Leader>gl :diffget //3<CR>
 let g:fzf_layout = { 'window': { 'width':0.8, 'height': 0.8 } }
 let $FZF_DEFAULT_OPTS='--reverse'
 
@@ -158,6 +159,7 @@ imap <expr> <C-j> pumvisible() ? "\<C-y>" : "\<C-j>"
 nnoremap <Leader>gd :call CocAction('jumpDefinition', 'vsplit')<CR>
 nnoremap <Leader>sh :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nmap <Leader>rn <Plug>(coc-rename)
+let g:coc_filetype_map={'htmldjango': 'html'}
 
 "markdown_preview
 let g:mkdp_browser = 'firefox'
@@ -165,7 +167,7 @@ let g:mkdp_refresh_slow = 1
 let g:mkdp_auto_close = 0
 
 "bracket-pair
-autocmd filetype cpp,c,sh,javascript,javascriptreact inoremap <buffer>{<CR> {<CR>}<ESC>O
+autocmd filetype cpp,c,sh,javascript inoremap <buffer>{<CR> {<CR>}<ESC>O
 
 nnoremap <F5> :call Execute_program()<CR>
 function! Execute_program()
@@ -175,11 +177,7 @@ function! Execute_program()
         exec 'w' | exec '!python3 %'
     elseif &filetype=='html'
         exec 'w' | exec 'silent !firefox % &'
-    elseif &filetype=='javascript'
-        exec 'w' | exec '!node %'
     elseif &filetype=='markdown'
         exec 'MarkdownPreview'
-    elseif &filetype=='sh'
-        exec 'w' | exec '! %:p'
     endif
 endfunction

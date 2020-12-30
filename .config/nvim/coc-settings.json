@@ -13,5 +13,6 @@
     },
     "suggest.labelMaxLength":50,
     "python.linting.pylintEnabled":false,
-    "python.linting.mypyEnabled":true
+    "python.linting.mypyEnabled":true,
+    "emmet.includeLanguages": {"javascript": "html"}
 }
