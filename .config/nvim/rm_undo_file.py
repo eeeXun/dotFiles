@@ -18,7 +18,7 @@ def main():
             print('({:.2f}k)'.format(undo_volume/1024),end=' ')
             print(undo_file)
             os.remove(undo_path)
-    print('Total volume: ({:.2f}k)'.format(total_volume/1024))
+    print('Total volume: {:.2f}k'.format(total_volume/1024))
     print('Total files: {}'.format(total_file))
 
 if __name__=='__main__':

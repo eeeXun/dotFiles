@@ -74,8 +74,8 @@ let mapleader = ' '
 "normal
 inoremap <C-c> <ESC>
 nnoremap Y y$
-nnoremap <Leader>] :resize +5<CR>
-nnoremap <Leader>[ :resize -5<CR>
+nnoremap <Leader>+ :resize +5<CR>
+nnoremap <Leader>_ :resize -5<CR>
 nnoremap <Leader>= :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <Leader>rp :resize 100<CR>
@@ -155,11 +155,15 @@ let g:go_auto_sameids = 1
 "coc
 inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-imap <expr> <C-j> pumvisible() ? "\<C-y>" : "\<C-j>"
+imap <expr><C-j> pumvisible() ? "\<C-y>" : "\<C-j>"
 nnoremap <Leader>gd :call CocAction('jumpDefinition', 'vsplit')<CR>
 nnoremap <Leader>sh :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nmap <Leader>rn <Plug>(coc-rename)
 let g:coc_filetype_map={'htmldjango': 'html'}
+
+"tcomment
+let g:tcomment_maps=0
+nnoremap <silent><C-_><C-_> :TComment<CR>
 
 "markdown_preview
 let g:mkdp_browser = 'firefox'
