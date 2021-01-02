@@ -163,7 +163,7 @@ let g:coc_filetype_map={'htmldjango': 'html'}
 
 "tcomment
 let g:tcomment_maps=0
-nnoremap <silent><C-_><C-_> :TComment<CR>
+noremap <silent><C-_><C-_> :TComment<CR>
 
 "markdown_preview
 let g:mkdp_browser = 'firefox'
