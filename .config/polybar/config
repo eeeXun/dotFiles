@@ -60,7 +60,7 @@ font-5 = Font Awesome 5 Brands:pixelsize=15;3
 
 modules-left = powermenu bspwm
 modules-center = date
-modules-right = pulseaudio memory cpu temperature wlan eth battery
+modules-right = pulseaudio memory cpu temperature eth wlan battery
 
 tray-position = right
 tray-padding = 0
@@ -179,6 +179,8 @@ format-charging-underline = #ffb52a
 
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
+format-full = <ramp-capacity> <label-full>
+format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
