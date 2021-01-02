@@ -36,7 +36,10 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 # font
 - sudo pacman -S ttf-font-awesome
 - sudo pacman -S noto-fonts-emoji
-- sudo pacman -S wqy-microhei
+- Chinese font
+    - git clone https://aur.archlinux.org/noto-fonts-tc.git
+    - cd noto-fonts-tc
+    - makepkg -si
 
 # touchpad
 - sudo mv 01-touchpad.conf /etc/X11/xorg.conf.d/01-touchpad.conf
