@@ -142,7 +142,7 @@ interval = 3.0
 
 format-connected = <label-connected>
 format-connected-underline = #55aa55
-label-connected = %downspeed:9%
+label-connected = %downspeed:9%
 
 [module/date]
 type = internal/date
