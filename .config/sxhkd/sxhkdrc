@@ -128,6 +128,10 @@ XF86AudioRaiseVolume
 XF86AudioMute
     amixer set Master toggle
 
-#flameshot
+# sleep
+XF86PowerOff
+    mate-screensaver-command -l
+
+# flameshot
 shift + Print
     flameshot gui
