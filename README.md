@@ -3,8 +3,8 @@
 - sudo pacman -S nodejs (for coc.nvim)
 - sudo pacman -S yarn (for coc.nvim)
 - sudo pacman -S ripgrep (for CocSearch)
-- sudo pip3 install -U jedi (for coc-python)
-- pip3 install neovim (for coc-snippets)
+- pip3 install jedi (for coc-python)
+- pip3 install mypy (for coc-python)
 - sudo pacman -S ccls
 > Vundle with markdown-preview
 >> call mkdp#util#install()
@@ -23,6 +23,9 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 - sudo pacman -S xclip
 
 # bspwm
+- sudo pacman -S bspwm
+- sudo pacman -S sxhkd
+- sudo pacman -S polybar
 - sudo pacman -S dmenu
 - sudo pacman -S feh
 - sudo pacman -S flameshot
