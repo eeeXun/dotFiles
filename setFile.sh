@@ -1,12 +1,14 @@
 #!/bin/bash
 
+user_home="/HOME/xun"
+
 echo "Setting dwm?"
 while read reply;do
     if [ ${reply:0:1} == "n" ];then
         break
     elif [ ${reply:0:1} == "y" ];then
         mv ./systemSetting/dwm.desktop /usr/share/xsessions/
-        mv ./.config/dwm/ ./.config/dwmblocks/ ${HOME}/.config/
+        mv ./.config/dwm/ ./.config/dwmblocks/ ${user_home}/.config/
         break
     else
         echo "Setting dwm?"
@@ -18,7 +20,7 @@ while read reply;do
     if [ ${reply:0:1} == "n" ];then
         break
     elif [ ${reply:0:1} == "y" ];then
-        mv ./.config/bspwm/ ./.config/sxhkd/ ./.config/polybar ${HOME}/.config/
+        mv ./.config/bspwm/ ./.config/sxhkd/ ./.config/polybar ${user_home}/.config/
         break
     else
         echo "Setting bspwm?"
@@ -30,8 +32,8 @@ while read reply;do
     if [ ${reply:0:1} == "n" ];then
         break
     elif [ ${reply:0:1} == "y" ];then
-        mv ./.config/nvim/ ./.config/mypy/ ${HOME}/.config/
-        mv ./.config/gtk-3.0/settings.ini ${HOME}/.config/gtk-3.0/
+        mv ./.config/nvim/ ./.config/mypy/ ${user_home}/.config/
+        mv ./.config/gtk-3.0/settings.ini ${user_home}/.config/gtk-3.0/
         mv ./systemSetting/01-touchpad.conf /etc/X11/xorg.conf.d/
         break
     else
