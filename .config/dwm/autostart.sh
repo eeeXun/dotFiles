@@ -1,4 +1,5 @@
 #!/bin/bash
+
 dwmblocks &
 ibus-daemon -d &
 mate-power-manager &

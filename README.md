@@ -26,6 +26,11 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 - sudo pacman -S bspwm
 - sudo pacman -S sxhkd
 - sudo pacman -S polybar
+
+# dwm
+- sudo mv ./systemSetting/dwm.desktop /usr/share/xsessions/
+
+# Packages
 - sudo pacman -S dmenu
 - sudo pacman -S feh
 - sudo pacman -S flameshot
