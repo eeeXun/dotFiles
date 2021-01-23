@@ -14,5 +14,5 @@ ibus-daemon -d &
 mate-power-manager &
 nm-applet &
 feh --bg-scale ~/Pictures/background2.jpg &
-compton &
+picom &
 /usr/bin/mate-screensaver --no-daemon &
