@@ -30,6 +30,9 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 # dwm
 - sudo mv ./systemSetting/dwm.desktop /usr/share/xsessions/
 
+## Source of dwm
+- [GoDzM4TT3O](https://github.com/GoDzM4TT3O/dwm)
+
 # Packages
 - sudo pacman -S dmenu
 - sudo pacman -S feh
