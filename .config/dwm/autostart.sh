@@ -1,7 +1,8 @@
 #!/bin/bash
 
-dwmblocks &
+killall ibus-daemon &
 ibus-daemon -d &
+dwmblocks &
 mate-power-manager &
 nm-applet &
 feh --bg-scale ~/Pictures/background3.jpg &
