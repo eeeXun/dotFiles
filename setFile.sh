@@ -1,6 +1,6 @@
 #!/bin/bash
 
-user_home="/HOME/xun"
+user_home="/home/xun"
 
 echo "Setting dwm?"
 while read reply;do
