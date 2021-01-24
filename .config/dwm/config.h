@@ -2,7 +2,7 @@
 
 /* Constants */
 #define TERMINAL "mate-terminal"
-#define TERMCLASS "mate-terminal"
+#define TERMCLASS "Mate-terminal"
 
 /* appearance */
 static unsigned int borderpx  = 3;        /* border pixel of windows */

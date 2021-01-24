@@ -15,4 +15,4 @@ mate-power-manager &
 nm-applet &
 feh --bg-scale ~/Pictures/background2.jpg &
 picom &
-/usr/bin/mate-screensaver --no-daemon &
+mate-screensaver --no-daemon &
