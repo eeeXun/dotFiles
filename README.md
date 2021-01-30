@@ -45,13 +45,17 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 - git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 - chsh -s /bin/zsh
 
+# lf
+- paru -S lf
+- paru -S nerd-fonts-complete
+- pip3 install ueberzug
+- sudo pacman -S atool
+- sudo pacman -S pandoc
+
 # font
 - sudo pacman -S ttf-font-awesome
 - sudo pacman -S noto-fonts-emoji
-- Chinese font
-    - git clone https://aur.archlinux.org/noto-fonts-tc.git
-    - cd noto-fonts-tc
-    - makepkg -si
+- paru -S noto-fonts-tc
 
 # touchpad
 - sudo mv 01-touchpad.conf /etc/X11/xorg.conf.d/01-touchpad.conf

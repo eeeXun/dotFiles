@@ -1,0 +1,46 @@
+set hidden!
+set drawbox
+set icons
+set previewer ~/.config/lf/preview.sh
+set cleaner ~/.config/lf/clear.sh
+
+cmd open ${{
+    case $(file --mime-type "$f" -bL) in
+        text/*|application/json) $EDITOR "$f";;
+        *) xdg-open "$f" ;;
+    esac
+}}
+
+cmd mkdir ${{
+  echo "Directory Name: "
+  read -e -i "$(pwd)/" ans
+  mkdir $ans
+}}
+
+cmd mkfile ${{
+  echo "File Name: "
+  read -e -i "$(pwd)/" ans
+  $EDITOR $ans
+}}
+
+cmd unarchive ${{
+  case "$f" in
+      *.zip) unzip "$f" ;;
+      *.tar.gz) tar -xzvf "$f" ;;
+      *.tar.bz2) tar -xjvf "$f" ;;
+      *.tar) tar -xvf "$f" ;;
+      *) echo "Unsupported format" ;;
+  esac
+}}
+
+# Remove defaults
+map d
+map m
+
+# Basic
+map <enter> open
+map md mkdir
+map mf mkfile
+
+# Archive
+map au unarchive
