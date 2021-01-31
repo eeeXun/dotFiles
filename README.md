@@ -31,7 +31,11 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 - sudo mv ./systemSetting/dwm.desktop /usr/share/xsessions/
 
 ## Source of dwm
-- [GoDzM4TT3O](https://github.com/GoDzM4TT3O/dwm)
+- source
+    - [Luke Smith](https://github.com/LukeSmithxyz/dwm)
+- patches
+    - [systray](https://dwm.suckless.org/patches/systray/dwm-systray-20200914-61bb8b2.diff)
+    - [focusonclick](https://dwm.suckless.org/patches/focusonclick/dwm-focusonclick-20200110-61bb8b2.diff)
 
 # Packages
 - sudo pacman -S dmenu

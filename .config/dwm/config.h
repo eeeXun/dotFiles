@@ -69,12 +69,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	*/
 	/* class	instance	title		tags mask	isfloating	isterminal noswallow  monitor */
-	{ NULL,		NULL,		"PlayOnLinux",	0,		1,		0,         0,        -1 },
-	{ NULL,		NULL,		"cpupower-gui",	0,		1,		0,         0,        -1 },
 	{ TERMCLASS,	NULL,		NULL,		0,		0,		1,         0,        -1 },
-	{ NULL,		NULL,		"Event Tester",	0,		0,		0,         1,        -1 },
-	{ NULL,		"spterm",	NULL,		SPTAG(0),	1,		1,         0,        -1 },
-	{ NULL,		"spcalc",	NULL,		SPTAG(1),	1,		1,         0,        -1 },
 };
 
 /* layout(s) */

@@ -268,8 +268,6 @@ static void setup(void);
 static void seturgent(Client *c, int urg);
 static void showhide(Client *c);
 static void sigchld(int unused);
-static void sighup(int unused);
-static void sigterm(int unused);
 #ifndef __OpenBSD__
 static int getdwmblockspid();
 static void sigdwmblocks(const Arg *arg);
@@ -277,8 +275,8 @@ static void sigdwmblocks(const Arg *arg);
 static void sighup(int unused);
 static void sigterm(int unused);
 static void spawn(const Arg *arg);
-static Monitor *systraytomon(Monitor *m);
 static int stackpos(const Arg *arg);
+static Monitor *systraytomon(Monitor *m);
 static void tag(const Arg *arg);
 static void tagmon(const Arg *arg);
 static void togglebar(const Arg *arg);
@@ -535,7 +533,13 @@ swallow(Client *p, Client *c)
 	p->win = c->win;
 	c->win = w;
 	updatetitle(p);
+
+	XWindowChanges wc;
+	wc.border_width = p->bw;
+	XConfigureWindow(dpy, p->win, CWBorderWidth, &wc);
 	XMoveResizeWindow(dpy, p->win, p->x, p->y, p->w, p->h);
+	XSetWindowBorder(dpy, p->win, scheme[SchemeNorm][ColBorder].pixel);
+
 	arrange(p->mon);
 	configure(p);
 	updateclientlist();
@@ -554,7 +558,13 @@ unswallow(Client *c)
 	updatetitle(c);
 	arrange(c->mon);
 	XMapWindow(dpy, c->win);
+
+	XWindowChanges wc;
+	wc.border_width = c->bw;
+	XConfigureWindow(dpy, c->win, CWBorderWidth, &wc);
 	XMoveResizeWindow(dpy, c->win, c->x, c->y, c->w, c->h);
+	XSetWindowBorder(dpy, c->win, scheme[SchemeNorm][ColBorder].pixel);
+
 	setclientstate(c, NormalState);
 	focus(NULL);
 	arrange(c->mon);
@@ -571,7 +581,7 @@ buttonpress(XEvent *e)
 
 	click = ClkRootWin;
 	/* focus monitor if necessary */
-    if ((m = wintomon(ev->window)) && m != selmon
+	if ((m = wintomon(ev->window)) && m != selmon
 	    && (focusonwheel || (ev->button != Button4 && ev->button != Button5))) {
 		unfocus(selmon->sel, 1);
 		selmon = m;
@@ -592,7 +602,7 @@ buttonpress(XEvent *e)
 			arg.ui = 1 << i;
 		} else if (ev->x < x + blw)
 			click = ClkLtSymbol;
-		else if (ev->x > (x = selmon->ww - TEXTW(stext) - getsystraywidth())) {
+		else if (ev->x > (x = selmon->ww - TEXTW(stext) + lrpad - getsystraywidth())) {
 			click = ClkStatusText;
 
 			char *text = rawstext;
@@ -614,7 +624,7 @@ buttonpress(XEvent *e)
 		} else
 			click = ClkWinTitle;
 	} else if ((c = wintoclient(ev->window))) {
-        if (focusonwheel || (ev->button != Button4 && ev->button != Button5))
+		if (focusonwheel || (ev->button != Button4 && ev->button != Button5))
 			focus(c);
 		XAllowEvents(dpy, ReplayPointer, CurrentTime);
 		click = ClkClientWin;
@@ -943,7 +953,7 @@ dirtomon(int dir)
 void
 drawbar(Monitor *m)
 {
-	int x, w, stw = 0;
+	int x, w, tw = 0, stw = 0;
 	int boxs = drw->fonts->h / 9;
 	int boxw = drw->fonts->h / 6 + 2;
 	unsigned int i, occ = 0, urg = 0;
@@ -952,12 +962,11 @@ drawbar(Monitor *m)
 	if(showsystray && m == systraytomon(m))
 		stw = getsystraywidth();
 
-
 	/* draw status first so it can be overdrawn by tags later */
 	if (m == selmon) { /* status is only drawn on selected monitor */
 		drw_setscheme(drw, scheme[SchemeNorm]);
-		sw = TEXTW(stext) - lrpad / 2 + 2; /* 2px right padding */
-		drw_text(drw, m->ww - sw - stw, 0, sw, bh, lrpad / 2 - 2, stext, 0);
+		tw = TEXTW(stext) - lrpad / 2 + 2; /* 2px right padding */
+		drw_text(drw, m->ww - tw - stw, 0, tw, bh, lrpad / 2 - 2, stext, 0);
 	}
 
 	resizebarwin(m);
@@ -981,7 +990,7 @@ drawbar(Monitor *m)
 	drw_setscheme(drw, scheme[SchemeNorm]);
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
 
-	if ((w = m->ww - sw - stw - x) > bh) {
+	if ((w = m->ww - tw - stw - x) > bh) {
 		if (m->sel) {
 			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
 			drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
@@ -1561,7 +1570,6 @@ removesystrayicon(Client *i)
 		*ii = i->next;
 	free(i);
 }
-
 
 void
 resize(Client *c, int x, int y, int w, int h, int interact)
