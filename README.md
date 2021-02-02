@@ -38,6 +38,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
     - [focusonclick](https://dwm.suckless.org/patches/focusonclick/dwm-focusonclick-20200110-61bb8b2.diff)
 
 # Packages
+- sudo pacman -S termite
 - sudo pacman -S dmenu
 - sudo pacman -S feh
 - sudo pacman -S flameshot

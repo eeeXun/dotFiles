@@ -1,8 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
 /* Constants */
-#define TERMINAL "mate-terminal"
-#define TERMCLASS "Mate-terminal"
+#define TERMINAL "termite"
+#define TERMCLASS "Termite"
 
 /* appearance */
 static unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -220,30 +220,22 @@ static Key keys[] = {
 	{ MODKEY,			XK_x,		incrgaps,	{.i = -3 } },
 
 
-	/* >>> PROGRAMS <<<
-	 * These keybindings will be used to open programs. */
-
-	/* [TERMINAL] */
 	/* Launch a terminal */
 	{ MODKEY,			XK_Return,	spawn,		{.v = termcmd } },
-	/* Open/close terminal (st) in scratchpad */
-	{ MODKEY|ShiftMask,		XK_Return,	togglescratch,	{.ui = 0} },
-
-	/* [VIDEO] */
-	/* Take a screenshot */
-	{ ShiftMask,		XK_Print,	spawn,		SHCMD("flameshot gui") },
-
-	/* [LAUNCHER] */
 	/* Launch dmenu */
 	{ MODKEY,		XK_d,		spawn,		SHCMD("dmenu_run") },
+	/* Open/close terminal in scratchpad */
+	{ MODKEY|ShiftMask,		XK_grave,	togglescratch,	{.ui = 0} },
 
-	/* [OTHERS] */
+    /* Launch lf */
+    { MODKEY|ShiftMask,     XK_Return,  spawn,  SHCMD(TERMINAL " -e lfrun") },
 	/* Open file manager */
 	{ MODKEY|ShiftMask,		XK_f,		spawn,		SHCMD("caja") },
 	/* Open Browser */
 	{ MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD("google-chrome-stable") },
+	/* Take a screenshot */
+	{ ShiftMask,		XK_Print,	spawn,		SHCMD("flameshot gui") },
 
-	/* [SPECIAL KEYS] */
 	/* Mute audio */
 	{ 0, XF86XK_AudioMute,				spawn,		SHCMD("amixer set Master toggle; kill -44 $(pidof dwmblocks)") },
 	/* Raise/lower volume */

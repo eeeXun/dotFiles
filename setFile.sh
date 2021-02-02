@@ -23,9 +23,11 @@ while read -p "Setting neovim and apparence? [Y/n] " reply;do
     case ${reply} in
         [Nn]*) break;;
         [Yy]*)
-            cp -r ./.config/nvim/ ./.config/mypy/ ./.config/lf/ ${HOME}/.config/
+            cp -r ./.config/termite/ ./.config/nvim/ ./.config/mypy/ ./.config/lf/ ${HOME}/.config/
             cp ./.config/gtk-3.0/settings.ini ${HOME}/.config/gtk-3.0/
+            cp ./.zshrc ./.profile ${HOME}/
             sudo cp ./systemSetting/01-touchpad.conf /etc/X11/xorg.conf.d/
+            sudo cp ./systemSetting/lfrun /usr/bin/
             break;;
     esac
 done

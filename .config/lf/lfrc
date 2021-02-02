@@ -4,23 +4,41 @@ set icons
 set previewer ~/.config/lf/preview.sh
 set cleaner ~/.config/lf/clear.sh
 
+%{{
+    w=$(tput cols)
+    if [ $w -le 80 ]; then
+        lf -remote "send $id set ratios 1:2"
+    elif [ $w -le 160 ]; then
+        lf -remote "send $id set ratios 1:2:3"
+    else
+        lf -remote "send $id set ratios 1:2:3:5"
+    fi
+}}
+
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
         text/*|application/json) $EDITOR "$f";;
-        *) xdg-open "$f" ;;
+        *) xdg-open "$f" &;;
     esac
 }}
 
 cmd mkdir ${{
+  clear
   echo "Directory Name: "
   read -e -i "$(pwd)/" ans
-  mkdir $ans
+  mkdir -p ${ans}
 }}
 
 cmd mkfile ${{
   echo "File Name: "
   read -e -i "$(pwd)/" ans
-  $EDITOR $ans
+  touch ${ans}
+}}
+
+cmd chmod ${{
+    read -p "Mod bits: " ans
+    chmod ${ans} $fx
+    lf -remote 'send reload'
 }}
 
 cmd unarchive ${{
@@ -34,11 +52,14 @@ cmd unarchive ${{
 }}
 
 # Remove defaults
+map c
 map d
 map m
 
 # Basic
 map <enter> open
+map ch chmod
+map dd delete
 map md mkdir
 map mf mkfile
 
