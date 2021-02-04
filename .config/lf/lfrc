@@ -1,55 +1,25 @@
+%{{ ${HOME}/.config/lf/scripts/setRatio.sh }}
 set hidden!
 set drawbox
 set icons
-set previewer ~/.config/lf/preview.sh
-set cleaner ~/.config/lf/clear.sh
+set previewer ~/.config/lf/scripts/preview.sh
+set cleaner ~/.config/lf/scripts/clear.sh
 
-%{{
-    w=$(tput cols)
-    if [ $w -le 80 ]; then
-        lf -remote "send $id set ratios 1:2"
-    elif [ $w -le 160 ]; then
-        lf -remote "send $id set ratios 1:2:3"
-    else
-        lf -remote "send $id set ratios 1:2:3:5"
-    fi
-}}
+# Basic
+cmd open ${{ ${HOME}/.config/lf/scripts/open.sh }}
+cmd chmod ${{ ${HOME}/.config/lf/scripts/chmod.sh }}
+cmd mkdir ${{ ${HOME}/.config/lf/scripts/mkdir.sh }}
+cmd mkfile ${{ ${HOME}/.config/lf/scripts/mkfile.sh }}
+cmd mkInPWD ${{ ${HOME}/.config/lf/scripts/mkInPWD.sh }}
+cmd move ${{ ${HOME}/.config/lf/scripts/move.sh }}
 
-cmd open ${{
-    case $(file --mime-type "$f" -bL) in
-        text/*|application/json) $EDITOR "$f";;
-        *) xdg-open "$f" &;;
-    esac
-}}
+# Git
+cmd gitLog ${{ ${HOME}/.config/lf/scripts/gitLog.sh }}
+cmd gitStatus ${{ ${HOME}/.config/lf/scripts/gitStatus.sh }}
 
-cmd mkdir ${{
-  clear
-  echo "Directory Name: "
-  read -e -i "$(pwd)/" ans
-  mkdir -p ${ans}
-}}
-
-cmd mkfile ${{
-  echo "File Name: "
-  read -e -i "$(pwd)/" ans
-  touch ${ans}
-}}
-
-cmd chmod ${{
-    read -p "Mod bits: " ans
-    chmod ${ans} $fx
-    lf -remote 'send reload'
-}}
-
-cmd unarchive ${{
-  case "$f" in
-      *.zip) unzip "$f" ;;
-      *.tar.gz) tar -xzvf "$f" ;;
-      *.tar.bz2) tar -xjvf "$f" ;;
-      *.tar) tar -xvf "$f" ;;
-      *) echo "Unsupported format" ;;
-  esac
-}}
+# Archive
+cmd archive ${{ ${HOME}/.config/lf/scripts/archive.sh }}
+cmd unarchive ${{ ${HOME}/.config/lf/scripts/unarchive.sh }}
 
 # Remove defaults
 map c
@@ -58,10 +28,20 @@ map m
 
 # Basic
 map <enter> open
+map cc cut
 map ch chmod
+map cl clear
 map dd delete
 map md mkdir
 map mf mkfile
+map mk mark-save
+map ms mkInPWD
+map mv move
+
+# Git
+map gl gitLog
+map gs gitStatus
 
 # Archive
+map ak archive
 map au unarchive
