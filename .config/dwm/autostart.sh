@@ -1,9 +1,6 @@
 #!/bin/bash
 
-killall dwmblocks
-if [ $(( $(ps aux | grep ibus-daemon | wc -l) )) -gt 1 ];then
-    killall ibus-daemon
-fi
+killall -q dwmblocks ibus-daemon
 dwmblocks &
 ibus-daemon -d &
 mate-power-manager &
