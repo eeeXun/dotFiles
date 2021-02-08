@@ -21,7 +21,7 @@ if ! [ -f "$1" ] && ! [ -h "$1" ]; then
   exit
 fi
 
-width="$2"
+width="$(($2-2))"
 height="$3"
 x="$4"
 y="$5"
