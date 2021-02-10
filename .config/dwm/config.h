@@ -27,19 +27,14 @@ static char *fonts[]          = {
 
 /* Bar background color */
 static char normbgcolor[]           = "#222";
-
 /* Bar foreground color */
 static char normfgcolor[]           = "#dfdfdf";
-
 /* Selected foreground color */
 static char selfgcolor[]            = "#FFFF55";
-
 /* Light Border color used for focused windows */
 static char selbordercolor[]        = "#e60053";
-
 /* Dark Border color used for unfocused windows */
 static char normbordercolor[]       = "#444444";
-
 /* Bar foreground color */	
 static char selbgcolor[]            = "#444";
 static char *colors[][3] = {
@@ -52,12 +47,10 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "120x34", NULL };
-const char *spcmd2[] = {TERMINAL, "-n", "spcalc", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL };
+const char *spcmd1[] = {TERMINAL, "--name", "spterm", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
-	{"spranger",    spcmd2},
 };
 
 /* tagging */
@@ -68,8 +61,9 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	*/
-	/* class	instance	title		tags mask	isfloating	isterminal noswallow  monitor */
-	{ TERMCLASS,	NULL,		NULL,		0,		0,		1,         0,        -1 },
+	/* class    instance	title		tags mask	isfloating	isterminal noswallow  monitor */
+	{ TERMCLASS,NULL,       NULL,       0,              0,      1,          0,          -1 },
+    { NULL,     "spterm",   NULL,       SPTAG(0),       1,      1,          0,          -1 }
 };
 
 /* layout(s) */
@@ -211,10 +205,10 @@ static Key keys[] = {
 	/* Launch dmenu */
 	{ MODKEY,		XK_d,		spawn,		SHCMD("dmenu_run") },
 	/* Open/close terminal in scratchpad */
-	{ MODKEY|ShiftMask,		XK_grave,	togglescratch,	{.ui = 0} },
+	{ MODKEY|ShiftMask,		XK_Return,	togglescratch,	{.ui = 0} },
 
     /* Launch lf */
-    { MODKEY|ShiftMask,     XK_Return,  spawn,  SHCMD(TERMINAL " -e lfrun") },
+    { MODKEY|ShiftMask,     XK_l,  spawn,  SHCMD(TERMINAL " -e lfrun") },
 	/* Open file manager */
 	{ MODKEY|ShiftMask,		XK_f,		spawn,		SHCMD("caja") },
 	/* Open Browser */
