@@ -2101,7 +2101,8 @@ unmanage(Client *c, int destroyed)
 		XSetErrorHandler(xerror);
 		XUngrabServer(dpy);
 	}
-	free(NULL);
+	free(c);
+    focus(NULL);
     updateclientlist();
     arrange(m);
 }
