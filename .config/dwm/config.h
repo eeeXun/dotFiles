@@ -62,7 +62,7 @@ static const Rule rules[] = {
 	*/
 	/* class    instance	title		tags mask	isfloating	monitor */
 	{ TERMCLASS,NULL,       NULL,       0,              0,      -1 },
-    { NULL,     "spterm",   NULL,       SPTAG(0),       1,      -1 }
+    { NULL,     "spterm",   NULL,       SPTAG(0),       1,      -1 },
 };
 
 /* layout(s) */
@@ -110,18 +110,18 @@ static const char *termcmd[]  = { TERMINAL, NULL };
  * Xresources preferences to load at startup
  */
 ResourcePref resources[] = {
-		{ "borderpx",		INTEGER, &borderpx },
+		{ "borderpx",	INTEGER, &borderpx },
 		{ "snap",		INTEGER, &snap },
-		{ "showbar",		INTEGER, &showbar },
+		{ "showbar",	INTEGER, &showbar },
 		{ "topbar",		INTEGER, &topbar },
-		{ "nmaster",		INTEGER, &nmaster },
-		{ "resizehints",	INTEGER, &resizehints },
+		{ "nmaster",	INTEGER, &nmaster },
+		{ "resizehints",INTEGER, &resizehints },
 		{ "mfact",		FLOAT,	&mfact },
 		{ "gappih",		INTEGER, &gappih },
 		{ "gappiv",		INTEGER, &gappiv },
 		{ "gappoh",		INTEGER, &gappoh },
 		{ "gappov",		INTEGER, &gappov },
-		{ "smartgaps",		INTEGER, &smartgaps },
+		{ "smartgaps",	INTEGER, &smartgaps },
 };
 
 #include <X11/XF86keysym.h>
@@ -142,87 +142,85 @@ static Key keys[] = {
 	TAGKEYS(			XK_8,		7)
 	TAGKEYS(			XK_9,		8)
 	TAGKEYS(			XK_0,		9)
-	{ MODKEY,			XK_slash,	view,		{.ui = ~0} },
+	{ MODKEY,			XK_slash,	view,		    {.ui = ~0} },
 
 	/* Set various layouts */
-	{ MODKEY,		XK_m,		setlayout,	{.v = &layouts[0]} }, /* tile */
-	{ MODKEY|ShiftMask,		XK_m,		setlayout,	{.v = &layouts[1]} }, /* bstack */
-	{ MODKEY,		XK_y,		setlayout,	{.v = &layouts[2]} }, /* spiral */
-	{ MODKEY|ShiftMask,		XK_y,		setlayout,	{.v = &layouts[3]} }, /* dwindle */
-	{ MODKEY,		XK_u,		setlayout,	{.v = &layouts[4]} }, /* deck */
-	{ MODKEY|ShiftMask,		XK_u,		setlayout,	{.v = &layouts[5]} }, /* monocle */
-	{ MODKEY,		XK_i,		setlayout,	{.v = &layouts[6]} }, /* centeredmaster */
-	{ MODKEY|ShiftMask,		XK_i,		setlayout,	{.v = &layouts[7]} }, /* centeredfloatingmaster */
-	{ MODKEY,		XK_f,		togglefullscr,	{0} }, /* Toggle fullscreen */
-	{ MODKEY,		XK_s,	togglefloating,	{0} }, /* Toggle floating mode for a window */
+	{ MODKEY,		    XK_m,		setlayout,	    {.v = &layouts[0]} }, /* tile */
+	{ MODKEY|ShiftMask,	XK_m,		setlayout,	    {.v = &layouts[1]} }, /* bstack */
+	{ MODKEY,		    XK_y,		setlayout,	    {.v = &layouts[2]} }, /* spiral */
+	{ MODKEY|ShiftMask,	XK_y,		setlayout,	    {.v = &layouts[3]} }, /* dwindle */
+	{ MODKEY,		    XK_u,		setlayout,	    {.v = &layouts[4]} }, /* deck */
+	{ MODKEY|ShiftMask,	XK_u,		setlayout,	    {.v = &layouts[5]} }, /* monocle */
+	{ MODKEY,		    XK_i,		setlayout,	    {.v = &layouts[6]} }, /* centeredmaster */
+	{ MODKEY|ShiftMask,	XK_i,		setlayout,	    {.v = &layouts[7]} }, /* centeredfloatingmaster */
+	{ MODKEY,		    XK_f,		togglefullscr,	{0} }, /* Toggle fullscreen */
+	{ MODKEY,		    XK_s,   	togglefloating,	{0} }, /* Toggle floating mode for a window */
 
     /* DWM */
-	{ MODKEY,			XK_b,		togglebar,	{0} }, /* Show/hide bar */
-	{ MODKEY|ShiftMask,		XK_q,		quit,		{0} }, /* Close DWM */
-	{ MODKEY|ShiftMask,		XK_r,		quit,		{1} }, /* Restart DWM */
+	{ MODKEY,			XK_b,		togglebar,	    {0} }, /* Show/hide bar */
+	{ MODKEY|ShiftMask,	XK_q,		quit,		    {0} }, /* Close DWM */
+	{ MODKEY|ShiftMask,	XK_r,		quit,		    {1} }, /* Restart DWM */
 	/* Switch between active tag and last opened tag */
-	{ MODKEY,			XK_Tab,		view,		{0} },
+	{ MODKEY,			XK_Tab,		view,		    {0} },
 	/* Go a tag  left/right */
-    { MODKEY,           XK_bracketleft, shiftview, { .i = -1 } },
-    { MODKEY,           XK_bracketright, shiftview, { .i = +1 } },
+    { MODKEY,           XK_bracketleft,     shiftview,  { .i = -1 } },
+    { MODKEY,           XK_bracketright,    shiftview,  { .i = +1 } },
 	/* Move window to tag on the left/right */
-	{ MODKEY|ShiftMask,		XK_bracketleft,	shifttag,	{ .i = -1 } },
-	{ MODKEY|ShiftMask,		XK_bracketright,	shifttag,	{ .i = +1 } },
+	{ MODKEY|ShiftMask,	XK_bracketleft,     shifttag,	{ .i = -1 } },
+	{ MODKEY|ShiftMask,	XK_bracketright,    shifttag,	{ .i = +1 } },
 
 	/* Interact with tags on other monitors */
-	{ MODKEY,			XK_Left,	focusmon,	{.i = -1 } },
-	{ MODKEY|ShiftMask,		XK_Left,	tagmon,		{.i = -1 } },
-	{ MODKEY,			XK_Right,	focusmon,	{.i = +1 } },
-	{ MODKEY|ShiftMask,		XK_Right,	tagmon,		{.i = +1 } },
+	{ MODKEY,			XK_Left,	focusmon,	    {.i = -1 } },
+	{ MODKEY|ShiftMask,	XK_Left,	tagmon,		    {.i = -1 } },
+	{ MODKEY,			XK_Right,	focusmon,	    {.i = +1 } },
+	{ MODKEY|ShiftMask,	XK_Right,	tagmon,		    {.i = +1 } },
 
 	/* [WINDOWS] */
 	/* Sticky windows */
-	{ MODKEY|ShiftMask,			XK_s,		togglesticky,	{0} },
+	{ MODKEY|ShiftMask,	XK_s,		togglesticky,   {0} },
 	/* Increase/decrease the number of master windows */
 	{ MODKEY,			XK_o,		incnmaster,     {.i = +1 } },
-	{ MODKEY|ShiftMask,		XK_o,		incnmaster,     {.i = -1 } },
+	{ MODKEY|ShiftMask,	XK_o,		incnmaster,     {.i = -1 } },
 	/* Kill a window */
-	{ MODKEY,			XK_w,		killclient,	{0} },
+	{ MODKEY,			XK_w,		killclient,     {0} },
 	/* Resize window */
-	{ MODKEY,			XK_h,		setmfact,	{.f = -0.05} },
-	{ MODKEY,			XK_l,		setmfact,      	{.f = +0.05} },
+	{ MODKEY,			XK_h,		setmfact,       {.f = -0.05} },
+	{ MODKEY,			XK_l,		setmfact,       {.f = +0.05} },
 	/* Promote selected window to master */
-	{ MODKEY,			XK_space,	zoom,		{0} },
+	{ MODKEY,			XK_space,	zoom,		    {0} },
 
 	/* [GAPS] */
 	/* Toggle gaps */
-	{ MODKEY,			XK_a,		togglegaps,	{0} },
+	{ MODKEY,			XK_a,		togglegaps,	    {0} },
 	/* Reset gaps to default size */
-	{ MODKEY|ShiftMask,		XK_a,		defaultgaps,	{0} },
+	{ MODKEY|ShiftMask,	XK_a,		defaultgaps,    {0} },
 	/* Increase/decrease gaps */
-	{ MODKEY,			XK_z,		incrgaps,	{.i = +3 } },
-	{ MODKEY,			XK_x,		incrgaps,	{.i = -3 } },
+	{ MODKEY,			XK_z,		incrgaps,	    {.i = +3 } },
+	{ MODKEY,			XK_x,		incrgaps,	    {.i = -3 } },
 
 	/* Launch a terminal */
-	{ MODKEY,			XK_Return,	spawn,		{.v = termcmd } },
-	/* Launch dmenu */
-	{ MODKEY,		XK_d,		spawn,		SHCMD("dmenu_run") },
+	{ MODKEY,		    XK_Return,	spawn,		    {.v = termcmd } },
 	/* Open/close terminal in scratchpad */
-	{ MODKEY|ShiftMask,		XK_Return,	togglescratch,	{.ui = 0} },
-
+	{ MODKEY|ShiftMask,	XK_Return,	togglescratch,  {.ui = 0} },
+	/* Launch dmenu */
+	{ MODKEY,		    XK_d,		spawn,	        SHCMD("dmenu_run") },
     /* Launch lf */
-    { MODKEY|ShiftMask,     XK_l,  spawn,  SHCMD(TERMINAL " -e lfrun") },
+    { MODKEY|ShiftMask, XK_l,       spawn,          SHCMD(TERMINAL " -e lfrun") },
 	/* Open file manager */
-	{ MODKEY|ShiftMask,		XK_f,		spawn,		SHCMD("caja") },
+	{ MODKEY|ShiftMask,	XK_f,	    spawn,	        SHCMD("caja") },
 	/* Open Browser */
-	{ MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD("google-chrome-stable") },
+	{ MODKEY|ShiftMask,	XK_w,		spawn,	        SHCMD("google-chrome-stable") },
 	/* Take a screenshot */
-	{ ShiftMask,		XK_Print,	spawn,		SHCMD("flameshot gui") },
+	{ ShiftMask,		XK_Print,   spawn,	        SHCMD("flameshot gui") },
 
 	/* Mute audio */
-	{ 0, XF86XK_AudioMute,				spawn,		SHCMD("amixer set Master toggle; kill -44 $(pidof dwmblocks)") },
+	{ 0,        XF86XK_AudioMute,	spawn,	        SHCMD("amixer set Master toggle; kill -44 $(pidof dwmblocks)") },
 	/* Raise/lower volume */
-	{ 0, XF86XK_AudioRaiseVolume,			spawn,		SHCMD("amixer set Master 5%+; kill -44 $(pidof dwmblocks)") },
-	{ 0, XF86XK_AudioLowerVolume,			spawn,		SHCMD("amixer set Master 5%-; kill -44 $(pidof dwmblocks)") },
-
+	{ 0,XF86XK_AudioRaiseVolume,	spawn,	        SHCMD("amixer set Master 5%+; kill -44 $(pidof dwmblocks)") },
+	{ 0,XF86XK_AudioLowerVolume,	spawn,	        SHCMD("amixer set Master 5%-; kill -44 $(pidof dwmblocks)") },
     /* Sleep */
-    { 0, XF86XK_PowerOff,               spawn,      SHCMD("mate-screensaver-command -l") },
-    { MODKEY, XF86XK_PowerOff,               spawn,      SHCMD("mate-screensaver-command -l && systemctl suspend") },
+    { 0,        XF86XK_PowerOff,    spawn,          SHCMD("mate-screensaver-command -l") },
+    { MODKEY,   XF86XK_PowerOff,    spawn,          SHCMD("mate-screensaver-command -l && systemctl suspend") },
 };
 
 /* button definitions */
@@ -233,13 +231,13 @@ static Button buttons[] = {
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        defaultgaps,	{0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
-	{ ClkClientWin,		MODKEY,		Button4,	incrgaps,	{.i = +1} },
-	{ ClkClientWin,		MODKEY,		Button5,	incrgaps,	{.i = -1} },
+	{ ClkClientWin, 		MODKEY, 		Button4,	    incrgaps,   	{.i = +1} },
+	{ ClkClientWin, 		MODKEY, 		Button5,	    incrgaps,   	{.i = -1} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
-	{ ClkTagBar,		0,		Button4,	shiftview,	{.i = -1} },
-	{ ClkTagBar,		0,		Button5,	shiftview,	{.i = 1} },
-	{ ClkRootWin,		0,		Button2,	togglebar,	{0} },
+	{ ClkTagBar,    		0,	        	Button4,	    shiftview,  	{.i = -1} },
+	{ ClkTagBar,    		0,		        Button5,	    shiftview,  	{.i = 1} },
+	{ ClkRootWin,   		0,		        Button2,	    togglebar,  	{0} },
 };
