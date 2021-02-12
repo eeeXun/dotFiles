@@ -7,4 +7,4 @@ for file in $fx;do
 done
 echo "---"
 read -p "To: " -ei "$(pwd)/" ans
-mv $fs ${ans}
+mv $fx ${ans}

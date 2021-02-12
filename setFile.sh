@@ -27,6 +27,8 @@ while read -p "Setting neovim and apparence? [Y/n] " reply;do
             cp ./.zshrc ./.profile ${HOME}/
             sudo cp ./systemSetting/01-touchpad.conf /etc/X11/xorg.conf.d/
             sudo cp ./systemSetting/lfrun /usr/bin/
+            git config --global user.email "sdes96303@gmail.com"
+            git config --global user.name "eeeXun"
             break;;
     esac
 done
