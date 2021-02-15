@@ -76,17 +76,16 @@ static const Layout layouts[] = {
  	{ "[]=",	tile },			/* Default: Master on left, slaves on right */
 	{ "TTT",	bstack },		/* Master on top, slaves on bottom */
 
-	{ "[@]",	spiral },		/* Fibonacci spiral */
 	{ "[\\]",	dwindle },		/* Decreasing in size right and leftward */
+    { "[@]",	spiral },		/* Fibonacci spiral */
 
-	{ "[D]",	deck },			/* Master on left, slaves in monocle-like mode on right */
  	{ "[M]",	monocle },		/* All windows on top of eachother */
+    { "[D]",	deck },			/* Master on left, slaves in monocle-like mode on right */
 
 	{ "|M|",	centeredmaster },		/* Master in middle, slaves on sides */
 	{ ">M>",	centeredfloatingmaster },	/* Same but master floats */
 
 	{ "><>",	NULL },			/* no layout function means floating behavior */
-	{ NULL,		NULL },
 };
 
 /* key definitions */
@@ -99,6 +98,7 @@ static const Layout layouts[] = {
 #define STACKKEYS(MOD,ACTION) \
 	{ MOD,	XK_j,	ACTION##stack,	{.i = INC(+1) } }, \
 	{ MOD,	XK_k,	ACTION##stack,	{.i = INC(-1) } }, \
+    { MOD,  XK_v,   ACTION##stack,  {.i = 0 } }, \
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/bash", "-c", cmd, NULL } }
@@ -147,12 +147,13 @@ static Key keys[] = {
 	/* Set various layouts */
 	{ MODKEY,		    XK_m,		setlayout,	    {.v = &layouts[0]} }, /* tile */
 	{ MODKEY|ShiftMask,	XK_m,		setlayout,	    {.v = &layouts[1]} }, /* bstack */
-	{ MODKEY,		    XK_y,		setlayout,	    {.v = &layouts[2]} }, /* spiral */
-	{ MODKEY|ShiftMask,	XK_y,		setlayout,	    {.v = &layouts[3]} }, /* dwindle */
-	{ MODKEY,		    XK_u,		setlayout,	    {.v = &layouts[4]} }, /* deck */
-	{ MODKEY|ShiftMask,	XK_u,		setlayout,	    {.v = &layouts[5]} }, /* monocle */
+	{ MODKEY,		    XK_y,		setlayout,	    {.v = &layouts[2]} }, /* dwindle */
+	{ MODKEY|ShiftMask,	XK_y,		setlayout,	    {.v = &layouts[3]} }, /* spiral */
+	{ MODKEY,		    XK_u,		setlayout,	    {.v = &layouts[4]} }, /* monocle */
+	{ MODKEY|ShiftMask,	XK_u,		setlayout,	    {.v = &layouts[5]} }, /* deck */
 	{ MODKEY,		    XK_i,		setlayout,	    {.v = &layouts[6]} }, /* centeredmaster */
 	{ MODKEY|ShiftMask,	XK_i,		setlayout,	    {.v = &layouts[7]} }, /* centeredfloatingmaster */
+    { MODKEY|ShiftMask, XK_f,       setlayout,      {.v = &layouts[8]} }, /* floating */
 	{ MODKEY,		    XK_f,		togglefullscr,	{0} }, /* Toggle fullscreen */
 	{ MODKEY,		    XK_s,   	togglefloating,	{0} }, /* Toggle floating mode for a window */
 
@@ -206,8 +207,6 @@ static Key keys[] = {
 	{ MODKEY,		    XK_d,		spawn,	        SHCMD("dmenu_run") },
     /* Launch lf */
     { MODKEY|ShiftMask, XK_l,       spawn,          SHCMD(TERMINAL " -e lfrun") },
-	/* Open file manager */
-	{ MODKEY|ShiftMask,	XK_f,	    spawn,	        SHCMD("caja") },
 	/* Open Browser */
 	{ MODKEY|ShiftMask,	XK_w,		spawn,	        SHCMD("google-chrome-stable") },
 	/* Take a screenshot */
