@@ -1,6 +1,7 @@
-#!/bin/bash
+#!/bin/zsh
 
 clear
 echo "Directory Name: "
-read -ei "$(pwd)/" ans
+ans="$(pwd)/"
+vared ans
 mkdir -p ${ans}

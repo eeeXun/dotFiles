@@ -8,18 +8,18 @@ set cleaner ~/.config/lf/scripts/clear.sh
 # Basic
 cmd open ${{ ${HOME}/.config/lf/scripts/open.sh }}
 cmd chmod ${{ ${HOME}/.config/lf/scripts/chmod.sh }}
-cmd mkdir ${{ ${HOME}/.config/lf/scripts/mkdir.sh }}
-cmd mkfile ${{ ${HOME}/.config/lf/scripts/mkfile.sh }}
+cmd mkdir ${{ ${HOME}/.config/lf/scripts/mkdir.zsh }}
+cmd mkfile ${{ ${HOME}/.config/lf/scripts/mkfile.zsh }}
 cmd mkInPWD ${{ ${HOME}/.config/lf/scripts/mkInPWD.sh }}
-cmd move ${{ ${HOME}/.config/lf/scripts/move.sh }}
+cmd move ${{ ${HOME}/.config/lf/scripts/move.zsh }}
 
 # Git
 cmd gitLog ${{ ${HOME}/.config/lf/scripts/gitLog.sh }}
 cmd gitStatus ${{ ${HOME}/.config/lf/scripts/gitStatus.sh }}
 
 # Archive
-cmd archive ${{ ${HOME}/.config/lf/scripts/archive.sh }}
-cmd unarchive ${{ ${HOME}/.config/lf/scripts/unarchive.sh }}
+cmd archive ${{ ${HOME}/.config/lf/scripts/archive.zsh }}
+cmd unarchive ${{ ${HOME}/.config/lf/scripts/unarchive.zsh }}
 
 # Remove defaults
 map c
