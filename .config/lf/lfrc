@@ -12,6 +12,7 @@ cmd mkdir ${{ ${HOME}/.config/lf/scripts/mkdir.zsh }}
 cmd mkfile ${{ ${HOME}/.config/lf/scripts/mkfile.zsh }}
 cmd mkInPWD ${{ ${HOME}/.config/lf/scripts/mkInPWD.sh }}
 cmd move ${{ ${HOME}/.config/lf/scripts/move.zsh }}
+cmd trash ${{ ${HOME}/.config/lf/scripts/trash.sh }}
 
 # Git
 cmd gitLog ${{ ${HOME}/.config/lf/scripts/gitLog.sh }}
@@ -31,7 +32,7 @@ map <enter> open
 map cc cut
 map ch chmod
 map cl clear
-map dd delete
+map dd trash
 map md mkdir
 map mf mkfile
 map mk mark-save

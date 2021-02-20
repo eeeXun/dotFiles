@@ -7,13 +7,12 @@ for file in ${=fx};do
     read "ans?Process unarchive? [Y/n] "
     case "${ans}" in
         [Yy]*)
-            undir="$(pwd)/"
+            unpackDir="$(pwd)/"
             printf "---\nUnarchive in?\n"
-            vared undir
+            vared unpackDir
             case "${file}" in
-                *.zip) unzip "${file}" -d "${undir}";;
-                *.tar) mkdir -p "${undir}";tar -xvf "${file}" -C "${undir}";;
-                *.tar.gz) mkdir -p "${undir}";tar -xzvf "${file}" -C "${undir}";;
+                *.7z|*.tar|*.tar.gz|*.zip)
+                    mkdir -p ${unpackDir};aunpack ${file} -X ${unpackDir};;
                 *) echo "Unsupported format";;
             esac
             ;;
