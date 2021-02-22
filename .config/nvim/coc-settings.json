@@ -12,7 +12,7 @@
         }
     },
     "suggest.labelMaxLength":50,
-    "python.linting.pylintEnabled":false,
-    "python.linting.mypyEnabled":true,
+    "jedi.diagnostics.enable":false,
+    "diagnostic-languageserver.filetypes": { "python": "mypy" },
     "emmet.includeLanguages": {"javascript": "html"}
 }
