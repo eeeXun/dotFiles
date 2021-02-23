@@ -2,5 +2,5 @@
 
 case "$(file --mime-type "$f" -bL)" in
     text/*|application/json|inode/x-empty) $EDITOR "$f";;
-    *) xdg-open "$f" &;;
+    *) nohup xdg-open "$f" &;;
 esac
