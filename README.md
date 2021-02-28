@@ -17,11 +17,13 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 - sudo pacman -S xclip
 
 # coc.nvim
-- sudo pacman -S nodejs (for coc.nvim)
-- sudo pacman -S yarn (for coc.nvim)
-- sudo pacman -S ripgrep (for CocSearch)
-- pip3 install mypy (for python diagnostics)
+- sudo pacman -S nodejs # (for coc.nvim)
+- sudo pacman -S yarn # (for coc.nvim)
+- sudo pacman -S ripgrep # (for CocSearch)
 - sudo pacman -S ccls
+- pip3 install jedi-language-server
+- pip3 install mypy # (for python diagnostics)
+- sudo pacman -S gopls
 
 # bspwm
 - sudo pacman -S bspwm

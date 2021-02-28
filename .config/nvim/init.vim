@@ -172,7 +172,7 @@ let g:mkdp_refresh_slow = 1
 let g:mkdp_auto_close = 0
 
 "bracket-pair
-autocmd filetype cpp,c,sh,javascript inoremap <buffer>{<CR> {<CR>}<ESC>O
+autocmd filetype cpp,c,sh,javascript,go inoremap <buffer>{<CR> {<CR>}<ESC>O
 
 nnoremap <F5> :call Execute_program()<CR>
 function! Execute_program()
@@ -180,6 +180,8 @@ function! Execute_program()
         exec 'w' | exec '!g++ % -o /tmp/a.out && /tmp/a.out'
     elseif &filetype=='python'
         exec 'w' | exec '!python3 %'
+    elseif &filetype=='go'
+        exec 'w' | exec '!go run %'
     elseif &filetype=='html'
         exec 'w' | exec 'silent !firefox % &'
     elseif &filetype=='markdown'
