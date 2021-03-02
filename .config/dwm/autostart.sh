@@ -5,6 +5,6 @@ dwmblocks &
 ibus-daemon -d &
 mate-power-manager &
 nm-applet &
-feh --bg-scale ~/Pictures/background3.jpg &
+feh --bg-scale ~/Pictures/background.jpg &
 picom &
 mate-screensaver --no-daemon &
