@@ -27,5 +27,6 @@
     },
     "diagnostic-languageserver.filetypes": {"python": "mypy"},
     "emmet.includeLanguages": {"javascript": "html"},
+    "html.autoClosingTags": true,
     "suggest.labelMaxLength": 50
 }
