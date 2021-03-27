@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 clear
 printf "Change Files\n---\n$fx\n---\n"

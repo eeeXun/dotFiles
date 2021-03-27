@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 usage=$(free -m | awk '/^Mem/ { print $3+$5 }')
 

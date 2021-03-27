@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # formula = rx2-rx1
 wifi_device="wlo1"

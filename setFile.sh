@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 config_dir="${HOME}/.config/"
 
@@ -39,7 +39,7 @@ while read -p "Setting neovim and apparence? [Y/n] " reply;do
         [Nn]*) break;;
         [Yy]*)
             cp -r ./.config/termite/ ./.config/nvim/ ./.config/mypy/ ./.config/lf/ ./.config/gtk-3.0/ ${config_dir}
-            cp ./.zshrc ./.profile ${HOME}/
+            cp ./.zshrc ./.zshenv ./.profile ${HOME}/
             sudo cp ./systemSetting/01-touchpad.conf /etc/X11/xorg.conf.d/
             sudo cp ./systemSetting/lfrun /usr/bin/
             git config --global user.email "sdes96303@gmail.com"

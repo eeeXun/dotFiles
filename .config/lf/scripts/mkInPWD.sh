@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 clear
 printf "Create in: $(pwd)\n---\n"

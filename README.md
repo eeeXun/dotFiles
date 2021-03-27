@@ -49,8 +49,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
     - `touch ~/.config/picom.conf`
 
 # zsh
-- git clone https://github.com/ohmyzsh/ohmyzsh ${HOME}/.oh-my-zsh
-- git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+- git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.config/
 - chsh -s /bin/zsh
 
 # lf

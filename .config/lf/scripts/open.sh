@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 case "$(file --mime-type "$f" -bL)" in
     text/*|application/json|inode/x-empty) $EDITOR "$f";;

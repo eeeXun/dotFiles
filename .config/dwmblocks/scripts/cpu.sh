@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # formula = 100 - 100*(idle2-idle1)/(sum2-sum1)
 # Time 1

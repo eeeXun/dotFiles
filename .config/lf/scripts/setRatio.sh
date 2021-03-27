@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 w=$(tput cols)
 if [ $w -le 80 ]; then
