@@ -6,6 +6,8 @@ bindkey -e
 bindkey '^W' vi-backward-kill-word
 bindkey '^[[1;5D' emacs-backward-word
 bindkey '^[[1;5C' emacs-forward-word
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
 
 # alias
 alias ls='ls --color=auto'
