@@ -1,5 +1,5 @@
 # theme
-source $HOME/.config/powerlevel10k/powerlevel10k.zsh-theme
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # key binding
 bindkey -e
