@@ -1,3 +1,6 @@
 #!/bin/sh
 
-mkdir -p /tmp/trash;mv $fx /tmp/trash
+if ![ -d /tmp/trash ];then
+    mkdir -p /tmp/trash
+fi
+mv $fx /tmp/trash

@@ -1,11 +1,16 @@
+# title
+function precmd () {
+  echo -ne "\033]0;$(dirs)\007"
+}
+
 # theme
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # key binding
 bindkey -e
 bindkey '^W' vi-backward-kill-word
-bindkey '^[[1;5D' emacs-backward-word
-bindkey '^[[1;5C' emacs-forward-word
+bindkey '^[[1;5D' vi-backward-word
+bindkey '^[[1;5C' vi-forward-word
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
