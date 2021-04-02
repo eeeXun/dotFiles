@@ -11,8 +11,11 @@ bindkey -e
 bindkey '^W' vi-backward-kill-word
 bindkey '^[[1;5D' vi-backward-word
 bindkey '^[[1;5C' vi-forward-word
-bindkey '^[[A' history-search-backward
-bindkey '^[[B' history-search-forward
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey '^[[A' history-beginning-search-backward-end
+bindkey '^[[B' history-beginning-search-forward-end
 
 # alias
 alias ls='ls --color=auto'
@@ -21,11 +24,11 @@ alias vim='nvim'
 alias lf='lfrun'
 
 # completion
+autoload -U compinit && compinit
+zmodload -i zsh/complist
 zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-autoload -U compinit && compinit
-zmodload -i zsh/complist
 
 # history
 HISTFILE=$HOME/.zsh_history
