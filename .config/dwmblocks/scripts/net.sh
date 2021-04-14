@@ -23,6 +23,6 @@ else
     if [ ${wifi_status} == "UP" ];then
         getSpeed ${wifi_device} 
     else
-        echo ""
+        echo ""
     fi
 fi

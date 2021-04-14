@@ -38,8 +38,9 @@ while read -p "Setting neovim and apparence? [Y/n] " reply;do
     case ${reply} in
         [Nn]*) break;;
         [Yy]*)
-            cp -r ./.config/termite/ ./.config/nvim/ ./.config/mypy/ ./.config/lf/ ./.config/gtk-3.0/ ${config_dir}
-            cp ./.zshrc ./.zshenv ./.profile ${HOME}/
+            cp -r ./.config/termite/ ./.config/nvim/ ./.config/mypy/ ./.config/lf/ \
+                ./.config/gtk-3.0/ ./.config/zsh/ ${config_dir}
+            cp ./.zshrc ./.profile ${HOME}/
             sudo cp ./systemSetting/01-touchpad.conf /etc/X11/xorg.conf.d/
             sudo cp ./systemSetting/lfrun /usr/bin/
             git config --global user.email "sdes96303@gmail.com"

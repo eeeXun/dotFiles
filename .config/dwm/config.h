@@ -19,9 +19,8 @@ static int smartgaps          = 0;        /* 1 means no outer gap when there is 
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel = 0;
-static char *fonts[]          = { 
-    "monospace:size=15", "Font Awesome 5 Free:size=15",
-    "Font Awesome 5 Free Solid:size=15", "Font Awesome 5 Brands:size=15"
+static char *fonts[]          = {
+    "monospace:size=15", "Hack Nerd Font:size=15"
 };
 
 /* Bar background color */
@@ -34,7 +33,7 @@ static char selfgcolor[]            = "#FFFF55";
 static char selbordercolor[]        = "#e60053";
 /* Dark Border color used for unfocused windows */
 static char normbordercolor[]       = "#444444";
-/* Bar foreground color */	
+/* Bar foreground color */
 static char selbgcolor[]            = "#444";
 static char *colors[][3] = {
        /*               fg           bg           border   */
@@ -53,7 +52,7 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -183,7 +182,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_o,		incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,	XK_o,		incnmaster,     {.i = -1 } },
 	/* Kill a window */
-	{ MODKEY,			XK_w,		killclient,     {0} },
+	{ MODKEY|ShiftMask,	XK_w,		killclient,     {0} },
 	/* Resize window */
 	{ MODKEY,			XK_h,		setmfact,       {.f = -0.05} },
 	{ MODKEY,			XK_l,		setmfact,       {.f = +0.05} },
@@ -208,7 +207,7 @@ static Key keys[] = {
     /* Launch lf */
     { MODKEY|ShiftMask, XK_l,       spawn,          SHCMD(TERMINAL " -e lfrun") },
 	/* Open Browser */
-	{ MODKEY|ShiftMask,	XK_w,		spawn,	        SHCMD("google-chrome-stable") },
+	{ MODKEY,	        XK_w,		spawn,	        SHCMD("google-chrome-stable") },
 	/* Take a screenshot */
 	{ ShiftMask,		XK_Print,   spawn,	        SHCMD("flameshot gui") },
 
