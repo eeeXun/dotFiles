@@ -25,6 +25,8 @@
             "rootPatterns": ["go.mod"]
         }
     },
+    "diagnostic.errorSign": "",
+    "diagnostic.warningSign": "",
     "diagnostic-languageserver.filetypes": {"python": "mypy"},
     "emmet.includeLanguages": {"javascript": "html"},
     "html.autoClosingTags": true,

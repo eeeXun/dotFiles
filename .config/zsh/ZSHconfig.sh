@@ -1,6 +1,5 @@
 ZSH_DIR="$HOME/.config/zsh"
 source "$ZSH_DIR/load.zsh"
-source "$ZSH_DIR/color.sh"
 source "$ZSH_DIR/keyBindings.zsh"
 source "$ZSH_DIR/alias.sh"
 source "$ZSH_DIR/history.zsh"

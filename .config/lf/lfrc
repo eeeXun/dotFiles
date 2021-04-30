@@ -22,7 +22,7 @@ cmd gitStatus ${{ ${HOME}/.config/lf/scripts/gitStatus.sh }}
 cmd archive ${{ ${HOME}/.config/lf/scripts/archive.zsh }}
 cmd unarchive ${{ ${HOME}/.config/lf/scripts/unarchive.zsh }}
 
-# Remove defaults
+# Disable default keybindings
 map c
 map d
 map m

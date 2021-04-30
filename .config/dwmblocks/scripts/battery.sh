@@ -5,23 +5,25 @@ capacity=$(cat /sys/class/power_supply/BAT0/capacity)
 
 if [ "${mode}" == "Charging" ];then
     echo " ${capacity}%"
-elif [ $((capacity)) -le 10 ];then
+elif [ $((capacity)) -le 5 ];then
+    echo " ${capacity}%"
+elif [ $((capacity)) -le 15 ];then
     echo " ${capacity}%"
-elif [ $((capacity)) -le 20 ];then
+elif [ $((capacity)) -le 25 ];then
     echo " ${capacity}%"
-elif [ $((capacity)) -le 30 ];then
+elif [ $((capacity)) -le 35 ];then
     echo " ${capacity}%"
-elif [ $((capacity)) -le 40 ];then
+elif [ $((capacity)) -le 45 ];then
     echo " ${capacity}%"
-elif [ $((capacity)) -le 50 ];then
+elif [ $((capacity)) -le 55 ];then
     echo " ${capacity}%"
-elif [ $((capacity)) -le 60 ];then
+elif [ $((capacity)) -le 65 ];then
     echo " ${capacity}%"
-elif [ $((capacity)) -le 70 ];then
+elif [ $((capacity)) -le 75 ];then
     echo " ${capacity}%"
-elif [ $((capacity)) -le 80 ];then
+elif [ $((capacity)) -le 85 ];then
     echo " ${capacity}%"
-elif [ $((capacity)) -le 90 ];then
+elif [ $((capacity)) -le 95 ];then
     echo " ${capacity}%"
 else
     echo " ${capacity}%"

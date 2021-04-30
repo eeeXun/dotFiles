@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # formula = rx2-rx1
-wifi_device="wlo1"
-eth_device="enp0s20f0u1"
+wifi_interface="wlo1"
+eth_interface="enp0s20f0u1"
 
 function getSpeed(){
     rx1=$(cat /sys/class/net/${1}/statistics/rx_bytes)
@@ -10,18 +10,18 @@ function getSpeed(){
     rx2=$(cat /sys/class/net/${1}/statistics/rx_bytes)
     speed=$(numfmt --to=iec $((rx2-rx1)))
     if [ $(echo ${speed} | grep "K" || echo ${speed} | grep "M") ];then
-        printf "%-2s %9s" "${2}" "${speed}/s"
+        printf "%-2s %10s" "${2}" "${speed}/s"
     else
-        printf "%-2s %9s" "${2}" "${speed}B/s"
+        printf "%-2s %10s" "${2}" "${speed}B/s"
     fi
 }
 
-if [ $(ls /sys/class/net/ | grep ${eth_device}) ];then
-    getSpeed ${eth_device} 
+if [ -e /sys/class/net/${eth_interface} ];then
+    getSpeed ${eth_interface} 
 else
-    wifi_status=$(ip a | grep ${wifi_device} | head -1 | awk '{print $9}')
-    if [ ${wifi_status} == "UP" ];then
-        getSpeed ${wifi_device} 
+    wifi_status=$(cat /sys/class/net/${wifi_interface}/operstate)
+    if [ ${wifi_status} == "up" ];then
+        getSpeed ${wifi_interface} 
     else
         echo ""
     fi

@@ -3,4 +3,9 @@
 if ! [ -d /tmp/trash ];then
     mkdir -p /tmp/trash
 fi
-mv $fx /tmp/trash
+
+IFS=$'\n'
+for file in $fx
+do
+    mv --backup=numbered "${file}" /tmp/trash/
+done
