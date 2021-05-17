@@ -1,5 +1,5 @@
 set nocompatible
-filetype off 
+filetype off
 
 call plug#begin('~/.vim/plugged')
 

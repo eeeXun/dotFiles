@@ -1,25 +1,36 @@
 [options]
 font = Monospace 18
-scrollback_lines = 1000
+scrollback_lines = 10000
 scrollbar = right
 browser = firefox
 
 [colors]
-background = rgba(25, 25, 25, 0.8)
-color0=    #272822
-color1=    #f92672
-color2=    #a6e22e
-color3=    #FFA500
-color4=    #a1efe4
-color5=    #ae81ff
-color6=    #7F8D99
-color7=    #909090
+background = rgba(25, 25, 25, 0.75)
+foreground = #ebdbb2
 
-color8=    #75715e
-color9=    #ff5995
-color10=   #a6e22e
-color11=   #f4bf75
-color12=   #a1efe4
-color13=   #ae81ff
-color14=   #7F8D99
-color15=   #909090
+# black
+color0  = #272822
+color8  = #75715e
+# red
+color1  = #cc241d
+color9  = #fb4934
+# green
+color2  = #a6e22e
+color10 = #a6e22e
+# yellow
+color3  = #ffa500
+color11 = #f4bf75
+# blue
+color4  = #a1efe4
+color12 = #a1efe4
+# purple
+color5  = #ae81ff
+color13 = #ae81ff
+# cyan
+color6  = #7f8d99
+color14 = #7f8d99
+# white
+color7  = #909090
+color15 = #909090
+
+# vim:ft=dosini

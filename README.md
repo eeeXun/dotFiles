@@ -57,14 +57,15 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 # lf
 - paru -S lf
+- sudo pacman -S source-highlight
+- sudo pacman -S mdcat
 - pip3 install ueberzug
 - sudo pacman -S atool
 - sudo pacman -S pandoc
 
 # font
-- sudo pacman -S ttf-font-awesome
+- paru -S nerd-fonts-hack
 - sudo pacman -S noto-fonts-emoji
-- paru -S nerd-fonts-complete
 - paru -S noto-fonts-tc
 
 # touchpad

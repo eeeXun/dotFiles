@@ -78,7 +78,6 @@ nnoremap <Leader>+ :resize +5<CR>
 nnoremap <Leader>_ :resize -5<CR>
 nnoremap <Leader>= :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
-nnoremap <Leader>rp :resize 100<CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 nnoremap <C-h> :bp<CR>
@@ -128,7 +127,6 @@ nnoremap <Leader>ps :cd %:p:h<CR>:Rg<SPACE>
 nnoremap <C-p> :cd %:p:h<CR>:GFiles<CR>
 nnoremap <Leader>pf :cd %:p:h<CR>:Files<CR>
 nnoremap <Leader>gs :G<CR>
-nnoremap <Leader>gt :GTags<CR>
 nnoremap <Leader>gh :diffget //2<CR>
 nnoremap <Leader>gl :diffget //3<CR>
 let g:fzf_layout = { 'window': { 'width':0.8, 'height': 0.8 } }

@@ -36,9 +36,9 @@ static char normbordercolor[]       = "#444444";
 /* Bar foreground color */
 static char selbgcolor[]            = "#444";
 static char *colors[][3] = {
-       /*               fg           bg           border   */
-       [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
-       [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
+    /*               fg           bg           border   */
+    [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
+    [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
 
 typedef struct {
@@ -179,8 +179,8 @@ static Key keys[] = {
     /* Sticky windows */
     { MODKEY|ShiftMask, XK_s,       togglesticky,   {0} },
     /* Increase/decrease the number of master windows */
-    { MODKEY,           XK_equal,   incnmaster,     {.i = +1 } },
-    { MODKEY,           XK_minus,   incnmaster,     {.i = -1 } },
+    { MODKEY|ShiftMask, XK_equal,   incnmaster,     {.i = +1 } },
+    { MODKEY|ShiftMask, XK_minus,   incnmaster,     {.i = -1 } },
     /* Kill a window */
     { MODKEY|ShiftMask, XK_w,       killclient,     {0} },
     /* Resize window */

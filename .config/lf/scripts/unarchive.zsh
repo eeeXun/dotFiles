@@ -5,7 +5,7 @@ IFS=$'\n'
 for file in ${=fx};do
     case "${file}" in
         *.7z|*.tar|*.tar.gz|*.zip)
-            als -l "${file}"
+            als -l "${file}" 2> /dev/null
             printf "---\n${file}\n"
             read "ans?Process unarchive? [Y/n] "
             case "${ans}" in
