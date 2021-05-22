@@ -216,6 +216,8 @@ static Key keys[] = {
     /* Raise/lower volume */
     { 0,XF86XK_AudioRaiseVolume,    spawn,          SHCMD("amixer set Master 5%+; kill -44 $(pidof dwmblocks)") },
     { 0,XF86XK_AudioLowerVolume,    spawn,          SHCMD("amixer set Master 5%-; kill -44 $(pidof dwmblocks)") },
+    { MODKEY,           XK_F3,      spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ 150%; kill -44 $(pidof dwmblocks)") },
+    { MODKEY,           XK_F2,      spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%; kill -44 $(pidof dwmblocks)") },
     /* Sleep */
     { 0,        XF86XK_PowerOff,    spawn,          SHCMD("mate-screensaver-command -l") },
     { MODKEY,   XF86XK_PowerOff,    spawn,          SHCMD("mate-screensaver-command -l && systemctl suspend") },
