@@ -107,6 +107,8 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 let g:airline_symbols.branch=''
+let airline#extensions#coc#error_symbol = ''
+let airline#extensions#coc#warning_symbol = ''
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#buffer_nr_show=1
 let g:airline#extensions#tabline#ignore_bufadd_pat = '!|undotree'
@@ -152,6 +154,9 @@ let g:go_highlight_variable_declarations = 1
 let g:go_auto_sameids = 1
 
 "coc
+highlight CocInfoSign guifg=#83a598
+highlight CocInfoFloat guifg=#83a598
+highlight CocInfoHighlight guisp=#83a598
 inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 imap <expr><C-j> pumvisible() ? "\<C-y>" : "\<C-j>"

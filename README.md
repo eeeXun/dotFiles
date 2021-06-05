@@ -70,4 +70,4 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 - paru -S noto-fonts-tc
 
 # touchpad
-- sudo mv 01-touchpad.conf /etc/X11/xorg.conf.d/01-touchpad.conf
+- sudo mv ./systemSetting/01-touchpad.conf /etc/X11/xorg.conf.d/01-touchpad.conf

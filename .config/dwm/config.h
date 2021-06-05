@@ -46,22 +46,27 @@ typedef struct {
     const void *cmd;
 } Sp;
 const char *spcmd1[] = {TERMINAL, "--name", "spterm", NULL };
+const char *spcmd2[] = {TERMINAL, "--name", "splf", "-e", "lfrun", NULL };
 static Sp scratchpads[] = {
     /* name          cmd  */
     {"spterm",      spcmd1},
+    {"splf",        spcmd2},
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" };
 
 static const Rule rules[] = {
     /* xprop(1):
      *  WM_CLASS(STRING) = instance, class
      *  WM_NAME(STRING) = title
     */
-    /* class    instance    title       tags mask   isfloating  monitor */
-    { TERMCLASS,NULL,       NULL,       0,              0,      -1 },
-    { NULL,     "spterm",   NULL,       SPTAG(0),       1,      -1 },
+    /* class                instance    title   tags mask   isfloating  monitor */
+    { "Thunderbird",        NULL,       NULL,   1 << 7,     0,          -1 },
+    { "VirtualBox Manager", NULL,       NULL,   1 << 5,     0,          -1 },
+    { TERMCLASS,            NULL,       NULL,   0,          0,          -1 },
+    { NULL,                 "spterm",   NULL,   SPTAG(0),   1,          -1 },
+    { NULL,                 "splf",     NULL,   SPTAG(1),   1,          -1 },
 };
 
 /* layout(s) */
@@ -202,10 +207,10 @@ static Key keys[] = {
     { MODKEY,           XK_Return,  spawn,          {.v = termcmd } },
     /* Open/close terminal in scratchpad */
     { MODKEY|ShiftMask, XK_Return,  togglescratch,  {.ui = 0} },
+    /* Open/close lf in scratchpad*/
+    { MODKEY|ShiftMask, XK_l,       togglescratch,  {.ui = 1} },
     /* Launch dmenu */
     { MODKEY,           XK_d,       spawn,          SHCMD("dmenu_run") },
-    /* Launch lf */
-    { MODKEY|ShiftMask, XK_l,       spawn,          SHCMD(TERMINAL " -e lfrun") },
     /* Open Browser */
     { MODKEY,           XK_w,       spawn,          SHCMD("google-chrome-stable") },
     /* Take a screenshot */
