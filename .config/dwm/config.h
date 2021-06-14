@@ -20,7 +20,8 @@ static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel = 0;
 static char *fonts[]          = {
-    "Monospace:size=15", "Hack Nerd Font:size=15"
+    "Monospace:size=15", "Hack Nerd Font:size=15",
+    "Noto Color Emoji:pixelsize=15"
 };
 
 /* Bar background color */
@@ -72,7 +73,7 @@ static const Rule rules[] = {
 /* layout(s) */
 static float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static int nmaster     = 1;    /* number of clients in master area */
-static int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
 #include "vanitygaps.c"
 static const Layout layouts[] = {

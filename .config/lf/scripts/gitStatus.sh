@@ -1,7 +1,7 @@
 #!/bin/sh
 
 clear
-if [ -d .git ]; then
+if [ $(git rev-parse --is-inside-work-tree 2>/dev/null) ]; then
     git status
 else
     echo "Not in git repo"
