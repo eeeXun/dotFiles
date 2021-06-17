@@ -40,6 +40,7 @@ while read -p "Terminal emulator? (1) st (2) termite (3) alacritty" reply;do
         1|st)
             git clone https://github.com/eeeXun/st.git ${config_dir}/st/
             sudo make -C ${config_dir}/st/ install clean
+            sudo cp ./systemSetting/st.desktop /usr/share/applications/
             break;;
         2|termite)
             cp -r ./.config/termite/ ${config_dir}
