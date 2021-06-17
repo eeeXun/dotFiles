@@ -38,7 +38,7 @@ case "$1" in
         exit 0
         ;;
     *.md)
-        mdcat "$1"
+        glow -s dark $1
         exit 0
         ;;
     *.[1-8])

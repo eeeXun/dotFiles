@@ -1,0 +1,35 @@
+env:
+  TERM: xterm-256color
+
+scrolling:
+  history: 10000
+
+font:
+  normal:
+    family: Monospace
+  size: 12
+
+colors:
+  primary:
+    background: '0x191919'
+    foreground: '0xebdbb2'
+  normal:
+    black:   '0x272822'
+    red:     '0xcc241d'
+    green:   '0xa6e22e'
+    yellow:  '0xffa500'
+    blue:    '0xa1efe4'
+    magenta: '0xae81ff'
+    cyan:    '0x7f8d99'
+    white:   '0x909090'
+  bright:
+    black:   '0x75715e'
+    red:     '0xfb4934'
+    green:   '0xa6e22e'
+    yellow:  '0xf3bf75'
+    blue:    '0xa1efe4'
+    magenta: '0xae81ff'
+    cyan:    '0x7f8d99'
+    white:   '0x909090'
+
+background_opacity: 0.75

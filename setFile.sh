@@ -6,10 +6,11 @@ while read -p "Setting dwm? [Y/n] " reply;do
     case ${reply} in
         [Nn]*) break;;
         [Yy]*)
-            sudo cp ./systemSetting/dwm.desktop /usr/share/xsessions/
-            cp -r ./.config/dwm/ ./.config/dwmblocks/ ${config_dir}
+            git clone https://github.com/eeeXun/dwm.git ${config_dir}/dwm/
+            git clone https://github.com/eeeXun/dwmblocks.git ${config_dir}/dwmblocks/
             sudo make -C ${config_dir}/dwm/ install clean
             sudo make -C ${config_dir}/dwmblocks/ install clean
+            sudo cp ./systemSetting/dwm.desktop /usr/share/xsessions/
             break;;
     esac
 done
@@ -34,11 +35,26 @@ while read -p "Defalut session? (1) dwm (2) bspwm (3) mate : " reply;do
     break
 done
 
+while read -p "Terminal emulator? (1) st (2) termite (3) alacritty" reply;do
+    case ${reply} in
+        1|st)
+            git clone https://github.com/eeeXun/st.git ${config_dir}/st/
+            sudo make -C ${config_dir}/st/ install clean
+            break;;
+        2|termite)
+            cp -r ./.config/termite/ ${config_dir}
+            break;;
+        3|alacritty)
+            cp -r ./.config/alacritty/ ${config_dir}
+            break;;
+    esac
+done
+
 while read -p "Setting neovim and apparence? [Y/n] " reply;do
     case ${reply} in
         [Nn]*) break;;
         [Yy]*)
-            cp -r ./.config/termite/ ./.config/nvim/ ./.config/mypy/ ./.config/lf/ \
+            cp -r ./.config/nvim/ ./.config/mypy/ ./.config/lf/ \
                 ./.config/gtk-3.0/ ./.config/zsh/ ./.config/tmux/ ${config_dir}
             cp ./.zshrc ./.profile ./.colors.sh ./.tmux.conf ${HOME}/
             sudo cp ./systemSetting/01-touchpad.conf /etc/X11/xorg.conf.d/
