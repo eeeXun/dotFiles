@@ -128,14 +128,17 @@ nnoremap <Leader>pw :cd %:p:h<CR>:Rg <C-R>=expand("<cword>")<CR><CR>
 nnoremap <Leader>ps :cd %:p:h<CR>:Rg<SPACE>
 nnoremap <C-p> :cd %:p:h<CR>:GFiles<CR>
 nnoremap <Leader>pf :cd %:p:h<CR>:Files<CR>
-nnoremap <Leader>gs :G<CR>
-nnoremap <Leader>gh :diffget //2<CR>
-nnoremap <Leader>gl :diffget //3<CR>
 let g:fzf_layout = { 'window': { 'width':0.8, 'height': 0.8 } }
 let $FZF_DEFAULT_OPTS='--reverse'
 
 "fzf_checkout
 nnoremap <Leader>gb :GBranches<CR>
+
+"fugitive
+nnoremap <Leader>gs :G<CR>
+nnoremap <Leader>gc :Glog<CR>
+nnoremap <Leader>gh :diffget //2<CR>
+nnoremap <Leader>gl :diffget //3<CR>
 
 "polyglot
 let g:go_highlight_build_constraints = 1
@@ -189,5 +192,17 @@ function! Execute_program()
         exec 'w' | exec 'silent !firefox % &'
     elseif &filetype=='markdown'
         exec 'MarkdownPreview'
+    endif
+endfunction
+
+let t:is_transparent = 0
+nnoremap <F2> :call Toggle_transparent()<CR>
+function! Toggle_transparent()
+    if t:is_transparent == 0
+        highlight Normal guibg=NONE ctermbg=NONE
+        let t:is_transparent = 1
+    else
+        set background=dark
+        let t:is_transparent = 0
     endif
 endfunction

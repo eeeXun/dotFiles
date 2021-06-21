@@ -24,18 +24,19 @@ while read -p "Setting bspwm? [Y/n] " reply;do
     esac
 done
 
-while read -p "Defalut session? (1) dwm (2) bspwm (3) mate : " reply;do
+while read -p "Defalut session? (1) dwm (2) bspwm (3) mate (n) no : " reply;do
     case ${reply} in
         1|dwm) session="dwm";;
         2|bspwm) session="bspwm";;
         3|mate) session="mate";;
+        n|no) break;;
         *) continue;;
     esac
     sudo sed -i "s/^user-session=.*/user-session=${session}/" /etc/lightdm/lightdm.conf
     break
 done
 
-while read -p "Terminal emulator? (1) st (2) termite (3) alacritty" reply;do
+while read -p "Terminal emulator? (1) st (2) termite (3) alacritty (n) no : " reply;do
     case ${reply} in
         1|st)
             git clone https://github.com/eeeXun/st.git ${config_dir}/st/
@@ -48,6 +49,7 @@ while read -p "Terminal emulator? (1) st (2) termite (3) alacritty" reply;do
         3|alacritty)
             cp -r ./.config/alacritty/ ${config_dir}
             break;;
+        n|no) break;;
     esac
 done
 
