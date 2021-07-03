@@ -128,6 +128,7 @@ nnoremap <Leader>pw :cd %:p:h<CR>:Rg <C-R>=expand("<cword>")<CR><CR>
 nnoremap <Leader>ps :cd %:p:h<CR>:Rg<SPACE>
 nnoremap <C-p> :cd %:p:h<CR>:GFiles<CR>
 nnoremap <Leader>pf :cd %:p:h<CR>:Files<CR>
+let g:fzf_preview_window = ['right:60%', 'ctrl-/']
 let g:fzf_layout = { 'window': { 'width':0.8, 'height': 0.8 } }
 let $FZF_DEFAULT_OPTS='--reverse'
 
@@ -136,7 +137,7 @@ nnoremap <Leader>gb :GBranches<CR>
 
 "fugitive
 nnoremap <Leader>gs :G<CR>
-nnoremap <Leader>gc :Glog<CR>
+nnoremap <Leader>gc :Gclog<CR>
 nnoremap <Leader>gh :diffget //2<CR>
 nnoremap <Leader>gl :diffget //3<CR>
 

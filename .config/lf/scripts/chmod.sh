@@ -1,7 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 
 clear
 printf "Change Files\n---\n$fx\n---\n"
 read -p "Mod bits: " ans
-chmod ${ans} $fx
+
+IFS=$'\n'
+for file in $fx
+do
+    chmod "${ans}" "${file}"
+done
 lf -remote 'send reload'

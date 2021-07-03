@@ -1,7 +1,3 @@
-# TERM
-if [[ $TERM = xterm-* ]]; then
-    export TERM="xterm-256color"
-fi
 # title
 function precmd () {
     print -Pn "\e]0;%~\a"

@@ -32,7 +32,7 @@ while read -p "Defalut session? (1) dwm (2) bspwm (3) mate (n) no : " reply;do
         n|no) break;;
         *) continue;;
     esac
-    sudo sed -i "s/^user-session=.*/user-session=${session}/" /etc/lightdm/lightdm.conf
+    sudo sed -i "s/^#\?user-session=.*/user-session=${session}/" /etc/lightdm/lightdm.conf
     break
 done
 
