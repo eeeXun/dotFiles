@@ -1,4 +1,5 @@
 export EDITOR=/usr/bin/nvim
+export PATH="$PATH:$HOME/.local/bin"
 . ${HOME}/.config/lf/icons.sh
 . ${HOME}/.colors.sh
 export GTK_IM_MODULE="fcitx"

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-config_dir="${HOME}/.config/"
+config_dir="${HOME}/.config"
 
 while read -p "Setting dwm? [Y/n] " reply;do
     case ${reply} in

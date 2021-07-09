@@ -1,5 +1,5 @@
 [Desktop Entry]
 Name=dwm
 Comment=Dynamic Window Manger
-Exec=dwm
+Exec=dbus-launch dwm
 Type=Application
