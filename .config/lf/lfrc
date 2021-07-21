@@ -2,25 +2,27 @@
 set hidden!
 set drawbox
 set icons
-set previewer ~/.config/lf/scripts/preview.sh
-set cleaner ~/.config/lf/scripts/clear.sh
+set previewer   ~/.config/lf/scripts/preview.sh
+set cleaner     ~/.config/lf/scripts/clear.sh
 
 # Basic
-cmd open ${{ ${HOME}/.config/lf/scripts/open.sh }}
-cmd chmod ${{ ${HOME}/.config/lf/scripts/chmod.sh }}
-cmd mkdir ${{ ${HOME}/.config/lf/scripts/mkdir.zsh }}
-cmd mkfile ${{ ${HOME}/.config/lf/scripts/mkfile.zsh }}
-cmd mkInPWD ${{ ${HOME}/.config/lf/scripts/mkInPWD.sh }}
-cmd move ${{ ${HOME}/.config/lf/scripts/move.zsh }}
-cmd trash ${{ ${HOME}/.config/lf/scripts/trash.sh }}
+cmd open        ${{ ${HOME}/.config/lf/scripts/open.sh }}
+cmd bg          ${{ ${HOME}/.config/lf/scripts/bg.sh }}
+cmd chmod       ${{ ${HOME}/.config/lf/scripts/chmod.sh }}
+cmd mkdir       ${{ ${HOME}/.config/lf/scripts/mkdir.zsh }}
+cmd mkfile      ${{ ${HOME}/.config/lf/scripts/mkfile.zsh }}
+cmd mkInPWD     ${{ ${HOME}/.config/lf/scripts/mkInPWD.sh }}
+cmd move        ${{ ${HOME}/.config/lf/scripts/move.zsh }}
+cmd trash       ${{ ${HOME}/.config/lf/scripts/trash.sh }}
+cmd sxiv        ${{ ${HOME}/.config/lf/scripts/sxiv.sh }}
 
 # Git
-cmd gitLog ${{ ${HOME}/.config/lf/scripts/gitLog.sh }}
-cmd gitStatus ${{ ${HOME}/.config/lf/scripts/gitStatus.sh }}
+cmd gitLog      ${{ ${HOME}/.config/lf/scripts/gitLog.sh }}
+cmd gitStatus   ${{ ${HOME}/.config/lf/scripts/gitStatus.sh }}
 
 # Archive
-cmd archive ${{ ${HOME}/.config/lf/scripts/archive.zsh }}
-cmd unarchive ${{ ${HOME}/.config/lf/scripts/unarchive.zsh }}
+cmd archive     ${{ ${HOME}/.config/lf/scripts/archive.zsh }}
+cmd unarchive   ${{ ${HOME}/.config/lf/scripts/unarchive.zsh }}
 
 # Disable default keybindings
 map c
@@ -29,6 +31,7 @@ map m
 
 # Basic
 map <enter> open
+map bg bg
 map cc cut
 map ch chmod
 map cl clear
@@ -38,6 +41,7 @@ map mf mkfile
 map mk mark-save
 map ms mkInPWD
 map mv move
+map sv sxiv
 
 # Git
 map gl gitLog
