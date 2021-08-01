@@ -18,7 +18,7 @@ call plug#end()
 
 syntax on
 
-" set mouse=a
+set mouse=n
 noremap <Up> <nop>
 noremap <Down> <nop>
 set guicursor=
@@ -90,8 +90,8 @@ nnoremap <Leader>phw :h <C-R>=expand("<cword>")<CR><CR>
 
 "terminal
 tnoremap <C-\> <C-\><C-n>
-nnoremap <Leader>`j :cd %:p:h<CR>:bel 10sp<CR>:term<CR>
-nnoremap <Leader>`l :cd %:p:h<CR>:bel vsp<CR>:term<CR>
+nnoremap <Leader>`j :cd %:p:h<CR>:bel 10sp +term<CR>
+nnoremap <Leader>`l :cd %:p:h<CR>:bel vsp +term<CR>
 
 "NERDTree
 nnoremap <Leader>n :NERDTreeToggle<CR>
@@ -124,10 +124,11 @@ let g:undotree_HelpLine=0
 nnoremap <Leader>u :UndotreeToggle<CR>
 
 "fzf
+nnoremap <C-p> :cd %:p:h<CR>:GFiles<CR>
+nnoremap <Leader>ff :cd %:p:h<CR>:Files<CR>
+nnoremap <Leader>fb :Buffers<CR>
 nnoremap <Leader>pw :cd %:p:h<CR>:Rg <C-R>=expand("<cword>")<CR><CR>
 nnoremap <Leader>ps :cd %:p:h<CR>:Rg<SPACE>
-nnoremap <C-p> :cd %:p:h<CR>:GFiles<CR>
-nnoremap <Leader>pf :cd %:p:h<CR>:Files<CR>
 let g:fzf_preview_window = ['right:60%', 'ctrl-/']
 let g:fzf_layout = { 'window': { 'width':0.8, 'height': 0.8 } }
 let $FZF_DEFAULT_OPTS='--reverse'
@@ -137,7 +138,7 @@ nnoremap <Leader>gb :GBranches<CR>
 
 "fugitive
 nnoremap <Leader>gs :G<CR>
-nnoremap <Leader>gc :Gclog<CR>
+nnoremap <Leader>cm :Gclog<CR>
 nnoremap <Leader>gh :diffget //2<CR>
 nnoremap <Leader>gl :diffget //3<CR>
 
@@ -167,6 +168,7 @@ imap <expr><C-j> pumvisible() ? "\<C-y>" : "\<C-j>"
 nnoremap <Leader>gd :call CocAction('jumpDefinition', 'vsplit')<CR>
 nnoremap <Leader>sh :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nmap <Leader>rn <Plug>(coc-rename)
+nmap <Leader>f <Plug>(coc-format)
 let g:coc_filetype_map={'htmldjango': 'html'}
 
 "tcomment
@@ -180,6 +182,7 @@ let g:mkdp_auto_close = 0
 
 "bracket-pair
 autocmd filetype cpp,c,sh,javascript,go inoremap <buffer>{<CR> {<CR>}<ESC>O
+autocmd filetype go iabbrev <buffer>;= :=
 
 nnoremap <F5> :call Execute_program()<CR>
 function! Execute_program()

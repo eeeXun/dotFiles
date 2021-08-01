@@ -24,11 +24,21 @@ while read -p "Setting bspwm? [Y/n] " reply;do
     esac
 done
 
-while read -p "Defalut session? (1) dwm (2) bspwm (3) mate (n) no : " reply;do
+while read -p "Setting i3? [Y/n] " reply;do
+    case ${reply} in
+        [Nn]*) break;;
+        [Yy]*)
+            cp -r ./.config/i3/ ./.config/i3status/ ${config_dir}
+            break;;
+    esac
+done
+
+while read -p "Defalut session? (1) dwm (2) bspwm (3) mate (4) i3 (n) no : " reply;do
     case ${reply} in
         1|dwm) session="dwm";;
         2|bspwm) session="bspwm";;
         3|mate) session="mate";;
+        4|i3) session="i3";;
         n|no) break;;
         *) continue;;
     esac

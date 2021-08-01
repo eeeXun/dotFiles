@@ -44,7 +44,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
     - `touch ~/.config/picom.conf`
 
 # zsh
-- paru -S zsh-theme-powerlevel10k-git
+- paru -S zsh-theme-powerlevel10k-bin-git
 - chsh -s /bin/zsh
 
 # lf
