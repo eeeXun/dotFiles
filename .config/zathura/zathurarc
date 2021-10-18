@@ -6,6 +6,9 @@ unmap s
 unmap a
 map u scroll half-up
 map d scroll half-down
+map b scroll full-up
+map f scroll full-down
+map <C-f> follow
 map D toggle_page_mode
 map w adjust_window width
 map p adjust_window best-fit

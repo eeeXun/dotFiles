@@ -1,4 +1,4 @@
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mbbill/undotree'
@@ -37,7 +37,6 @@ set nowrap
 set smartcase
 set noswapfile
 set nobackup
-set undodir=~/.config/nvim/undodir
 set undofile
 set incsearch
 set termguicolors
@@ -82,7 +81,8 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 nnoremap <C-h> :bp<CR>
 nnoremap <C-l> :bn<CR>
-nnoremap <C-a> gg0vG$
+nnoremap <Leader>a gg0vG$
+vnoremap <Leader>y "+y
 vnoremap <Tab> >gv=gv
 vnoremap <S-Tab> <gv=gv
 nnoremap <Leader>m :w<CR>
@@ -127,8 +127,8 @@ nnoremap <Leader>u :UndotreeToggle<CR>
 nnoremap <C-p> :cd %:p:h<CR>:GFiles<CR>
 nnoremap <Leader>ff :cd %:p:h<CR>:Files<CR>
 nnoremap <Leader>fb :Buffers<CR>
-nnoremap <Leader>pw :cd %:p:h<CR>:Rg <C-R>=expand("<cword>")<CR><CR>
 nnoremap <Leader>ps :cd %:p:h<CR>:Rg<SPACE>
+nnoremap <Leader>pw :cd %:p:h<CR>:Rg <C-R>=expand("<cword>")<CR><CR>
 let g:fzf_preview_window = ['right:60%', 'ctrl-/']
 let g:fzf_layout = { 'window': { 'width':0.8, 'height': 0.8 } }
 let $FZF_DEFAULT_OPTS='--reverse'
@@ -168,7 +168,7 @@ imap <expr><C-j> pumvisible() ? "\<C-y>" : "\<C-j>"
 nnoremap <Leader>gd :call CocAction('jumpDefinition', 'vsplit')<CR>
 nnoremap <Leader>sh :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nmap <Leader>rn <Plug>(coc-rename)
-nmap <Leader>f <Plug>(coc-format)
+nmap <Leader>fm <Plug>(coc-format)
 let g:coc_filetype_map={'htmldjango': 'html'}
 
 "tcomment
@@ -184,9 +184,10 @@ let g:mkdp_auto_close = 0
 autocmd filetype cpp,c,sh,javascript,go inoremap <buffer>{<CR> {<CR>}<ESC>O
 autocmd filetype go iabbrev <buffer>;= :=
 
-nnoremap <F5> :call Execute_program()<CR>
 function! Execute_program()
-    if &filetype=='cpp'
+    if &filetype=='c'
+        exec 'w' | exec '!gcc % -o /tmp/a.out && /tmp/a.out'
+    elseif &filetype=='cpp'
         exec 'w' | exec '!g++ % -o /tmp/a.out && /tmp/a.out'
     elseif &filetype=='python'
         exec 'w' | exec '!python3 %'
@@ -198,9 +199,9 @@ function! Execute_program()
         exec 'MarkdownPreview'
     endif
 endfunction
+nnoremap <F5> :call Execute_program()<CR>
 
 let t:is_transparent = 0
-nnoremap <F2> :call Toggle_transparent()<CR>
 function! Toggle_transparent()
     if t:is_transparent == 0
         highlight Normal guibg=NONE ctermbg=NONE
@@ -210,3 +211,4 @@ function! Toggle_transparent()
         let t:is_transparent = 0
     endif
 endfunction
+nnoremap <F2> :call Toggle_transparent()<CR>
