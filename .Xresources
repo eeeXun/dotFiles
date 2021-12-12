@@ -1,3 +1,5 @@
-Sxiv.foreground:    #bbbbbb
-Sxiv.background:    #222222
-Sxiv.font:          Monospace:size=15
+Nsxiv.window.background:    #222222
+Nsxiv.window.foreground:    #e60053
+Nsxiv.bar.background:       #bbbbbb
+Nsxiv.bar.foreground:       #222222
+Nsxiv.bar.font:             Monospace:size=15

@@ -1,3 +1,3 @@
 #!/bin/sh
 
-nohup sxiv -t "$f" > /dev/null 2>&1 &
+nohup nsxiv -t "$f" > /dev/null 2>&1 &

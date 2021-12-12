@@ -38,7 +38,7 @@ case "$1" in
         exit 0
         ;;
     *.md)
-        glow -s dark $1
+        glow -s dark "$1"
         exit 0
         ;;
     *.[1-8])
@@ -77,8 +77,12 @@ case "$1" in
         iso-info --no-header "$1"
         exit 0
         ;;
-    *.docx|*.odt|*.epub)
-        pandoc -s -t plain -- "$1"
+    *.odt|*.ods|*.odp|*.sxw)
+        odt2txt "$1"
+        exit 0
+        ;;
+    *.docx)
+        docx2txt "$1" -
         exit 0
         ;;
     *.svg)
@@ -93,8 +97,8 @@ esac
 
 case "$(file -Lb --mime-type -- "$1")" in
     text/*)
-        source-highlight -q --line-number-ref --outlang-def=esc256.outlang \
-            --style-file=esc256.style -i "$1" || cat "$1"
+        bat --color=always --theme=gruvbox-dark --style="numbers,changes" \
+            --line-range=:50 "$1"
         exit 0
         ;;
     application/json)

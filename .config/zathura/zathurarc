@@ -1,3 +1,4 @@
+set sandbox none
 set font "Monospace 15"
 set statusbar-home-tilde
 set window-title-basename

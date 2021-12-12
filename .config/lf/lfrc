@@ -1,4 +1,4 @@
-%{{ ${HOME}/.config/lf/scripts/setRatio.sh }}
+&{{ ${HOME}/.config/lf/scripts/setRatio.sh }}
 set hidden!
 set drawbox
 set icons

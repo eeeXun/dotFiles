@@ -69,7 +69,7 @@ while read -p "Setting neovim and apparence? [Y/n] " reply;do
         [Yy]*)
             cp -r ./.config/nvim/ ./.config/mypy/ ./.config/lf/ \
                 ./.config/gtk-3.0/ ./.config/zsh/ ./.config/tmux/ \
-                ./.config/zathura/ ./.config/sxiv/ ./.config/color.sh ${config_dir}
+                ./.config/zathura/ ./.config/nsxiv/ ./.config/color.sh ${config_dir}
             cp ./.zshrc ./.profile ./.tmux.conf ./.Xresources ${HOME}/
             touch ${config_dir}/picom.conf
             sudo cp ./systemSetting/01-touchpad.conf /etc/X11/xorg.conf.d/
