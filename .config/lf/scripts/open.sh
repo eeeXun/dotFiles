@@ -1,6 +1,6 @@
 #!/bin/sh
 
 case "$(file --mime-type "$f" -bL)" in
-    text/*|application/json|inode/x-empty) $EDITOR "$f";;
+    text/*|application/json|inode/x-empty) $EDITOR -u NONE "$f";;
     *) nohup xdg-open "$f" > /dev/null 2>&1 &;;
 esac
