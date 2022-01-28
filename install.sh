@@ -34,6 +34,15 @@ while read -p "Set up i3? [Y/n] " reply;do
     esac
 done
 
+while read -p "Set up touchpad? [Y/n] " reply;do
+    case ${reply} in
+        [Nn]*) break;;
+        [Yy]*)
+            sudo cp ./systemSetting/01-touchpad.conf /etc/X11/xorg.conf.d/
+            break;;
+    esac
+done
+
 while read -p "Defalut session? (1) dwm (2) bspwm (3) mate (4) i3 (n) no : " reply;do
     case ${reply} in
         1|dwm) session="dwm";;
@@ -64,14 +73,12 @@ while read -p "Terminal emulator? (1) st (2) termite (3) alacritty (n) no : " re
     esac
 done
 
-while read -p "Set up script and touchpad? [Y/n] " reply;do
+while read -p "Set up script? [Y/n] " reply;do
     case ${reply} in
         [Nn]*) break;;
         [Yy]*)
             mkdir -p ${bin_dir}
-            cp ./systemSetting/lf_run ./systemSetting/lock_run ./systemSetting/dim_run \
-                ./systemSetting/sound_ctrl ./systemSetting/light_ctrl ${bin_dir}
-            sudo cp ./systemSetting/01-touchpad.conf /etc/X11/xorg.conf.d/
+            cp ./.local/bin/* ${bin_dir}
             break;;
     esac
 done
