@@ -3,7 +3,7 @@
 config_dir="${HOME}/.config"
 bin_dir="${HOME}/.local/bin"
 
-while read -p "Setting dwm? [Y/n] " reply;do
+while read -p "Install dwm? [Y/n] " reply;do
     case ${reply} in
         [Nn]*) break;;
         [Yy]*)
@@ -16,7 +16,7 @@ while read -p "Setting dwm? [Y/n] " reply;do
     esac
 done
 
-while read -p "Setting bspwm? [Y/n] " reply;do
+while read -p "Set up bspwm? [Y/n] " reply;do
     case ${reply} in
         [Nn]*) break;;
         [Yy]*)
@@ -25,7 +25,7 @@ while read -p "Setting bspwm? [Y/n] " reply;do
     esac
 done
 
-while read -p "Setting i3? [Y/n] " reply;do
+while read -p "Set up i3? [Y/n] " reply;do
     case ${reply} in
         [Nn]*) break;;
         [Yy]*)
@@ -64,7 +64,7 @@ while read -p "Terminal emulator? (1) st (2) termite (3) alacritty (n) no : " re
     esac
 done
 
-while read -p "Setting system and script? [Y/n] " reply;do
+while read -p "Set up script and touchpad? [Y/n] " reply;do
     case ${reply} in
         [Nn]*) break;;
         [Yy]*)
@@ -76,13 +76,14 @@ while read -p "Setting system and script? [Y/n] " reply;do
     esac
 done
 
-while read -p "Setting other config? [Y/n] " reply;do
+while read -p "Set up other config? [Y/n] " reply;do
     case ${reply} in
         [Nn]*) break;;
         [Yy]*)
             cp -r ./.config/nvim/ ./.config/mypy/ ./.config/lf/ \
                 ./.config/gtk-3.0/ ./.config/zsh/ ./.config/tmux/ \
-                ./.config/zathura/ ./.config/nsxiv/ ./.config/color.sh ${config_dir}
+                ./.config/zathura/ ./.config/nsxiv/ ./.config/dunst/ \
+                ./.config/color.sh ${config_dir}
             cp ./.zshrc ./.profile ./.tmux.conf ./.Xresources ${HOME}/
             touch ${config_dir}/picom.conf
             git config --global user.email "sdes96303@gmail.com"
