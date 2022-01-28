@@ -1,6 +1,7 @@
 #!/bin/sh
 
 config_dir="${HOME}/.config"
+bin_dir="${HOME}/.local/bin"
 
 while read -p "Setting dwm? [Y/n] " reply;do
     case ${reply} in
@@ -19,7 +20,7 @@ while read -p "Setting bspwm? [Y/n] " reply;do
     case ${reply} in
         [Nn]*) break;;
         [Yy]*)
-            cp -r ./.config/bspwm/ ./.config/sxhkd/ ./.config/polybar ${config_dir}
+            cp -r ./.config/bspwm/ ./.config/sxhkd/ ./.config/polybar/ ${config_dir}
             break;;
     esac
 done
@@ -63,7 +64,19 @@ while read -p "Terminal emulator? (1) st (2) termite (3) alacritty (n) no : " re
     esac
 done
 
-while read -p "Setting neovim and apparence? [Y/n] " reply;do
+while read -p "Setting system and script? [Y/n] " reply;do
+    case ${reply} in
+        [Nn]*) break;;
+        [Yy]*)
+            mkdir -p ${bin_dir}
+            cp ./systemSetting/lf_run ./systemSetting/lock_run ./systemSetting/dim_run \
+                ./systemSetting/sound_ctrl ./systemSetting/light_ctrl ${bin_dir}
+            sudo cp ./systemSetting/01-touchpad.conf /etc/X11/xorg.conf.d/
+            break;;
+    esac
+done
+
+while read -p "Setting other config? [Y/n] " reply;do
     case ${reply} in
         [Nn]*) break;;
         [Yy]*)
@@ -72,8 +85,6 @@ while read -p "Setting neovim and apparence? [Y/n] " reply;do
                 ./.config/zathura/ ./.config/nsxiv/ ./.config/color.sh ${config_dir}
             cp ./.zshrc ./.profile ./.tmux.conf ./.Xresources ${HOME}/
             touch ${config_dir}/picom.conf
-            sudo cp ./systemSetting/01-touchpad.conf /etc/X11/xorg.conf.d/
-            sudo cp ./systemSetting/lfrun /usr/bin/
             git config --global user.email "sdes96303@gmail.com"
             git config --global user.name "eeeXun"
             break;;

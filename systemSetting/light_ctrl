@@ -1,0 +1,12 @@
+#!/bin/sh
+
+case $1 in
+    "up")
+        xbacklight + 5;;
+    "down")
+        xbacklight - 5;;
+esac
+
+brightness="$(xbacklight -get | cut -d '.' -f 1)"
+
+dunstify -r 5555 -u low -h int:value:$brightness " $brightness%"
