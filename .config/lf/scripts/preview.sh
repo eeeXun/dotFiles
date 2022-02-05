@@ -13,12 +13,12 @@ hash() {
 }
 
 cache() {
-    if [ -f "$1" ];then
+    if [ -f "$1" ]; then
         draw "$1"
     fi
 }
 
-if ! [ -f "$1" ] && ! [ -h "$1" ];then
+if ! [ -f "$1" ] && ! [ -h "$1" ]; then
     exit
 fi
 
@@ -46,7 +46,7 @@ case "$1" in
         exit 0
         ;;
     *.pdf)
-        if [ -n "$FIFO_UEBERZUG" ];then
+        if [ -n "$FIFO_UEBERZUG" ]; then
             cache="$(hash "$1")"
             cache "$cache.jpg"
             pdftoppm -f 1 -l 1 \
@@ -62,7 +62,7 @@ case "$1" in
         fi
         ;;
     *.djvu|*.djv)
-        if [ -n "$FIFO_UEBERZUG" ];then
+        if [ -n "$FIFO_UEBERZUG" ]; then
             cache="$(hash "$1").tiff"
             cache "$cache"
             ddjvu -format=tiff -quality=90 -page=1 -size="${default_x}x${default_y}" \
@@ -86,7 +86,7 @@ case "$1" in
         exit 0
         ;;
     *.svg)
-        if [ -n "$FIFO_UEBERZUG" ];then
+        if [ -n "$FIFO_UEBERZUG" ]; then
             cache="$(hash "$1").jpg"
             cache "$cache"
             convert -- "$1" "$cache"
@@ -106,9 +106,9 @@ case "$(file -Lb --mime-type -- "$1")" in
         exit 0
         ;;
     image/*)
-        if [ -n "$FIFO_UEBERZUG" ];then
+        if [ -n "$FIFO_UEBERZUG" ]; then
             orientation="$(identify -format '%[EXIF:Orientation]\n' -- "$1")"
-            if [ -n "$orientation" ] && [ "$orientation" != 1 ];then
+            if [ -n "$orientation" ] && [ "$orientation" != 1 ]; then
                 cache="$(hash "$1").jpg"
                 cache "$cache"
                 convert -- "$1" -auto-orient "$cache"
@@ -119,7 +119,7 @@ case "$(file -Lb --mime-type -- "$1")" in
         fi
         ;;
     video/*)
-        if [ -n "$FIFO_UEBERZUG" ];then
+        if [ -n "$FIFO_UEBERZUG" ]; then
             cache="$(hash "$1").jpg"
             cache "$cache"
             ffmpegthumbnailer -i "$1" -o "$cache" -s 0
@@ -131,7 +131,7 @@ esac
 header_text="File Type Classification"
 header=""
 len="$(( (width - (${#header_text} + 2)) / 2 ))"
-if [ "$len" -gt 0 ];then
+if [ "$len" -gt 0 ]; then
     for i in $(seq "$len"); do
         header="-$header"
     done

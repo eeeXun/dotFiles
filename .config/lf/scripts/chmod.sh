@@ -5,8 +5,7 @@ printf "Change Files\n---\n$fx\n---\n"
 read -p "Mod bits: " ans
 
 IFS=$'\n'
-for file in $fx
-do
+for file in $fx; do
     chmod "${ans}" "${file}"
 done
 lf -remote 'send reload'

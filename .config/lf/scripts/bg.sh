@@ -1,3 +1,3 @@
 #!/bin/sh
 
-feh --bg-scale "$f"
+feh --no-fehbg --bg-scale "$f"

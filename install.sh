@@ -1,9 +1,9 @@
 #!/bin/sh
 
-config_dir="${HOME}/.config"
-bin_dir="${HOME}/.local/bin"
+config_dir="$HOME/.config"
+bin_dir="$HOME/.local/bin"
 
-while read -p "Install dwm? [Y/n] " reply;do
+while read -p "Install dwm? [Y/n] " reply; do
     case ${reply} in
         [Nn]*) break;;
         [Yy]*)
@@ -16,7 +16,7 @@ while read -p "Install dwm? [Y/n] " reply;do
     esac
 done
 
-while read -p "Set up bspwm? [Y/n] " reply;do
+while read -p "Set up bspwm? [Y/n] " reply; do
     case ${reply} in
         [Nn]*) break;;
         [Yy]*)
@@ -25,7 +25,7 @@ while read -p "Set up bspwm? [Y/n] " reply;do
     esac
 done
 
-while read -p "Set up i3? [Y/n] " reply;do
+while read -p "Set up i3? [Y/n] " reply; do
     case ${reply} in
         [Nn]*) break;;
         [Yy]*)
@@ -34,7 +34,7 @@ while read -p "Set up i3? [Y/n] " reply;do
     esac
 done
 
-while read -p "Set up touchpad? [Y/n] " reply;do
+while read -p "Set up touchpad? [Y/n] " reply; do
     case ${reply} in
         [Nn]*) break;;
         [Yy]*)
@@ -43,7 +43,7 @@ while read -p "Set up touchpad? [Y/n] " reply;do
     esac
 done
 
-while read -p "Defalut session? (1) dwm (2) bspwm (3) mate (4) i3 (n) no : " reply;do
+while read -p "Defalut session? (1) dwm (2) bspwm (3) mate (4) i3 (n) no : " reply; do
     case ${reply} in
         1|dwm) session="dwm";;
         2|bspwm) session="bspwm";;
@@ -56,7 +56,7 @@ while read -p "Defalut session? (1) dwm (2) bspwm (3) mate (4) i3 (n) no : " rep
     break
 done
 
-while read -p "Terminal emulator? (1) st (2) termite (3) alacritty (n) no : " reply;do
+while read -p "Terminal emulator? (1) st (2) termite (3) alacritty (n) no : " reply; do
     case ${reply} in
         1|st)
             git clone https://github.com/eeeXun/st.git ${config_dir}/st/
@@ -73,7 +73,7 @@ while read -p "Terminal emulator? (1) st (2) termite (3) alacritty (n) no : " re
     esac
 done
 
-while read -p "Set up script? [Y/n] " reply;do
+while read -p "Set up script? [Y/n] " reply; do
     case ${reply} in
         [Nn]*) break;;
         [Yy]*)
@@ -83,7 +83,7 @@ while read -p "Set up script? [Y/n] " reply;do
     esac
 done
 
-while read -p "Set up other config? [Y/n] " reply;do
+while read -p "Set up other config? [Y/n] " reply; do
     case ${reply} in
         [Nn]*) break;;
         [Yy]*)

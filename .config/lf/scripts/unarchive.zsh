@@ -2,7 +2,7 @@
 
 clear
 IFS=$'\n'
-for file in ${=fx};do
+for file in ${=fx}; do
     case "${file}" in
         *.7z|*.tar|*.tar.gz|*.zip)
             als -l "${file}" 2> /dev/null

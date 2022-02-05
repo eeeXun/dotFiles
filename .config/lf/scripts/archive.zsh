@@ -7,7 +7,7 @@ printf "---\n1) 7z\t2) tar\t3) tar.gz\t4) zip\n\n"
 read "ans?Enter a number or method: "
 
 files_count=$(echo $fx | wc -w)
-if [ $((files_count)) = 1 ];then
+if [ $((files_count)) = 1 ]; then
     case "${ans}" in
         1|7z) default_file="$fx.7z";;
         2|tar) default_file="$fx.tar";;
@@ -26,7 +26,7 @@ else
 fi
 
 files=""
-for file in ${=fx};do
+for file in ${=fx}; do
     files="${files} $(basename ${file})"
 done
 
