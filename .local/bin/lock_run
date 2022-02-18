@@ -34,13 +34,14 @@ i3lock -n \
     --pass-screen-keys          \
     --pass-volume-keys          \
     --pass-power-keys           \
+    --ignore-empty-password     \
     \
-    --screen 1                  \
     --indicator                 \
     --clock                     \
     --time-str="%H:%M:%S"       \
     --date-str="%Y-%m-%d(%a)"   \
     -i $HOME/Pictures/lock.jpg  \
+    --fill                      \
 
 xset s 300 30
 xset -dpms

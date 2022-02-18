@@ -7,6 +7,6 @@ case $1 in
         xbacklight - 5;;
 esac
 
-brightness="$(xbacklight -get | cut -d '.' -f 1)"
+brightness=$(xbacklight -get | cut -d '.' -f 1)
 
 dunstify -r 5555 -u low -h int:value:$brightness " $brightness%"

@@ -97,7 +97,7 @@ esac
 
 case "$(file -Lb --mime-type -- "$1")" in
     text/*)
-        bat --color=always --theme=gruvbox-dark --style="numbers,changes" \
+        bat --color=always --theme=gruvbox-dark --style="plain" \
             --line-range=:50 "$1"
         exit 0
         ;;
