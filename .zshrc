@@ -8,4 +8,4 @@ function preexec () {
 # theme
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # ZSH config
-source $HOME/.config/zsh/ZSHconfig.sh
+source $HOME/.config/zsh/init.sh

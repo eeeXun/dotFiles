@@ -1,8 +1,10 @@
-export EDITOR=/usr/bin/nvim
+export EDITOR="/usr/bin/nvim"
 export PATH="$PATH:$HOME/.local/bin"
-. ${HOME}/.config/lf/icons.sh
-. ${HOME}/.config/colors.sh
+. $HOME/.config/lf/icons.sh
+. $HOME/.config/colors.sh
 export GTK_IM_MODULE="fcitx"
 export QT_IM_MODULE="fcitx"
 export SDL_IM_MODULE="fctix"
 export XMODIFIERS="@im=fcitx"
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export _JAVA_AWT_WM_NONREPARENTING=1

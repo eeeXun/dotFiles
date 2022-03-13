@@ -20,5 +20,4 @@ case ${ans} in
         read -p "Files Name: " files
         touch ${files}
         ;;
-    *) exit 0 ;;
 esac

@@ -118,6 +118,10 @@ case "$(file -Lb --mime-type -- "$1")" in
             fi
         fi
         ;;
+    audio/*)
+        mediainfo "$1"
+        exit 0
+        ;;
     video/*)
         if [ -n "$FIFO_UEBERZUG" ]; then
             cache="$(hash "$1").jpg"

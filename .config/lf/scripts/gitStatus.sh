@@ -2,7 +2,7 @@
 
 clear
 if [ $(git rev-parse --is-inside-work-tree 2>/dev/null) ]; then
-    git status
+    git status -sb
 else
     echo "Not in git repo"
 fi

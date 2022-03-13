@@ -31,7 +31,6 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 - sudo mv ./systemSetting/dwm.desktop /usr/share/xsessions/
 
 # Packages
-- sudo pacman -S termite
 - sudo pacman -S dmenu
 - sudo pacman -S feh
 - sudo pacman -S flameshot
@@ -39,16 +38,11 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
     - `touch ~/.config/picom.conf`
 
 # zsh
-- paru -S zsh-theme-powerlevel10k-bin-git
+- paru -S zsh-theme-powerlevel10k zsh-autosuggestions autojump
 - chsh -s /bin/zsh
 
 # lf
-- paru -S lf
-- sudo pacman -S source-highlight
-- paru -S glow
-- pip3 install ueberzug
-- sudo pacman -S atool
-- sudo pacman -S pandoc
+- paru -S bat glow ueberzug atool mediainfo odt2txt docx2txt jq libcdio ffmpegthumbnailer
 
 # font
 - paru -S nerd-fonts-hack

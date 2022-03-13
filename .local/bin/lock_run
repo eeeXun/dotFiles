@@ -41,7 +41,7 @@ i3lock -n \
     --time-str="%H:%M:%S"       \
     --date-str="%Y-%m-%d(%a)"   \
     -i $HOME/Pictures/lock.jpg  \
-    --fill                      \
+    --scale                     \
 
 xset s 300 30
 xset -dpms
