@@ -42,7 +42,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 - chsh -s /bin/zsh
 
 # lf
-- paru -S bat glow ueberzug atool mediainfo odt2txt docx2txt jq libcdio ffmpegthumbnailer
+- paru -S bat glow ueberzug atool odt2txt docx2txt jq libcdio ffmpegthumbnailer imagemagick
 
 # font
 - paru -S nerd-fonts-hack

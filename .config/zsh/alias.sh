@@ -1,3 +1,4 @@
+alias l='ls'
 alias ll='ls -alh'
 alias ls='ls --color=auto'
 alias diff='diff -u --color'

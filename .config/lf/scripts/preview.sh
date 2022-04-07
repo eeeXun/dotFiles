@@ -119,7 +119,7 @@ case "$(file -Lb --mime-type -- "$1")" in
         fi
         ;;
     audio/*)
-        mediainfo "$1"
+        ffprobe -i "$1" -loglevel quiet -show_format -pretty
         exit 0
         ;;
     video/*)

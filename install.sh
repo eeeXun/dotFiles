@@ -77,6 +77,7 @@ while read -p "Set up script? [Y/n] " reply; do
     case ${reply} in
         [Nn]*) break;;
         [Yy]*)
+            sudo cp ./systemSetting/lf_run /usr/local/bin
             mkdir -p ${bin_dir}
             cp ./.local/bin/* ${bin_dir}
             break;;
@@ -90,8 +91,8 @@ while read -p "Set up other config? [Y/n] " reply; do
             cp -r ./.config/nvim/ ./.config/mypy/ ./.config/lf/ \
                 ./.config/gtk-3.0/ ./.config/zsh/ ./.config/tmux/ \
                 ./.config/zathura/ ./.config/nsxiv/ ./.config/dunst/ \
-                ./.config/color.sh ${config_dir}
-            cp ./.zshrc ./.profile ./.tmux.conf ./.Xresources ${HOME}/
+                ./.config/color.sh ./.config/libinput-gestures.conf ${config_dir}
+            cp ./.zshrc ./.profile ./.tmux.conf ./.Xresources ./.dircolors ${HOME}/
             touch ${config_dir}/picom.conf
             git config --global user.email "sdes96303@gmail.com"
             git config --global user.name "eeeXun"

@@ -7,25 +7,21 @@ case $1 in
         amixer set Master 5%+;;
     "down")
         amixer set Master 5%-;;
-    "max")
-        pactl set-sink-volume @DEFAULT_SINK@ 150%;;
-    "maxdown")
-        pactl set-sink-volume @DEFAULT_SINK@ -5%;;
 esac
 
 volume=$(amixer get Master | tail -n1 | sed -r 's/.*\[(.*)%\].*/\1/')
 mode=$(amixer get Master | tail -n1 | sed -r 's/.*\[.*\].*\[(.*)\]/\1/')
 
-if [ "${mode}" = "off" ]; then
-    dunstify -r 2593 -u low -h int:value:$volume -h string:fgcolor:#a89984 \
+if [ "$mode" = "off" ]; then
+    dunstify -r 2593 -t 1500 -h int:value:$volume -h string:fgcolor:#a89984 \
         -h string:hlcolor:#a89984 " $volume%"
-elif [ $((volume)) -le 33 ]; then
-    dunstify -r 2593 -u low -h int:value:$volume -h string:fgcolor:#689d6a \
+elif [ $volume -le 33 ]; then
+    dunstify -r 2593 -t 1500 -h int:value:$volume -h string:fgcolor:#689d6a \
         -h string:hlcolor:#689d6a " $volume%"
-elif [ $((volume)) -le 66 ]; then
-    dunstify -r 2593 -u low -h int:value:$volume -h string:fgcolor:#d79921 \
+elif [ $volume -le 66 ]; then
+    dunstify -r 2593 -t 1500 -h int:value:$volume -h string:fgcolor:#d79921 \
         -h string:hlcolor:#d79921 "墳 $volume%"
 else
-    dunstify -r 2593 -u low -h int:value:$volume -h string:fgcolor:#fe8019 \
+    dunstify -r 2593 -t 1500 -h int:value:$volume -h string:fgcolor:#fe8019 \
         -h string:hlcolor:#fe8019 " $volume%"
 fi

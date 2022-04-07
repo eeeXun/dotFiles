@@ -1,13 +1,13 @@
 #!/bin/sh
 
-while read file
-do
+while read file; do
     case "$1" in
         "w")
             feh --bg-scale "$file";;
         "y")
             echo "$file" | tr -d '\n' | xclip -selection clipboard
-            notify-send "$file copied to clipboard";;
+            notify-send "$file copied to clipboard"
+            ;;
         "r")
             convert -rotate 90 "$file" "$file";;
         "R")

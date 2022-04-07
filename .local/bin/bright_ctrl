@@ -9,4 +9,5 @@ esac
 
 brightness=$(xbacklight -get | cut -d '.' -f 1)
 
-dunstify -r 5555 -u low -h int:value:$brightness " $brightness%"
+dunstify -r 5555 -t 1500 -h int:value:$brightness -h string:fgcolor:#83a598 \
+    -h string:hlcolor:#83a598 " $brightness%"
