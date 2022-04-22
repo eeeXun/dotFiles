@@ -1,0 +1,7 @@
+#!/bin/sh
+
+color="^c#E6005E^"
+
+temperature=$(head -c 2 /sys/class/thermal/thermal_zone0/temp)
+
+echo "$color$temperature°C"

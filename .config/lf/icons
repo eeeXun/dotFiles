@@ -1,3 +1,4 @@
+# file types
 ln             # LINK
 or             # ORPHAN
 tw      t       # STICKY_OTHER_WRITABLE
@@ -136,9 +137,25 @@ fi             # FILE
 *Gulpfile.coffee        
 *Gulpfile.js            
 *Gulpfile.ls            
+*mix.lock               
 *Dropbox                
 *.DS_Store              
+*.gitconfig             
+*.gitignore             
+*.gitattributes         
+*.gitlab-ci.yml         
+*.bashrc                
+*.bash_profile          
+*.zshrc                 
+*.zshenv                
+*.zprofile              
+*.vimrc                 
+*.gvimrc                
+*_vimrc                 
+*_gvimrc                
 *LICENSE                
+*node_modules           
+*favicon.ico            
 *React.jsx              
 *Procfile               
 *Dockerfile             
@@ -147,6 +164,7 @@ fi             # FILE
 *Gemfile                
 *Makefile               
 *CMakeLists.txt         
+*robots.txt             ﮧ
 
 # file patterns
 *jquery.min.js          

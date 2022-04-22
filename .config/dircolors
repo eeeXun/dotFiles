@@ -133,3 +133,5 @@ FILE                    00
 *.dl    01;35
 *.yuv   01;35
 *.ogv   01;35
+
+# vim:ft=dircolors

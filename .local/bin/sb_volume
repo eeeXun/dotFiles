@@ -1,0 +1,23 @@
+#!/bin/sh
+
+icon_off=""
+icon_low=""
+icon_mid="墳"
+icon_high=""
+color_off="^c#A89984^"
+color_low="^c#689D6A^"
+color_mid="^c#d79921^"
+color_high="^c#fe8019^"
+
+volume=$(amixer get Master | tail -n1 | sed -r 's/.*\[(.*)%\].*/\1/')
+mode=$(amixer get Master | tail -n1 | sed -r 's/.*\[.*\].*\[(.*)\]/\1/')
+
+if [ "$mode" = "off" ]; then
+    echo "$color_off$icon_off $volume%"
+elif [ $volume -le 33 ]; then
+    echo "$color_low$icon_low $volume%"
+elif [ $volume -le 66 ]; then
+    echo "$color_mid$icon_mid $volume%"
+else
+    echo "$color_high$icon_high $volume%"
+fi

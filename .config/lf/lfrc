@@ -2,6 +2,7 @@ ${{ $HOME/.config/lf/scripts/setRatio.sh }}
 set hidden!
 set drawbox
 set icons
+set scrolloff 3
 set relativenumber
 set previewer   ~/.config/lf/scripts/preview.sh
 set cleaner     ~/.config/lf/scripts/clear.sh
@@ -51,3 +52,5 @@ map gs gitStatus
 # Archive
 map ak archive
 map au unarchive
+
+# vim:ft=conf

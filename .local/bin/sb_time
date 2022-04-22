@@ -1,0 +1,8 @@
+#!/bin/sh
+
+icon=""
+color="^c#D3869B^"
+
+time=$(date '+%Y-%m-%d(%a) %H:%M')
+
+echo "$color$icon $time"

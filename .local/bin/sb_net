@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# formula = rx2 - rx1
+color_on="^c#83A598^"
+color_off="^c#D65D0E^"
+
+wifi_interface="wlo1"
+eth_interfaces="enp0s20f0u1 enp0s20f0u3 enp0s20f0u4"
+
+getStatus() {
+    cat /sys/class/net/$1/operstate
+}
+
+getSpeed() {
+    rx1=$(cat /sys/class/net/$1/statistics/rx_bytes)
+    sleep 1
+    rx2=$(cat /sys/class/net/$1/statistics/rx_bytes)
+    speed=$(numfmt --to=iec $((rx2-rx1)))
+    if [ $(echo $speed | grep "K" || echo $speed | grep "M") ]; then
+        printf "$color_on$2 %5s/s" $speed
+    else
+        printf "$color_on$2 %4sB/s" $speed
+    fi
+}
+
+for eth_interface in $eth_interfaces; do
+    if [ -e /sys/class/net/$eth_interface ] && [ "$(getStatus $eth_interface)" = "up" ]; then
+        getSpeed $eth_interface 
+        exit 0
+    fi
+done
+
+if [ "$(getStatus $wifi_interface)" = "up" ]; then
+    getSpeed $wifi_interface 
+else
+    echo "$color_off"
+fi

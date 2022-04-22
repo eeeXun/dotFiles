@@ -1,6 +1,6 @@
 export EDITOR="/usr/bin/nvim"
 export PATH="$PATH:$HOME/.local/bin"
-eval "$(dircolors $HOME/.dircolors)"
+eval "$(dircolors $HOME/.config/dircolors)"
 export GTK_IM_MODULE="fcitx"
 export QT_IM_MODULE="fcitx"
 export SDL_IM_MODULE="fctix"

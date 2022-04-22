@@ -1,0 +1,12 @@
+#!/bin/sh
+
+icon="RAM"
+color="^c#A1EFE4^"
+
+usage=$(free -m | awk '/^Mem/ {print $3+$5}')
+
+if [ $usage -lt 1024 ]; then
+    printf "$color$icon 0%sG" $(echo "scale=2; $usage/1024" | bc)
+else
+    printf "$color$icon %sG" $(echo "scale=2; $usage/1024" | bc)
+fi
