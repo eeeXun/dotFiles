@@ -109,7 +109,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) |Vex| endif
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-let  g:airline_symbols.branch=''
+let g:airline_symbols.branch=''
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#buffer_nr_show=1
 

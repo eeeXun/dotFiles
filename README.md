@@ -26,7 +26,7 @@
     - `touch ~/.config/picom.conf`
 
 # zsh
-- paru -S zsh-theme-powerlevel10k zsh-autosuggestions autojump
+- paru -S zsh-theme-powerlevel10k zsh-autosuggestions autojump zsh-history-substring-search
 - chsh -s /bin/zsh
 
 # lf

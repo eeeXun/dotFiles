@@ -19,6 +19,7 @@ cmd trash       ${{ $HOME/.config/lf/scripts/trash.sh }}
 cmd sxiv        ${{ $HOME/.config/lf/scripts/sxiv.sh }}
 
 # Git
+cmd gitBranch   ${{ $HOME/.config/lf/scripts/gitBranch.sh }}
 cmd gitLog      ${{ $HOME/.config/lf/scripts/gitLog.sh }}
 cmd gitStatus   ${{ $HOME/.config/lf/scripts/gitStatus.sh }}
 
@@ -46,6 +47,7 @@ map mv move
 map sv sxiv
 
 # Git
+map gb gitBranch
 map gl gitLog
 map gs gitStatus
 

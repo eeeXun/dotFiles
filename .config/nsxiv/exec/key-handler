@@ -3,7 +3,7 @@
 while read file; do
     case "$1" in
         "w")
-            feh --bg-scale "$file";;
+            feh --no-fehbg --bg-scale "$file";;
         "y")
             echo "$file" | tr -d '\n' | xclip -selection clipboard
             notify-send "$file copied to clipboard"

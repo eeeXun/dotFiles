@@ -1,11 +1,10 @@
-# title
-function precmd () {
-    print -Pn "\e]0;%~\a"
-}
-function preexec () {
-    print -Pn "\e]0;$2\a"
-}
 # theme
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-# ZSH config
-source $HOME/.config/zsh/init.sh
+# zsh config
+source $HOME/.config/zsh/title.zsh
+source $HOME/.config/zsh/env.zsh
+source $HOME/.config/zsh/load.zsh
+source $HOME/.config/zsh/keybindings.zsh
+source $HOME/.config/zsh/alias.zsh
+source $HOME/.config/zsh/history.zsh
+source $HOME/.config/zsh/completion.zsh
