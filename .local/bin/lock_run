@@ -2,14 +2,14 @@
 
 xset s off
 xset dpms 30
-dunstctl set-paused toggle
+dunstctl set-paused true
 
 BLANK="#00000000"
-CLEAR="#ffffff22"
+CLEAR="#FFFFFF22"
 DEFAULT="#458588"
-TEXT="#ebdbb2"
-WRONG="#fb4934"
-VERIFYING="#fabd2f"
+TEXT="#EBDBB2"
+WRONG="#FB4934"
+VERIFYING="#FABD2F"
 
 i3lock -n \
     --insidever-color=$CLEAR    \
@@ -45,4 +45,4 @@ i3lock -n \
 
 xset s 300 30
 xset -dpms
-dunstctl set-paused toggle
+dunstctl set-paused false

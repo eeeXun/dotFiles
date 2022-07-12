@@ -1,14 +1,14 @@
 #!/bin/sh
 
-id=$(xinput list | grep Touchpad | awk '{ print $6}' | cut -d '=' -f 2)
-state=$(xinput list-props $id | grep "Device Enabled" | awk ' {print $4} ')
+id=$(xinput list | grep Touchpad | awk '{print $6}' | cut -d "=" -f 2)
+state=$(xinput list-props $id | grep "Device Enabled" | awk '{print $4}')
 
-if [ $state = 1 ]; then
+if [ $state -eq 1 ]; then
     xinput set-prop $id "Device Enabled" 0
-    dunstify -r 5 -t 1500 -h string:fgcolor:#a89984 \
-        -h string:hlcolor:#a89984 " Touchpad" "OFF"
+    dunstify -r 5 -t 1500 -h string:fgcolor:#A89984 \
+        -h string:hlcolor:#A89984 " Touchpad" "OFF"
 else
     xinput set-prop $id "Device Enabled" 1
-    dunstify -r 5 -t 1500 -h string:fgcolor:#b8bb26 \
-        -h string:hlcolor:#b8bb26 " Touchpad" "ON"
+    dunstify -r 5 -t 1500 -h string:fgcolor:#B8BB26 \
+        -h string:hlcolor:#B8BB26 " Touchpad" "ON"
 fi

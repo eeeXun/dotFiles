@@ -7,5 +7,5 @@ vared -p "To: " ans
 
 IFS=$'\n'
 for file in ${=fx}; do
-    mv --backup=numbered "${file}" ${ans}
+    mv --backup=numbered "$file" "$ans"
 done

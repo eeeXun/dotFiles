@@ -4,4 +4,4 @@ clear
 echo "File Name: "
 ans="$(pwd)/"
 vared ans
-touch ${ans}
+touch "$ans"

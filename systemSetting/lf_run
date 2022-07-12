@@ -15,7 +15,7 @@ if [ -n "$DISPLAY" ]; then
     exec 3>"$FIFO_UEBERZUG"
     trap cleanup EXIT
 
-    if ! [ -d "$HOME/.cache/lf" ]; then
+    if [ ! -d "$HOME/.cache/lf" ]; then
         mkdir -p "$HOME/.cache/lf"
     fi
 

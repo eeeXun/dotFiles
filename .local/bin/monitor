@@ -1,0 +1,30 @@
+#!/bin/sh
+
+laptop="eDP1"
+monitor="HDMI1"
+
+case $1 in
+    "left")
+        xrandr --output $monitor --auto
+        xrandr --output $monitor --left-of $laptop
+        feh --no-fehbg --bg-scale $HOME/Pictures/background.jpg
+        ;;
+    "right")
+        xrandr --output $monitor --auto
+        xrandr --output $monitor --right-of $laptop
+        feh --no-fehbg --bg-scale $HOME/Pictures/background.jpg
+        ;;
+    "same")
+        xrandr --output $monitor --auto
+        xrandr --output $monitor --same-as $laptop
+        feh --no-fehbg --bg-scale $HOME/Pictures/background.jpg
+        ;;
+    "on")
+        xrandr --output $monitor --auto
+        feh --no-fehbg --bg-scale $HOME/Pictures/background.jpg
+        ;;
+    "off")
+        xrandr --output $monitor --off
+        feh --no-fehbg --bg-scale $HOME/Pictures/background.jpg
+        ;;
+esac

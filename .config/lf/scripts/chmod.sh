@@ -7,6 +7,6 @@ read -p "Mod bits: " ans
 IFS="
 "
 for file in $fx; do
-    chmod "${ans}" "${file}"
+    chmod "$ans" "$file"
 done
-lf -remote 'send reload'
+lf -remote "send reload"

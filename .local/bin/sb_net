@@ -15,8 +15,8 @@ getSpeed() {
     rx1=$(cat /sys/class/net/$1/statistics/rx_bytes)
     sleep 1
     rx2=$(cat /sys/class/net/$1/statistics/rx_bytes)
-    speed=$(numfmt --to=iec $((rx2-rx1)))
-    if [ $(echo $speed | grep "K" || echo $speed | grep "M") ]; then
+    speed=$(numfmt --to=iec $(($rx2 - $rx1)))
+    if [ -z "${speed##*K}" ] || [ -z "${speed##*M}" ]; then
         printf "$color_on$2 %5s/s" $speed
     else
         printf "$color_on$2 %4sB/s" $speed

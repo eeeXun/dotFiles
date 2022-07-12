@@ -2,6 +2,7 @@ ${{ $HOME/.config/lf/scripts/setRatio.sh }}
 set hidden!
 set drawbox
 set icons
+set mouse
 set scrolloff 3
 set relativenumber
 set previewer   ~/.config/lf/scripts/preview.sh
@@ -31,6 +32,12 @@ cmd unarchive   ${{ $HOME/.config/lf/scripts/unarchive.zsh }}
 map c
 map d
 map m
+
+# Mouse
+map <m-1> updir
+map <m-2> open
+map <m-up> up
+map <m-down> down
 
 # Basic
 map <enter> open

@@ -1,15 +1,15 @@
 #!/bin/sh
 
 draw() {
-    path="$(printf '%s' "$1" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    path="$(printf "%s" "$1" | sed 's/\\/\\\\/g;s/"/\\"/g')"
     printf '{"action": "add", "identifier": "preview", "x": %d, "y": %d, "width": %d, "height": %d, "scaler": "contain", "scaling_position_x": 0.5, "scaling_position_y": 0.5, "path": "%s"}\n' \
         "$x" "$y" "$width" "$height" "$path" >"$FIFO_UEBERZUG"
     exit 1
 }
 
 hash() {
-    printf '%s/.cache/lf/%s' "$HOME" \
-        "$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' -- "$(readlink -f "$1")" | sha256sum | awk '{print $1}')"
+    printf "%s/.cache/lf/%s" "$HOME" \
+        "$(stat --printf "%n\0%i\0%F\0%s\0%W\0%Y" -- "$(readlink -f "$1")" | sha256sum | awk '{print $1}')"
 }
 
 cache() {
@@ -22,7 +22,7 @@ if ! [ -f "$1" ] && ! [ -h "$1" ]; then
     exit
 fi
 
-width="$(($2-2))"
+width="$(($2 - 2))"
 height="$3"
 x="$4"
 y="$5"
@@ -97,8 +97,7 @@ esac
 
 case "$(file -Lb --mime-type -- "$1")" in
     text/*)
-        bat --color=always --theme=gruvbox-dark --style="plain" \
-            --line-range=:50 "$1"
+        bat --plain --line-range=:100 --color=always --theme=gruvbox-dark "$1"
         exit 0
         ;;
     application/json)
@@ -107,7 +106,7 @@ case "$(file -Lb --mime-type -- "$1")" in
         ;;
     image/*)
         if [ -n "$FIFO_UEBERZUG" ]; then
-            orientation="$(identify -format '%[EXIF:Orientation]\n' -- "$1")"
+            orientation="$(identify -format "%[EXIF:Orientation]\n" -- "$1")"
             if [ -n "$orientation" ] && [ "$orientation" != 1 ]; then
                 cache="$(hash "$1").jpg"
                 cache "$cache"
@@ -134,8 +133,8 @@ esac
 
 header_text="File Type Classification"
 header=""
-len="$(( (width - (${#header_text} + 2)) / 2 ))"
-if [ "$len" -gt 0 ]; then
+len="$(( ($width - (${#header_text} + 2)) / 2 ))"
+if [ $len -gt 0 ]; then
     for i in $(seq "$len"); do
         header="-$header"
     done
@@ -146,6 +145,6 @@ if [ "$len" -gt 0 ]; then
 else
     header="$header_text"
 fi
-printf '\033[7m%s\033[0m\n' "$header"
+printf "\033[7m%s\033[0m\n" "$header"
 file -Lb -- "$1" | fold -s -w "$width"
 exit 0

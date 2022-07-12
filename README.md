@@ -23,7 +23,6 @@
 - sudo pacman -S feh
 - sudo pacman -S flameshot
 - sudo pacman -S picom
-    - `touch ~/.config/picom.conf`
 
 # zsh
 - paru -S zsh-theme-powerlevel10k zsh-autosuggestions autojump zsh-history-substring-search

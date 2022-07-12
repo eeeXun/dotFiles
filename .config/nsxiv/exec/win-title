@@ -4,4 +4,4 @@ exec 2>/dev/null
 
 filename="${1##*/}"
 
-printf "%s" "nsxiv - ${filename} [${2}/${3}]"
+printf "nsxiv - $filename [${2}/${3}]"

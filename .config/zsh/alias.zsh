@@ -1,8 +1,9 @@
-alias l='ls'
-alias ll='ls -alh'
-alias ls='ls --color=auto'
-alias diff='diff -u --color'
-alias grep='grep --color=auto'
-alias history='history -$HISTSIZE'
-alias vim='nvim'
-alias lf='lf_run'
+alias l="ls"
+alias ll="ls -alh"
+alias ls="ls --color=auto"
+alias diff="diff -u --color"
+alias grep="grep --color=auto"
+alias history="history -$HISTSIZE"
+alias vim="nvim"
+alias lf="lf_run"
+alias bat="bat --plain --paging=never --color=always --theme=gruvbox-dark"
