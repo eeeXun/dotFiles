@@ -1,10 +1,12 @@
 #!/bin/sh
 
-killall -q dwmblocks xss-lock
+killall -q dwmblocks xss-lock udiskie polkit-mate-authentication-agent-1
 dwmblocks &
 fcitx5 -r &
 nm-applet &
-feh --no-fehbg --bg-scale $HOME/Pictures/background.jpg &
+udiskie --smart-tray &
+/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+feh --no-fehbg --bg-scale $HOME/.local/share/background.jpg &
 picom &
 blueman-applet &
 libinput-gestures-setup restart &

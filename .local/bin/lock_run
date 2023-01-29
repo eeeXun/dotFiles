@@ -10,6 +10,7 @@ DEFAULT="#458588"
 TEXT="#EBDBB2"
 WRONG="#FB4934"
 VERIFYING="#FABD2F"
+BACKGROUND="$HOME/.local/share/lock.jpg"
 
 i3lock -n \
     --insidever-color=$CLEAR    \
@@ -31,17 +32,18 @@ i3lock -n \
     --keyhl-color=$VERIFYING    \
     --bshl-color=$WRONG         \
     \
+    --pass-media-keys           \
     --pass-screen-keys          \
-    --pass-volume-keys          \
     --pass-power-keys           \
+    --pass-volume-keys          \
     --ignore-empty-password     \
     \
     --indicator                 \
     --clock                     \
     --time-str="%H:%M:%S"       \
     --date-str="%Y-%m-%d(%a)"   \
-    -i $HOME/Pictures/lock.jpg  \
-    --scale                     \
+    -i $BACKGROUND              \
+    --scale
 
 xset s 300 30
 xset -dpms

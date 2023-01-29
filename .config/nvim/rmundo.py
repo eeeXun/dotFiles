@@ -1,6 +1,7 @@
 #!/bin/python3
 import os
 
+
 def main():
     HOME = os.getenv("HOME")
     undo_dir = HOME + "/.local/share/nvim/undo/"
@@ -20,6 +21,7 @@ def main():
             os.remove(undo_path)
     print("Total space: {:.2f}k".format(total_volume / 1024))
     print("Total files: {}".format(total_file))
+
 
 if __name__ == "__main__":
     main()

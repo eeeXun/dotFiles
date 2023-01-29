@@ -2,29 +2,30 @@
 
 laptop="eDP1"
 monitor="HDMI1"
+BACKGROUND="$HOME/.local/share/background.jpg"
 
 case $1 in
     "left")
         xrandr --output $monitor --auto
         xrandr --output $monitor --left-of $laptop
-        feh --no-fehbg --bg-scale $HOME/Pictures/background.jpg
+        feh --no-fehbg --bg-scale $BACKGROUND
         ;;
     "right")
         xrandr --output $monitor --auto
         xrandr --output $monitor --right-of $laptop
-        feh --no-fehbg --bg-scale $HOME/Pictures/background.jpg
+        feh --no-fehbg --bg-scale $BACKGROUND
         ;;
     "same")
         xrandr --output $monitor --auto
         xrandr --output $monitor --same-as $laptop
-        feh --no-fehbg --bg-scale $HOME/Pictures/background.jpg
+        feh --no-fehbg --bg-scale $BACKGROUND
         ;;
     "on")
         xrandr --output $monitor --auto
-        feh --no-fehbg --bg-scale $HOME/Pictures/background.jpg
+        feh --no-fehbg --bg-scale $BACKGROUND
         ;;
     "off")
         xrandr --output $monitor --off
-        feh --no-fehbg --bg-scale $HOME/Pictures/background.jpg
+        feh --no-fehbg --bg-scale $BACKGROUND
         ;;
 esac

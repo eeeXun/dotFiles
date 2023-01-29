@@ -1,7 +1,6 @@
 export EDITOR="/usr/bin/nvim"
 export PAGER="bat --plain --paging=always --theme=gruvbox-dark"
 export PATH="$PATH:$HOME/.local/bin"
-export COLORTERM="truecolor"
 eval "$(dircolors $HOME/.config/dircolors)"
 
 # LESS

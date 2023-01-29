@@ -1,0 +1,3 @@
+#!/bin/sh
+
+printf "\033]0;lf - $(basename $PWD)\007" > /dev/tty

@@ -97,7 +97,7 @@ fi             # FILE
 *.pm            
 *.t             
 *.rss           
-'*.f#'          
+"*.f#"          
 *.fsscript      
 *.fsx           
 *.fs            

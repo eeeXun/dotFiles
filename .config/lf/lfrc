@@ -1,43 +1,39 @@
-${{ $HOME/.config/lf/scripts/setRatio.sh }}
+&{{ lf_ratio }}
+&{{ lf_scrolloff }}
 set hidden!
 set drawbox
 set icons
 set mouse
-set scrolloff 3
 set relativenumber
-set previewer   ~/.config/lf/scripts/preview.sh
-set cleaner     ~/.config/lf/scripts/clear.sh
+set previewer   lf_preview
+set cleaner     lf_cleaner
 
 # Basic
-cmd open        ${{ $HOME/.config/lf/scripts/open.sh }}
-cmd bg          ${{ $HOME/.config/lf/scripts/background.sh }}
-cmd chmod       ${{ $HOME/.config/lf/scripts/chmod.sh }}
-cmd mkdir       ${{ $HOME/.config/lf/scripts/mkdir.zsh }}
-cmd mkfile      ${{ $HOME/.config/lf/scripts/mkfile.zsh }}
-cmd mkInPWD     ${{ $HOME/.config/lf/scripts/mkInPWD.sh }}
-cmd move        ${{ $HOME/.config/lf/scripts/move.zsh }}
-cmd trash       ${{ $HOME/.config/lf/scripts/trash.sh }}
-cmd sxiv        ${{ $HOME/.config/lf/scripts/sxiv.sh }}
+cmd on-cd       &{{ lf_title }}
+cmd open        ${{ lf_open }}
+cmd bg          ${{ lf_background }}
+cmd chmod       ${{ lf_chmod }}
+cmd mkdir       ${{ lf_mkdir }}
+cmd mkfile      ${{ lf_mkfile }}
+cmd mks         ${{ lf_mks }}
+cmd move        ${{ lf_move }}
+cmd trash       ${{ lf_trash }}
+cmd sxiv        ${{ lf_sxiv }}
 
 # Git
-cmd gitBranch   ${{ $HOME/.config/lf/scripts/gitBranch.sh }}
-cmd gitLog      ${{ $HOME/.config/lf/scripts/gitLog.sh }}
-cmd gitStatus   ${{ $HOME/.config/lf/scripts/gitStatus.sh }}
+cmd gitBranch   ${{ lf_gitBranch }}
+cmd gitLog      ${{ lf_gitLog }}
+cmd gitPull     ${{ lf_gitPull }}
+cmd gitStatus   ${{ lf_gitStatus }}
 
 # Archive
-cmd archive     ${{ $HOME/.config/lf/scripts/archive.zsh }}
-cmd unarchive   ${{ $HOME/.config/lf/scripts/unarchive.zsh }}
+cmd archive     ${{ lf_archive }}
+cmd unarchive   ${{ lf_unarchive }}
 
 # Disable default keybindings
 map c
 map d
 map m
-
-# Mouse
-map <m-1> updir
-map <m-2> open
-map <m-up> up
-map <m-down> down
 
 # Basic
 map <enter> open
@@ -49,13 +45,14 @@ map dd trash
 map md mkdir
 map mf mkfile
 map mk mark-save
-map ms mkInPWD
+map ms mks
 map mv move
 map sv sxiv
 
 # Git
 map gb gitBranch
 map gl gitLog
+map gp gitPull
 map gs gitStatus
 
 # Archive

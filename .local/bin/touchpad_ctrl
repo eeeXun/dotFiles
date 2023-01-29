@@ -2,13 +2,18 @@
 
 id=$(xinput list | grep Touchpad | awk '{print $6}' | cut -d "=" -f 2)
 state=$(xinput list-props $id | grep "Device Enabled" | awk '{print $4}')
+dunst_tag="touchpad"
 
 if [ $state -eq 1 ]; then
     xinput set-prop $id "Device Enabled" 0
-    dunstify -r 5 -t 1500 -h string:fgcolor:#A89984 \
-        -h string:hlcolor:#A89984 " Touchpad" "OFF"
+    dunstify -t 1500 \
+        -h string:fgcolor:#A89984 \
+        -h string:hlcolor:#A89984 " Touchpad" "OFF" \
+        -h string:x-dunst-stack-tag:$dunst_tag
 else
     xinput set-prop $id "Device Enabled" 1
-    dunstify -r 5 -t 1500 -h string:fgcolor:#B8BB26 \
-        -h string:hlcolor:#B8BB26 " Touchpad" "ON"
+    dunstify -t 1500 \
+        -h string:fgcolor:#B8BB26 \
+        -h string:hlcolor:#B8BB26 " Touchpad" "ON" \
+        -h string:x-dunst-stack-tag:$dunst_tag
 fi

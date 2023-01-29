@@ -97,6 +97,7 @@ while read -p "Set up other config? [Y/n] " reply; do
                 $config_dir/dircolors $config_dir/libinput-gestures.conf \
                 $config_dir/picom.conf $HOME/.config/
             cp ./.zshrc ./.profile ./.tmux.conf ./.Xresources $HOME/
+            chsh -s /bin/zsh
             git config --global user.email "sdes96303@gmail.com"
             git config --global user.name "eeeXun"
             break;;

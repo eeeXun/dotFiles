@@ -5,7 +5,8 @@ while read file; do
         "w")
             feh --no-fehbg --bg-scale "$file";;
         "y")
-            echo "$file" | tr -d "\n" | xclip -selection clipboard
+            type="$(file -Lb --mime-type -- "$file")"
+            xclip -selection clipboard -target "$type" -i "$file"
             notify-send "$file copied to clipboard"
             ;;
         "r")

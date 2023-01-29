@@ -8,6 +8,10 @@ case $1 in
 esac
 
 brightness=$(xbacklight -get | cut -d "." -f 1)
+dunst_tag="bright"
 
-dunstify -r 5555 -t 1500 -h int:value:$brightness -h string:fgcolor:#83A598 \
-    -h string:hlcolor:#83A598 " $brightness%"
+dunstify -t 1500 \
+    -h int:value:$brightness \
+    -h string:fgcolor:#83A598 \
+    -h string:hlcolor:#83A598 " $brightness%" \
+    -h string:x-dunst-stack-tag:$dunst_tag

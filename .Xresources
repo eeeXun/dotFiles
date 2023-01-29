@@ -1,5 +1,9 @@
-Nsxiv.window.background:    #222222
-Nsxiv.window.foreground:    #e60053
-Nsxiv.bar.background:       #bbbbbb
-Nsxiv.bar.foreground:       #222222
+! cursor
+Xcursor.theme:              Breeze
+
+! nsxiv
+Nsxiv.bar.background:       #BBBBBB
 Nsxiv.bar.font:             Monospace:size=15
+Nsxiv.bar.foreground:       #222222
+Nsxiv.window.background:    #222222
+Nsxiv.window.foreground:    #E60053
