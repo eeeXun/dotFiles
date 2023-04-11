@@ -2,9 +2,9 @@
 
 case $1 in
     "up")
-        xbacklight + 5;;
+        xbacklight -inc 5 -time 0;;
     "down")
-        xbacklight - 5;;
+        xbacklight -dec 5 -time 0;;
 esac
 
 brightness=$(xbacklight -get | cut -d "." -f 1)
@@ -13,5 +13,5 @@ dunst_tag="bright"
 dunstify -t 1500 \
     -h int:value:$brightness \
     -h string:fgcolor:#83A598 \
-    -h string:hlcolor:#83A598 " $brightness%" \
+    -h string:hlcolor:#83A598 "󰃟 $brightness%" \
     -h string:x-dunst-stack-tag:$dunst_tag

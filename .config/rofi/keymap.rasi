@@ -1,0 +1,13 @@
+configuration {
+    kb-row-up: "Control+k,Up";
+    kb-row-down: "Control+j,Down";
+    kb-element-next: "Control+n,Tab";
+    kb-element-prev: "Control+p,ISO_Left_Tab";
+    kb-mode-next: "Control+l,Shift+Right,Control+Tab";
+    kb-mode-previous: "Control+h,Shift+Left,Control+ISO_Left_Tab";
+    kb-accept-entry: "Control+m,Return,KP_Enter";
+    kb-remove-char-back: "BackSpace";
+    kb-cancel: "Control+c,Control+bracketleft,Escape";
+    kb-remove-to-eol: "";
+    kb-mode-complete: "";
+}

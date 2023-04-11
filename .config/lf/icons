@@ -18,6 +18,7 @@ fi             # FILE
 *.styl          
 *.sass          
 *.scss          
+*.xml           󰗀
 *.htm           
 *.html          
 *.slim          
@@ -34,6 +35,8 @@ fi             # FILE
 *.js            
 *.mjs           
 *.jsx           
+*.ts            
+*.tsx           
 *.rb            
 *.gemspec       
 *.rake          
@@ -59,7 +62,7 @@ fi             # FILE
 *.cc            
 *.cp            
 *.c             
-*.cs            
+*.cs            󰌛
 *.h             
 *.hh            
 *.hpp           
@@ -116,19 +119,17 @@ fi             # FILE
 *.ai            
 *.psd           
 *.psb           
-*.ts            
-*.tsx           
 *.jl            
 *.pp            
-*.vue           ﵂
+*.vue           󰡄
 *.elm           
 *.swift         
 *.xcplayground  
-*.tex           ﭨ
-*.r             ﳒ
-*.rproj         鉶
-*.sol           ﲹ
-*.pem           
+*.tex           󰙩
+*.r             󰟔
+*.rproj         󰗆
+*.sol           
+*.pem           󰌋
 
 # file names
 *Gruntfile.coffee       
@@ -158,13 +159,13 @@ fi             # FILE
 *favicon.ico            
 *React.jsx              
 *Procfile               
-*Dockerfile             
-*Docker-compose.yml     
+*Dockerfile             󰡨
+*Docker-compose.yml     󰡨
 *Rakefile               
 *Gemfile                
 *Makefile               
 *CMakeLists.txt         
-*robots.txt             ﮧ
+*robots.txt             󰚩
 
 # file patterns
 *jquery.min.js          

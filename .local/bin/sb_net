@@ -2,7 +2,7 @@
 
 # formula = rx2 - rx1
 color_on="^c#83A598^"
-color_off="^c#D65D0E^"
+color_off="^c#A89984^"
 
 wifi_interface="wlo1"
 eth_interfaces="enp0s20f0u1 enp0s20f0u3 enp0s20f0u4"
@@ -25,7 +25,7 @@ getSpeed() {
 
 for eth_interface in $eth_interfaces; do
     if [ -e /sys/class/net/$eth_interface ] && [ "$(getStatus $eth_interface)" = "up" ]; then
-        getSpeed $eth_interface 
+        getSpeed $eth_interface 󰈀
         exit 0
     fi
 done
@@ -33,5 +33,5 @@ done
 if [ "$(getStatus $wifi_interface)" = "up" ]; then
     getSpeed $wifi_interface 
 else
-    echo "$color_off"
+    echo "$color_off󰌙"
 fi

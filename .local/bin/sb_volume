@@ -1,9 +1,9 @@
 #!/bin/sh
 
-icon_off=""
-icon_low=""
-icon_mid="墳"
-icon_high=""
+icon_off="󰝟"
+icon_low="󰕿"
+icon_mid="󰖀"
+icon_high="󰕾"
 color_off="^c#A89984^"
 color_low="^c#689D6A^"
 color_mid="^c#D79921^"

@@ -94,8 +94,9 @@ while read -p "Set up other config? [Y/n] " reply; do
             cp -r $config_dir/nvim/ $config_dir/mypy/ $config_dir/lf/ \
                 $config_dir/gtk-3.0/ $config_dir/zsh/ $config_dir/tmux/ \
                 $config_dir/zathura/ $config_dir/nsxiv/ $config_dir/dunst/ \
-                $config_dir/dircolors $config_dir/libinput-gestures.conf \
-                $config_dir/picom.conf $HOME/.config/
+                $config_dir/rofi/ $config_dir/dircolors \
+                $config_dir/libinput-gestures.conf $config_dir/picom.conf \
+                $HOME/.config/
             cp ./.zshrc ./.profile ./.tmux.conf ./.Xresources $HOME/
             chsh -s /bin/zsh
             git config --global user.email "sdes96303@gmail.com"

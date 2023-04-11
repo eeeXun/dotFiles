@@ -1,0 +1,101 @@
+* {
+    background:         #282828FF;
+    background-alt:     #3C3836FF;
+    foreground:         #EBDBB2FF;
+    selected:           #83A598FF;
+    active:             #B8BB26FF;
+    urgent:             #FB4934FF;
+}
+
+window {
+    width:              500px;
+    border:             2px;
+    border-radius:      10px;
+    border-color:       @selected;
+    background-color:   @background;
+}
+
+mainbox {
+    spacing:            10px;
+    padding:            10px 20px;
+}
+
+inputbar {
+    spacing:            10px;
+    children:           [prompt, textbox-prompt-colon, entry, num-filtered-rows, textbox-num-sep, num-rows];
+}
+
+prompt {
+    padding:            10px;
+    border-radius:      10px;
+    background-color:   @active;
+    text-color:         @background;
+}
+
+textbox-prompt-colon {
+    str:                "";
+    padding:            10px;
+    border-radius:      10px;
+    background-color:   @urgent;
+    text-color:         @background;
+}
+
+entry {
+    placeholder:        "Search...";
+    border:             2px;
+    padding:            10px;
+    border-radius:      10px;
+    border-color:       @background-alt;
+}
+
+num-rows,
+textbox-num-sep,
+num-filtered-rows {
+    padding:            10px 0px;
+}
+
+listview {
+    lines:              6;
+    columns:            1;
+    spacing:            5px;
+}
+
+element {
+    padding:            10px;
+    border-radius:      10px;
+    border-color:       @selected;
+    text-color:         @foreground;
+}
+
+button {
+    padding:            5px;
+    border-radius:      10px;
+    margin:             0px 10px;
+    background-color:   @background-alt;
+}
+
+element normal.normal,
+element alternate.normal {
+    background-color:   @background;
+    text-color:         @foreground;
+}
+
+element normal.urgent,
+element alternate.urgent,
+element selected.active {
+    background-color:   @urgent;
+    text-color:         @background;
+}
+
+element normal.active,
+element alternate.active,
+element selected.urgent {
+    background-color:   @active;
+    text-color:         @background;
+}
+
+button selected,
+element selected.normal {
+    background-color:   @selected;
+    text-color:         @background;
+}

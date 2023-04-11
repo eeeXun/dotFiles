@@ -1,0 +1,15 @@
+configuration {
+    modi: "window,drun,run";
+    terminal: "st";
+    show-icons: true;
+    sidebar-mode: true;
+    font: "Monospace 15";
+    icon-theme: "Papirus";
+
+    display-drun: " Apps";
+    display-window: " Window";
+    display-run: " Run";
+}
+
+@import "keymap"
+@import "theme"

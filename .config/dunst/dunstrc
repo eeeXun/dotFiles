@@ -6,8 +6,8 @@
     height = 300
     origin = top-right
     offset = 10x30
-    transparency = 25
-    font = Monospace 15
+    transparency = 20
+    font = Hack Nerd Font 15
     corner_radius = 10
 
     # full screen
@@ -23,6 +23,7 @@
     progress_bar_frame_width = 1
     progress_bar_min_width = 200
     progress_bar_max_width = 500
+    progress_bar_corner_radius = 4
 
     # padding
     padding = 5
@@ -70,7 +71,7 @@
     enable_recursive_icon_lookup = true
 
     # dmenu path.
-    dmenu = /usr/bin/dmenu -p dunst:
+    dmenu = /usr/bin/rofi -monitor -4 -no-show-icons -dmenu -p Action
 
     # Browser for opening urls in context menu.
     browser = /usr/bin/xdg-open
@@ -84,17 +85,17 @@
     mouse_right_click = close_all
 
 [urgency_low]
-    background = "#151515"
+    background = "#1D2021"
     foreground = "#83A598"
     timeout = 5
 
 [urgency_normal]
-    background = "#151515"
+    background = "#1D2021"
     foreground = "#EBDBB2"
     timeout = 10
 
 [urgency_critical]
-    background = "#151515"
+    background = "#1D2021"
     foreground = "#FB4934"
     timeout = 0
 

@@ -17,24 +17,24 @@ if [ "$mode" = "off" ]; then
     dunstify -t 1500 \
         -h int:value:$volume \
         -h string:fgcolor:#A89984 \
-        -h string:hlcolor:#A89984 " $volume%" \
+        -h string:hlcolor:#A89984 "󰝟 $volume%" \
         -h string:x-dunst-stack-tag:$dunst_tag
 elif [ $volume -le 33 ]; then
     dunstify -t 1500 \
         -h int:value:$volume \
         -h string:fgcolor:#689D6A \
-        -h string:hlcolor:#689D6A " $volume%" \
+        -h string:hlcolor:#689D6A "󰕿 $volume%" \
         -h string:x-dunst-stack-tag:$dunst_tag
 elif [ $volume -le 66 ]; then
     dunstify -t 1500 \
         -h int:value:$volume \
         -h string:fgcolor:#D79921 \
-        -h string:hlcolor:#D79921 "墳 $volume%" \
+        -h string:hlcolor:#D79921 "󰖀 $volume%" \
         -h string:x-dunst-stack-tag:$dunst_tag
 else
     dunstify -t 1500 \
         -h int:value:$volume \
         -h string:fgcolor:#FE8019 \
-        -h string:hlcolor:#FE8019 " $volume%" \
+        -h string:hlcolor:#FE8019 "󰕾 $volume%" \
         -h string:x-dunst-stack-tag:$dunst_tag
 fi

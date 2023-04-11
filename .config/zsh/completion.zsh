@@ -1,4 +1,4 @@
-autoload -U compinit && compinit
+autoload -U compinit && compinit -d "$HOME/.cache/zcompdump"
 zmodload -i zsh/complist
 zstyle ":completion:*" menu select
 zstyle ":completion:*" list-colors ${(s.:.)LS_COLORS}
