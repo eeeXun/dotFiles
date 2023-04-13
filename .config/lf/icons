@@ -128,7 +128,7 @@ fi             # FILE
 *.tex           󰙩
 *.r             󰟔
 *.rproj         󰗆
-*.sol           
+*.sol           󰡪
 *.pem           󰌋
 
 # file names

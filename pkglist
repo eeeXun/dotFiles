@@ -1,0 +1,73 @@
+# xorg
+xf86-video-intel xorg-server xorg-xbacklight xorg-xkill xorg-xprop xorg-xrandr
+xorg-xset xorg-xrdb
+
+# touchpad utils
+xorg-xinput libinput-gestures xdotool
+
+# lightdm
+lightdm lightdm-slick-greeter lightdm-settings numlockx
+
+# mate desktop
+mate-desktop mate-control-center mate-polkit mate-power-manager
+mate-screensaver brisk-menu
+# mate utils
+mate-calc caja eom engrampa
+
+# network
+network-manager-applet bind traceroute net-tools wireshark-qt speedtest-cli
+networkmanager-openconnect
+
+# audio
+alsa-utils pulseaudio-alsa pavucontrol
+# bluetooth
+bluez pulseaudio-bluetooth pipewire blueman
+
+# xdg
+xdg-utils xdg-user-dirs
+
+# gtk/qt
+xcursor-breeze qt5ct kvantum papirus-icon-theme
+
+# man
+man-db man-pages
+
+# latex
+latex-mk texlive-latexextra texlive-science texlive-langchinese
+# zathura
+zathura zathura-pdf-poppler
+
+# printer
+cups system-config-printer
+
+# fcitx
+fcitx5-im fcitx5-chewing
+
+# shell/zsh
+hstr zsh-theme-powerlevel10k zsh-autosuggestions autojump
+zsh-history-substring-search
+
+# font
+ttf-hack-nerd noto-fonts-emoji noto-fonts-tc
+
+# editor
+neovim cmake python-pip npm go rust-rc jdk-openjdk
+
+# WM
+rofi feh dunst flameshot picom xss-lock i3lock-color playerctl udiskie
+
+# browser
+google-chrome firefox brave-bin
+
+# lf
+lf-bin bat glow ueberzug atool odt2txt docx2txt jq libcdio ffmpegthumbnailer
+imagemagick
+
+# archive
+p7zip zip unzip unrar
+
+# others
+dash htop btop tmux xclip ripgrep nsxiv vlc thunderbird libreoffice pinta
+grub-customizer obs-studio virtualbox screenkey slop
+
+# vim:ft=conf

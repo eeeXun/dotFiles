@@ -2,7 +2,29 @@
 
 config_dir="./.config"
 local_dir="./.local"
-sys_dir="./systemSetting"
+sys_dir="./system"
+
+while read -p "Install AUR helper & packages? [Y/n] " reply; do
+    case $reply in
+        [Nn]*) break;;
+        [Yy]*)
+            git clone https://aur.archlinux.org/paru-bin.git /tmp/paru-bin
+            (cd /tmp/paru-bin && makepkg -si)
+            while read -p "Install packages with touchpad utils? [Y/n] " touchpad; do
+                case $touchpad in
+                    [Yy]*)
+                        paru -S $(sed "s/^#.*//" ./pkglist)
+                        sudo cp $sys_dir/01-touchpad.conf /etc/X11/xorg.conf.d/
+                        cp $config_dir/libinput-gestures.conf $HOME/.config/
+                        break;;
+                    [Nn]*)
+                        paru -S $(sed "/^# touchpad utils/,/^$/d" ./pkglist | sed "s/^#.*//")
+                        break;;
+                esac
+            done
+            sudo ln -s /usr/bin/nvim /usr/local/bin/vim
+    esac
+done
 
 while read -p "Install dwm? [Y/n] " reply; do
     case "$reply" in
@@ -12,7 +34,7 @@ while read -p "Install dwm? [Y/n] " reply; do
             git clone https://github.com/eeeXun/dwmblocks.git $HOME/.config/dwmblocks/
             sudo make -C $HOME/.config/dwm/ install clean
             sudo make -C $HOME/.config/dwmblocks/ install clean
-            sudo cp ./systemSetting/dwm.desktop /usr/share/xsessions/
+            sudo cp $sys_dir/dwm.desktop /usr/share/xsessions/
             mkdir -p $HOME/.local/share/
             cp -r $local_dir/share/dwm $HOME/.local/share/
             break;;
@@ -33,15 +55,6 @@ while read -p "Set up i3? [Y/n] " reply; do
         [Nn]*) break;;
         [Yy]*)
             cp -r $config_dir/i3/ $config_dir/i3status/ $HOME/.config/
-            break;;
-    esac
-done
-
-while read -p "Set up touchpad? [Y/n] " reply; do
-    case "$reply" in
-        [Nn]*) break;;
-        [Yy]*)
-            sudo cp $sys_dir/01-touchpad.conf /etc/X11/xorg.conf.d/
             break;;
     esac
 done
@@ -70,7 +83,21 @@ while read -p "Terminal emulator? (1) st (2) termite (3) alacritty (n) no : " re
             cp -r $config_dir/termite/ $HOME/.config/
             break;;
         3|alacritty)
-            cp -r $config_dir/alacritty/ $HOME/.config
+            cp -r $config_dir/alacritty/ $HOME/.config/
+            break;;
+        n|no) break;;
+    esac
+done
+
+while read -p "Set up neovim? (1) lua (2) vimscript (n) no : " reply; do
+    case "$reply" in
+        1|lua)
+            cp -r $config_dir/nvim-lua/ $HOME/.config/nvim/
+            cp -r $config_dir/black $config_dir/stylua/ $HOME/.config/
+            break;;
+        2|vimscript)
+            cp -r $config_dir/nvim-vimscript/ $HOME/.config/nvim/
+            cp -r $config_dir/mypy/ $HOME/.config/
             break;;
         n|no) break;;
     esac
@@ -80,7 +107,7 @@ while read -p "Set up script? [Y/n] " reply; do
     case "$reply" in
         [Nn]*) break;;
         [Yy]*)
-            sudo cp $sys_dir/lf_run /usr/local/bin
+            sudo cp $sys_dir/lf_run $sys_dir/rmundo /usr/local/bin
             mkdir -p $HOME/.local/
             cp -r $local_dir/bin/ $HOME/.local/
             break;;
@@ -91,12 +118,10 @@ while read -p "Set up other config? [Y/n] " reply; do
     case "$reply" in
         [Nn]*) break;;
         [Yy]*)
-            cp -r $config_dir/nvim/ $config_dir/mypy/ $config_dir/lf/ \
+            cp -r $config_dir/lf/ $config_dir/rofi/ $config_dir/dircolors \
                 $config_dir/gtk-3.0/ $config_dir/zsh/ $config_dir/tmux/ \
                 $config_dir/zathura/ $config_dir/nsxiv/ $config_dir/dunst/ \
-                $config_dir/rofi/ $config_dir/dircolors \
-                $config_dir/libinput-gestures.conf $config_dir/picom.conf \
-                $HOME/.config/
+                $config_dir/picom.conf $HOME/.config/
             cp ./.zshrc ./.profile ./.tmux.conf ./.Xresources $HOME/
             chsh -s /bin/zsh
             git config --global user.email "sdes96303@gmail.com"

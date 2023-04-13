@@ -1,0 +1,16 @@
+snippet main
+	fn main() {
+		${0}
+	}
+snippet foo
+	fn ${1:foo}(${2}) -> ${3:()} {
+		${0}
+	}
+snippet for<
+	for ${1:i} in ${2:0}..${3:n} {
+		${0}
+	}
+snippet for>
+	for ${1:i} in (${2:0}..${3:n}).rev() {
+		${0}
+	}
