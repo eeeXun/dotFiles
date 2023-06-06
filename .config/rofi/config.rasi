@@ -3,13 +3,13 @@ configuration {
     terminal: "st";
     show-icons: true;
     sidebar-mode: true;
-    font: "Monospace 15";
+    font: "Hack Nerd Font Propo 15";
     icon-theme: "Papirus";
 
     display-drun: " Apps";
     display-window: " Window";
-    display-run: " Run";
+    display-run: " Run";
 }
 
-@import "keymap"
 @import "theme"
+@import "keymap"

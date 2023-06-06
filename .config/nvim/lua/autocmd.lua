@@ -4,6 +4,7 @@ local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 local lsp = vim.lsp.buf
 local notify = vim.notify
+local log_level = vim.log.levels
 local map = vim.keymap.set
 local diagnostic = vim.diagnostic
 local lsp_request = vim.lsp.buf_request
@@ -101,12 +102,11 @@ autocmd("LspAttach", {
         map("n", "K", lsp.hover, opts)
         map("n", "<Leader>rn", lsp.rename, opts)
         map("n", "<C-k>", lsp.signature_help, opts)
-        map("n", "<C-k>", lsp.signature_help, opts)
         map("n", "<space>ca", lsp.code_action, opts)
         map("n", "<Leader>gr", function()
             lsp_request(0, "textDocument/references", lsp_params(0), function(_, result, _, _)
                 if not result then
-                    notify("No lsp reference!")
+                    notify("No lsp reference!", log_level.ERROR)
                     return
                 end
 
@@ -121,7 +121,7 @@ autocmd("LspAttach", {
         map("n", "<Leader>gi", function()
             lsp_request(0, "textDocument/implementation", lsp_params(0), function(_, result, _, _)
                 if not result then
-                    notify("No lsp implementation!")
+                    notify("No lsp implementation!", log_level.ERROR)
                     return
                 end
 
@@ -136,7 +136,7 @@ autocmd("LspAttach", {
         map("n", "<Leader>gd", function()
             lsp_request(0, "textDocument/definition", lsp_params(0), function(_, result, _, _)
                 if not result then
-                    notify("No lsp definition!")
+                    notify("No lsp definition!", log_level.ERROR)
                     return
                 end
 

@@ -10,19 +10,33 @@ while read -p "Install AUR helper & packages? [Y/n] " reply; do
         [Yy]*)
             git clone https://aur.archlinux.org/paru-bin.git /tmp/paru-bin
             (cd /tmp/paru-bin && makepkg -si)
+            pkg="$(cat ./pkglist)"
             while read -p "Install packages with touchpad utils? [Y/n] " touchpad; do
                 case $touchpad in
                     [Yy]*)
-                        paru -S $(sed "s/^#.*//" ./pkglist)
                         sudo cp $sys_dir/01-touchpad.conf /etc/X11/xorg.conf.d/
                         cp $config_dir/libinput-gestures.conf $HOME/.config/
                         break;;
                     [Nn]*)
-                        paru -S $(sed "/^# touchpad utils/,/^$/d" ./pkglist | sed "s/^#.*//")
+                        pkg=$(echo "$pkg" | sed "/^# touchpad utils/,/^$/d")
                         break;;
                 esac
             done
+            while read -p "Install packages with bluetooth utils? [Y/n] " bluetooth; do
+                case $bluetooth in
+                    [Yy]*)
+                        sudo cp $sys_dir/01-touchpad.conf /etc/X11/xorg.conf.d/
+                        cp $config_dir/libinput-gestures.conf $HOME/.config/
+                        break;;
+                    [Nn]*)
+                        pkg=$(echo "$pkg" | sed "/^# bluetooth/,/^$/d")
+                        break;;
+                esac
+            done
+            pkg=$(echo "$pkg" | sed "s/^#.*//")
+            paru -S "$pkg"
             sudo ln -s /usr/bin/nvim /usr/local/bin/vim
+            sudo cp $sys_dir/20-intel.conf /etc/X11/xorg.conf.d/
     esac
 done
 
@@ -89,20 +103,6 @@ while read -p "Terminal emulator? (1) st (2) termite (3) alacritty (n) no : " re
     esac
 done
 
-while read -p "Set up neovim? (1) lua (2) vimscript (n) no : " reply; do
-    case "$reply" in
-        1|lua)
-            cp -r $config_dir/nvim-lua/ $HOME/.config/nvim/
-            cp -r $config_dir/black $config_dir/stylua/ $HOME/.config/
-            break;;
-        2|vimscript)
-            cp -r $config_dir/nvim-vimscript/ $HOME/.config/nvim/
-            cp -r $config_dir/mypy/ $HOME/.config/
-            break;;
-        n|no) break;;
-    esac
-done
-
 while read -p "Set up script? [Y/n] " reply; do
     case "$reply" in
         [Nn]*) break;;
@@ -118,12 +118,14 @@ while read -p "Set up other config? [Y/n] " reply; do
     case "$reply" in
         [Nn]*) break;;
         [Yy]*)
-            cp -r $config_dir/lf/ $config_dir/rofi/ $config_dir/dircolors \
+            cp -r $config_dir/nvim/ $config_dir/black $config_dir/stylua/ \
+                $config_dir/lf/ $config_dir/rofi/ $config_dir/dircolors \
                 $config_dir/gtk-3.0/ $config_dir/zsh/ $config_dir/tmux/ \
                 $config_dir/zathura/ $config_dir/nsxiv/ $config_dir/dunst/ \
                 $config_dir/picom.conf $HOME/.config/
             cp ./.zshrc ./.profile ./.tmux.conf ./.Xresources $HOME/
             chsh -s /bin/zsh
+            echo "export HISTFILE=$HOME/.cache/bash_history" >> $HOME/.bashrc
             git config --global user.email "sdes96303@gmail.com"
             git config --global user.name "eeeXun"
             break;;

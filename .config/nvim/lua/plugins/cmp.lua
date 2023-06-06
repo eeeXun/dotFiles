@@ -1,7 +1,4 @@
-vim.cmd.packadd("lspkind-nvim")
-
 local cmp = require("cmp")
-local lspkind = require("lspkind")
 
 cmp.setup({
     preselect = cmp.PreselectMode.None,
@@ -15,7 +12,7 @@ cmp.setup({
         end,
     },
     formatting = {
-        format = lspkind.cmp_format({
+        format = require("lspkind").cmp_format({
             maxwidth = 30,
             mode = "symbol_text",
             menu = {
@@ -30,13 +27,18 @@ cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i" }),
         ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i" }),
-        ["<C-j>"] = cmp.mapping(function(fallback)
-            if require("luasnip").jumpable(1) then
-                require("luasnip").jump(1)
-            elseif require("luasnip").expandable() then
+        ["<C-l>"] = cmp.mapping(function(fallback)
+            if require("luasnip").expandable() then
                 require("luasnip").expand()
             elseif cmp.visible() then
                 cmp.confirm({ select = true })
+            else
+                fallback()
+            end
+        end, { "i", "s" }),
+        ["<C-j>"] = cmp.mapping(function(fallback)
+            if require("luasnip").jumpable(1) then
+                require("luasnip").jump(1)
             else
                 fallback()
             end

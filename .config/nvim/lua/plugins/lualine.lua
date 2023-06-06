@@ -1,7 +1,7 @@
 local fn = vim.fn
 
 local function location()
-    return "%p%% 󰜩 %l/%L 󰜨 %v"
+    return "%p%%  %l/%L  %v"
 end
 
 local function space()

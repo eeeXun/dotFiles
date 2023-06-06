@@ -11,7 +11,7 @@ bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
 
 # completion
-bindkey "^[[Z" reverse-menu-complete
+bindkey -M menuselect "^[[Z" reverse-menu-complete
 
 # hstr
-bindkey -s "^R" "^A hstr -- ^J"
+bindkey "^R" hstr_no_tiocsti

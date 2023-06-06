@@ -4,7 +4,7 @@ require("bufferline").setup({
         numbers = function(opts)
             return string.format("%s·", opts.raise(opts.id))
         end,
-        modified_icon = "",
+        modified_icon = "",
         buffer_close_icon = "",
         show_buffer_icons = false,
         show_close_icon = false,

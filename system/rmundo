@@ -3,24 +3,23 @@ import os
 
 
 def main():
-    HOME = os.getenv("HOME")
-    undo_dir = HOME + "/.local/state/nvim/undo/"
+    undo_dir = os.getenv("HOME") + "/.local/state/nvim/undo/"
     undo_list = os.listdir(undo_dir)
     total_file = 0
-    total_volume = 0
+    total_size = 0
     print("Delete undo file:")
     for undo_file in undo_list:
         real_file = "/".join(undo_file.split("%"))
         if not os.path.exists(real_file):
             undo_path = undo_dir + undo_file
-            undo_volume = os.stat(undo_path).st_size
+            undo_size = os.stat(undo_path).st_size
             total_file += 1
-            total_volume += undo_volume
-            print("=> ({:.2f}k)".format(undo_volume / 1024), end=" ")
+            total_size += undo_size
+            print("=> ({:.2f}k)".format(undo_size / 1024), end=" ")
             print(undo_file)
             os.remove(undo_path)
-    print("Total files: {}".format(total_file))
-    print("Total volume: {:.2f}k".format(total_volume / 1024))
+    print("Total file: {}".format(total_file))
+    print("Total size: {:.2f}k".format(total_size / 1024))
 
 
 if __name__ == "__main__":

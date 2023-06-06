@@ -11,8 +11,8 @@ bd      b       # BLK
 cd      c       # CHR
 su      u       # SETUID
 sg      g       # SETGID
-ex             # EXEC
-fi             # FILE
+ex             # EXEC
+fi             # FILE
 
 # file extensions
 *.styl          
@@ -310,6 +310,6 @@ Vagrantfile             
 *.ods   
 
 # other formats
-*.pdf   
+*.pdf   
 
 # vim:ft=conf

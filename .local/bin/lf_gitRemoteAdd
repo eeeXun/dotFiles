@@ -1,0 +1,7 @@
+#!/bin/sh
+
+clear
+printf "git remote add\n"
+read -p "name: " name
+read -p "url: " url
+git remote add "$name" "$url"

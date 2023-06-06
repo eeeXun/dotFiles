@@ -4,7 +4,7 @@ clear
 IFS=$'\n'
 for file in ${=fx}; do
     case "$file" in
-        *.7z|*.rar|*.tar|*.tar.gz|*.zip)
+        *.7z|*.rar|*.tar|*.tar.gz|*.tgz|*.zip)
             als -l "$file" 2> /dev/null
             printf "---\n$file\n"
             read "ans?Process unarchive? [Y/n] "

@@ -1,6 +1,6 @@
-HISTFILE="$HOME/.zsh_history"
-HISTSIZE=10000
-SAVEHIST=10000
+export HISTFILE="$HOME/.cache/zsh_history"
+export HISTSIZE=10000
+export SAVEHIST=10000
 setopt extended_history       # record timestamp of command in HISTFILE
 setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
 setopt hist_ignore_dups       # ignore duplicated commands history list

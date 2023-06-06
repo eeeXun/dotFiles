@@ -16,7 +16,7 @@ mate-calc caja eom engrampa
 
 # network
 network-manager-applet bind traceroute net-tools wireshark-qt speedtest-cli
-networkmanager-openconnect
+networkmanager-openconnect webkit2gtk-4.1
 
 # audio
 alsa-utils pulseaudio-alsa pavucontrol
@@ -44,7 +44,7 @@ cups system-config-printer
 fcitx5-im fcitx5-chewing
 
 # shell/zsh
-hstr zsh-theme-powerlevel10k zsh-autosuggestions autojump
+hstr zsh-theme-powerlevel10k zsh-autosuggestions autojump-rs
 zsh-history-substring-search
 
 # font

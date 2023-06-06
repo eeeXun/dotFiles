@@ -11,18 +11,11 @@ require("packer").startup({
     function()
         -- packer
         use({ "wbthomason/packer.nvim" })
-        -- impatient
-        use({
-            "lewis6991/impatient.nvim",
-            config = function()
-                require("impatient")
-            end,
-        })
         -- icons/utils
-        use({ "nvim-lua/plenary.nvim", event = "VimEnter" })
-        use({ "nvim-tree/nvim-web-devicons", event = "VimEnter" })
+        use({ "nvim-lua/plenary.nvim" })
+        use({ "nvim-tree/nvim-web-devicons" })
         -- fugitive
-        use({ "tpope/vim-fugitive", event = "VimEnter" })
+        use({ "tpope/vim-fugitive" })
         -- gruvbox
         use({
             "ellisonleao/gruvbox.nvim",
@@ -53,7 +46,6 @@ require("packer").startup({
             run = function()
                 require("nvim-treesitter.install").update({ with_sync = true })
             end,
-            event = "VimEnter",
             config = function()
                 require("plugins.treesitter")
             end,
@@ -77,7 +69,7 @@ require("packer").startup({
         -- bufferline
         use({
             "akinsho/nvim-bufferline.lua",
-            after = { "nvim-web-devicons", "gruvbox.nvim" },
+            event = "ColorScheme",
             config = function()
                 require("plugins.bufferline")
             end,
@@ -85,7 +77,7 @@ require("packer").startup({
         -- lualine
         use({
             "nvim-lualine/lualine.nvim",
-            after = "nvim-web-devicons",
+            event = "ColorScheme",
             config = function()
                 require("plugins.lualine")
             end,
@@ -141,7 +133,7 @@ require("packer").startup({
         -- spectre
         use({
             "nvim-pack/nvim-spectre",
-            after = "plenary.nvim",
+            event = "CursorHold",
             config = function()
                 require("plugins.spectre")
             end,
@@ -149,9 +141,8 @@ require("packer").startup({
         -- lsp
         use({
             "williamboman/mason.nvim",
-            event = { "BufRead", "BufNewFile" },
             requires = {
-                { "WhoIsSethDaniel/mason-tool-installer.nvim", opt = true },
+                { "WhoIsSethDaniel/mason-tool-installer.nvim" },
             },
             config = function()
                 require("plugins.mason")
@@ -199,13 +190,13 @@ require("packer").startup({
             "hrsh7th/nvim-cmp",
             event = { "InsertEnter", "CmdlineEnter" },
             requires = {
+                { "hrsh7th/cmp-nvim-lsp" },
+                { "onsails/lspkind-nvim" },
                 { "hrsh7th/cmp-path", after = "nvim-cmp" },
                 { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
                 { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
-                { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
                 { "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
                 { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
-                { "onsails/lspkind-nvim", opt = true },
             },
             config = function()
                 require("plugins.cmp")

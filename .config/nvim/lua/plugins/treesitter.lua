@@ -1,9 +1,11 @@
 require("nvim-treesitter.configs").setup({
     ensure_installed = {
         "bash",
+        "bibtex",
         "c",
         "cmake",
         "cpp",
+        "css",
         "diff",
         "git_rebase",
         "gitcommit",
@@ -24,11 +26,13 @@ require("nvim-treesitter.configs").setup({
         "rust",
         "scala",
         "solidity",
+        "sql",
         "toml",
         "tsx",
         "typescript",
         "vim",
         "vimdoc",
+        "vue",
         "yaml",
     },
     highlight = {

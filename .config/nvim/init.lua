@@ -1,5 +1,6 @@
+vim.loader.enable()
+
 local modules = {
-    "impatient",
     "pluginList",
     "mappings",
     "utils",

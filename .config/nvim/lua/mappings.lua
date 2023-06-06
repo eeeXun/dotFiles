@@ -152,6 +152,9 @@ local exec_program = {
     ["java"] = function()
         cmd.TermExec("cmd='javac %:p && java %:t:r'")
     end,
+    ["javascript"] = function()
+        cmd.TermExec("cmd='node %:p'")
+    end,
     ["markdown"] = function()
         cmd.MarkdownPreviewToggle()
     end,
@@ -170,7 +173,7 @@ map("n", "<F5>", function()
         cmd.write()
         exec_program[vim.bo.filetype]()
     else
-        vim.notify(string.format("File type [%s] is not in execute list!", vim.bo.filetype))
+        vim.notify(string.format("File type [%s] is not in execute list!", vim.bo.filetype), vim.log.levels.ERROR)
     end
 end, opts)
 

@@ -8,6 +8,9 @@ null_ls.setup({
     sources = {
         -- go
         formatting.goimports,
+        -- js
+        formatting.prettierd,
+        formatting.rustywind,
         -- json
         formatting.jq,
         -- lua
@@ -25,7 +28,5 @@ null_ls.setup({
         }),
         -- sql
         formatting.sql_formatter,
-        -- frontend
-        formatting.prettierd,
     },
 })

@@ -27,12 +27,36 @@ require("telescope").setup({
         },
         mappings = {
             i = {
+                ["<C-s>"] = actions.select_horizontal,
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
                 ["<C-h>"] = action_layout.toggle_preview,
             },
             n = {
+                ["<C-s>"] = actions.select_horizontal,
                 ["<C-h>"] = action_layout.toggle_preview,
+            },
+        },
+    },
+    pickers = {
+        buffers = {
+            mappings = {
+                i = {
+                    ["<C-x>"] = actions.delete_buffer,
+                },
+                n = {
+                    ["<C-x>"] = actions.delete_buffer,
+                },
+            },
+        },
+        git_branches = {
+            mappings = {
+                i = {
+                    ["<C-x>"] = actions.git_delete_branch,
+                },
+                n = {
+                    ["<C-x>"] = actions.git_delete_branch,
+                },
             },
         },
     },

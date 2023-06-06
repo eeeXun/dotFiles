@@ -1,34 +1,42 @@
 &{{ lf_ratio }}
 &{{ lf_scrolloff }}
-set hidden!
-set drawbox
-set icons
-set mouse
-set relativenumber
 set previewer   lf_preview
 set cleaner     lf_cleaner
 
+# Style
+set hidden              true
+set drawbox             true
+set icons               true
+set mouse               true
+set relativenumber      true
+set cursoractivefmt     "\033[4;7m"
+set cursorparentfmt     "\033[4;7m"
+set cursorpreviewfmt    "\033[4;7m"
+
 # Basic
-cmd on-cd       &{{ lf_title }}
-cmd open        ${{ lf_open }}
-cmd bg          ${{ lf_background }}
-cmd chmod       ${{ lf_chmod }}
-cmd mkdir       ${{ lf_mkdir }}
-cmd mkfile      ${{ lf_mkfile }}
-cmd mks         ${{ lf_mks }}
-cmd move        ${{ lf_move }}
-cmd trash       ${{ lf_trash }}
-cmd sxiv        ${{ lf_sxiv }}
+cmd on-cd           &{{ lf_title }}
+cmd open            ${{ lf_open }}
+cmd bg              ${{ lf_background }}
+cmd chmod           ${{ lf_chmod }}
+cmd mkdir           ${{ lf_mkdir }}
+cmd mkfile          ${{ lf_mkfile }}
+cmd mks             ${{ lf_mks }}
+cmd move            ${{ lf_move }}
+cmd trash           ${{ lf_trash }}
+cmd sxiv            ${{ lf_sxiv }}
 
 # Git
-cmd gitBranch   ${{ lf_gitBranch }}
-cmd gitLog      ${{ lf_gitLog }}
-cmd gitPull     ${{ lf_gitPull }}
-cmd gitStatus   ${{ lf_gitStatus }}
+cmd gitBranch       ${{ lf_gitBranch }}
+cmd gitLog          ${{ lf_gitLog }}
+cmd gitPull         ${{ lf_gitPull }}
+cmd gitStatus       ${{ lf_gitStatus }}
+cmd gitRemoteVerbos ${{ lf_gitRemoteVerbos }}
+cmd gitRemoteAdd    ${{ lf_gitRemoteAdd }}
+cmd gitRemoteRemove ${{ lf_gitRemoteRemove }}
 
 # Archive
-cmd archive     ${{ lf_archive }}
-cmd unarchive   ${{ lf_unarchive }}
+cmd archive         ${{ lf_archive }}
+cmd unarchive       ${{ lf_unarchive }}
 
 # Disable default keybindings
 map c
@@ -54,6 +62,9 @@ map gb gitBranch
 map gl gitLog
 map gp gitPull
 map gs gitStatus
+map grv gitRemoteVerbos
+map gra gitRemoteAdd
+map grr gitRemoteRemove
 
 # Archive
 map ak archive

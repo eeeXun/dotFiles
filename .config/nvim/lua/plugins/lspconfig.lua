@@ -37,6 +37,7 @@ local servers = {
     "jedi_language_server",
     "rust_analyzer",
     "solidity",
+    "tailwindcss",
     "texlab",
     "tsserver",
     "volar",

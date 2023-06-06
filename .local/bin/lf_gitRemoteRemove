@@ -1,0 +1,6 @@
+#!/bin/sh
+
+clear
+printf "git remote remove\n"
+read -p "name: " name
+git remote remove "$name"

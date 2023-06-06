@@ -1,5 +1,3 @@
-vim.cmd.packadd("mason-tool-installer.nvim")
-
 require("mason").setup({
     ui = {
         border = "rounded",
@@ -21,6 +19,7 @@ require("mason-tool-installer").setup({
         "solidity",
         "solidity-ls",
         "texlab",
+        "tailwindcss-language-server",
         "typescript-language-server",
         "vue-language-server",
         -- Linter
@@ -32,6 +31,7 @@ require("mason-tool-installer").setup({
         "goimports",
         "isort",
         "prettierd",
+        "rustywind",
         "sql-formatter",
         "stylua",
         -- DAP

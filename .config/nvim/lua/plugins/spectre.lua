@@ -7,7 +7,7 @@ require("spectre").setup({
     mapping = {
         ["resume_last_search"] = {
             map = "<Leader>rl",
-            cmd = require("spectre").resume_last_search(),
+            cmd = "<cmd>lua require('spectre').resume_last_search()<CR>",
             desc = "resume last search before close",
         },
     },

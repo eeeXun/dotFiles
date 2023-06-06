@@ -1,4 +1,3 @@
-local g = vim.g
 local opt = vim.opt
 
 -- number
@@ -24,7 +23,7 @@ opt.cursorline = true
 opt.cursorlineopt = "number"
 opt.colorcolumn = "80"
 vim.cmd.colorscheme("gruvbox")
-g.loaded_matchparen = 1
+vim.g.loaded_matchparen = 1
 
 -- file
 opt.undofile = true
