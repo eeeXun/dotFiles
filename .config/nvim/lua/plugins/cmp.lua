@@ -85,7 +85,9 @@ cmp.setup.cmdline({ "/", "?" }, {
 })
 
 cmp.setup.cmdline(":", {
-    mapping = cmp.mapping.preset.cmdline(),
+    mapping = cmp.mapping.preset.cmdline({
+        ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "c" }),
+    }),
     formatting = {
         format = function(entry, vim_item)
             vim_item.kind = nil

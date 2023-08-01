@@ -237,6 +237,7 @@ Vagrantfile             
 *.pgm   
 *.ppm   
 *.tga   
+*.webp  
 *.xbm   
 *.xpm   
 *.tif   

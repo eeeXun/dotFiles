@@ -15,8 +15,14 @@ case $1 in
         xrandr --output $monitor --right-of $laptop
         feh --no-fehbg --bg-scale $BACKGROUND
         ;;
+    "only")
+        xrandr --output $monitor --auto
+        xrandr --output $laptop --off
+        feh --no-fehbg --bg-scale $BACKGROUND
+        ;;
     "same")
         xrandr --output $monitor --auto
+        xrandr --output $laptop --auto
         xrandr --output $monitor --same-as $laptop
         feh --no-fehbg --bg-scale $BACKGROUND
         ;;
@@ -25,7 +31,14 @@ case $1 in
         feh --no-fehbg --bg-scale $BACKGROUND
         ;;
     "off")
+        xrandr --output $laptop --auto
         xrandr --output $monitor --off
         feh --no-fehbg --bg-scale $BACKGROUND
+        ;;
+    *)
+        GREEN="\033[1;32m"
+        NC="\033[0m"
+        printf "monitor [${GREEN}left|right|only|same|on|off${NC}]\n"
+        exit 1
         ;;
 esac

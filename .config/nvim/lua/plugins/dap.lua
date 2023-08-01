@@ -1,12 +1,28 @@
-vim.cmd.packadd("nvim-dap-ui")
-
 local dap, dapui = require("dap"), require("dapui")
 
 vim.fn.sign_define("DapBreakpoint", { text = "🔴" })
 vim.fn.sign_define("DapBreakpointRejected", { text = "🔵" })
 vim.fn.sign_define("DapStopped", { text = "🟢" })
 
-dapui.setup()
+dapui.setup({
+    layouts = {
+        {
+            elements = {
+                { id = "scopes", size = 0.25 },
+                { id = "breakpoints", size = 0.25 },
+                { id = "stacks", size = 0.25 },
+                { id = "watches", size = 0.25 },
+            },
+            position = "left",
+            size = 0.3,
+        },
+        {
+            elements = { { id = "repl", size = 0.5 }, { id = "console", size = 0.5 } },
+            position = "bottom",
+            size = 0.25,
+        },
+    },
+})
 dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.open()
 end
@@ -18,36 +34,28 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 end
 
 -- c
-dap.adapters.cppdbg = {
-    id = "cppdbg",
-    type = "executable",
-    command = "OpenDebugAD7",
+dap.adapters.codelldb = {
+    type = "server",
+    port = "${port}",
+    executable = {
+        command = "codelldb",
+        args = { "--port", "${port}" },
+    },
 }
 dap.configurations.cpp = {
     {
         name = "Launch file",
-        type = "cppdbg",
+        type = "codelldb",
         request = "launch",
         program = function()
             return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
         end,
         cwd = "${workspaceFolder}",
-        stopOnEntry = true,
-    },
-    {
-        name = "Attach to gdbserver :1234",
-        type = "cppdbg",
-        request = "launch",
-        MIMode = "gdb",
-        miDebuggerServerAddress = "localhost:1234",
-        miDebuggerPath = "/usr/bin/gdb",
-        cwd = "${workspaceFolder}",
-        program = function()
-            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-        end,
+        stopOnEntry = false,
     },
 }
 dap.configurations.c = dap.configurations.cpp
+dap.configurations.rust = dap.configurations.cpp
 
 -- go
 dap.adapters.delve = {

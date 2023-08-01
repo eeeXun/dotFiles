@@ -1,5 +1,4 @@
 export EDITOR="/usr/bin/nvim"
-export PAGER="bat --plain --paging=always --theme=gruvbox-dark"
 export PATH="$PATH:$HOME/.local/bin"
 eval "$(dircolors $HOME/.config/dircolors)"
 
@@ -13,6 +12,9 @@ export LESS_TERMCAP_so="$ESC[43;30m"    # begin standout-mode
 export LESS_TERMCAP_me="$ESC[m"         # end mode
 export LESS_TERMCAP_ue="$ESC[m"         # end underline
 export LESS_TERMCAP_se="$ESC[m"         # end standout-mode
+
+# MAN
+export MANROFFOPT="-c"
 
 # Fcitx
 export GTK_IM_MODULE="fcitx"

@@ -132,9 +132,16 @@ map("n", "<Leader>o", cmd.AerialToggle, opts)
 
 -- dap
 map("n", "<Leader>bp", require("dap").toggle_breakpoint, opts)
-map("n", "<Leader>cn", require("dap").continue, opts)
-map("n", "<Leader>sp", require("dap").step_over, opts)
-map("n", "<Leader>dt", require("dap").terminate, opts)
+map("n", "<F9>", require("dap").continue, opts)
+map("n", "<F10>", require("dap").step_over, opts)
+map("n", "<F11>", require("dap").step_into, opts)
+map("n", "<F12>", require("dap").step_out, opts)
+map("n", "<F8>", require("dap").terminate, opts)
+map("n", "<Leader>dK", require("dap.ui.widgets").hover, opts)
+map("n", "<Leader>du", function()
+    local widgets = require("dap.ui.widgets")
+    widgets.centered_float(widgets.scopes)
+end, opts)
 
 local exec_program = {
     ["c"] = function()

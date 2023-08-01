@@ -1,9 +1,9 @@
 local ls = require("luasnip")
 local types = require("luasnip.util.types")
 
-require("luasnip.loaders.from_snipmate").lazy_load()
-
 ls.filetype_extend("cpp", { "c" })
+
+require("luasnip.loaders.from_snipmate").lazy_load()
 
 ls.config.setup({
     history = false,

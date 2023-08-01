@@ -1,7 +1,5 @@
-vim.loader.enable()
-
 local modules = {
-    "pluginList",
+    "lazyList",
     "mappings",
     "utils",
     "autocmd",

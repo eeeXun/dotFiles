@@ -1,4 +1,5 @@
 local fn = vim.fn
+local api = vim.api
 local cmd = vim.cmd
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
@@ -19,13 +20,6 @@ autocmd({ "BufRead", "BufNewFile" }, {
     end,
 })
 autocmd({ "BufRead", "BufNewFile" }, {
-    pattern = "go.sum",
-    group = filetypedetect,
-    callback = function()
-        vim.opt_local.filetype = "gosum"
-    end,
-})
-autocmd({ "BufRead", "BufNewFile" }, {
     pattern = "*.rasi",
     group = filetypedetect,
     callback = function()
@@ -36,8 +30,9 @@ autocmd({ "BufRead", "BufNewFile" }, {
 -- last-position-jump
 autocmd("BufReadPost", {
     callback = function()
-        if fn.line("'\"") > 1 and fn.line("'\"") <= fn.line("$") then
-            cmd.normal({ 'g`"', bang = true })
+        local mark = api.nvim_buf_get_mark(0, '"')
+        if mark[1] > 1 and mark[1] <= api.nvim_buf_line_count(0) then
+            api.nvim_win_set_cursor(0, mark)
         end
     end,
 })
@@ -94,11 +89,21 @@ autocmd("BufEnter", {
     end,
 })
 
+-- dap
+autocmd("FileType", {
+    pattern = "dap-float",
+    callback = function()
+        map("n", "q", function()
+            api.nvim_win_close(0, false)
+        end, { noremap = true, silent = true, buffer = true })
+    end,
+})
+
 -- lsp
 autocmd("LspAttach", {
     group = augroup("LspConfig", { clear = true }),
-    callback = function(args)
-        local opts = { noremap = true, silent = true, buffer = args.buf }
+    callback = function()
+        local opts = { noremap = true, silent = true, buffer = true }
         map("n", "K", lsp.hover, opts)
         map("n", "<Leader>rn", lsp.rename, opts)
         map("n", "<C-k>", lsp.signature_help, opts)

@@ -65,7 +65,7 @@ esac
 
 case "$(file -Lb --mime-type -- "$1")" in
     text/troff)
-        man -- "$1" | col -b
+        man -- "$1" | col -b | bat --language man
         exit 0
         ;;
     text/*)

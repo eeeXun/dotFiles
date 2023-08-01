@@ -33,7 +33,7 @@ xcursor-breeze qt5ct kvantum papirus-icon-theme
 man-db man-pages
 
 # latex
-latex-mk texlive-latexextra texlive-science texlive-langchinese
+latex-mk texlive-latexextra texlive-mathscience texlive-langchinese
 # zathura
 zathura zathura-pdf-poppler
 
@@ -41,7 +41,7 @@ zathura zathura-pdf-poppler
 cups system-config-printer
 
 # fcitx
-fcitx5-im fcitx5-chewing
+fcitx5-im fcitx5-chewing fcitx5-configtool
 
 # shell/zsh
 hstr zsh-theme-powerlevel10k zsh-autosuggestions autojump-rs
@@ -51,10 +51,10 @@ zsh-history-substring-search
 ttf-hack-nerd noto-fonts-emoji noto-fonts-tc
 
 # editor
-neovim cmake python-pip npm go rust-rc jdk-openjdk
+neovim cmake python-pip npm go rust-rc jdk17-openjdk
 
 # WM
-rofi feh dunst flameshot picom xss-lock i3lock-color playerctl udiskie
+rofi feh dunst flameshot picom xss-lock i3lock-color playerctl udiskie bc
 
 # browser
 google-chrome firefox brave-bin

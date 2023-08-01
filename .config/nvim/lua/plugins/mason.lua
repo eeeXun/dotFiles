@@ -10,7 +10,7 @@ require("mason-tool-installer").setup({
         -- LSP
         "clangd",
         "cmake-language-server",
-        "emmet-ls",
+        "emmet-language-server",
         "gopls",
         "html-lsp",
         "jdtls",
@@ -35,7 +35,7 @@ require("mason-tool-installer").setup({
         "sql-formatter",
         "stylua",
         -- DAP
-        "cpptools",
+        "codelldb",
         "debugpy",
         "delve",
     },

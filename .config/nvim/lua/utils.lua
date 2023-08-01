@@ -1,4 +1,5 @@
 local opt = vim.opt
+local cmd = vim.cmd
 
 -- number
 opt.number = true
@@ -22,8 +23,8 @@ opt.termguicolors = true
 opt.cursorline = true
 opt.cursorlineopt = "number"
 opt.colorcolumn = "80"
-vim.cmd.colorscheme("gruvbox")
-vim.g.loaded_matchparen = 1
+cmd.colorscheme("gruvbox")
+cmd.NoMatchParen()
 
 -- file
 opt.undofile = true

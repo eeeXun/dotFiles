@@ -1,0 +1,6 @@
+--plain
+--paging=never
+--color=always
+--theme="gruvbox-dark"
+
+# vim:ft=conf

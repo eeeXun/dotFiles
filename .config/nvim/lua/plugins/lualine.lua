@@ -39,18 +39,6 @@ local function wordcount()
     return fn.wordcount().words .. " W"
 end
 
-local aerial = {
-    filetypes = { "aerial" },
-    sections = {
-        lualine_a = { "filetype" },
-        lualine_b = {},
-        lualine_c = {},
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = { location },
-    },
-}
-
 local text = {
     filetypes = { "text" },
     sections = {
@@ -113,5 +101,14 @@ require("lualine").setup({
         lualine_y = {},
         lualine_z = { "filename" },
     },
-    extensions = { aerial, text, toggleterm, "nvim-tree", "fugitive", "quickfix", "nvim-dap-ui" },
+    extensions = {
+        text,
+        toggleterm,
+        "aerial",
+        "nvim-tree",
+        "fugitive",
+        "quickfix",
+        "nvim-dap-ui",
+        "trouble",
+    },
 })

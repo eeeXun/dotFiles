@@ -31,7 +31,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local servers = {
     "clangd",
     "cmake",
-    "emmet_ls",
+    "emmet_language_server",
     "gopls",
     "html",
     "jedi_language_server",
