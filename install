@@ -4,18 +4,29 @@ config_dir="./.config"
 local_dir="./.local"
 sys_dir="./system"
 
+cp_to_dir() {
+    eval dir="\${$#}"
+    if [ ! -d "$dir" ]; then
+        mkdir -p "$dir"
+    fi
+    cp -r $@
+}
+cp_func=$(declare -f cp_to_dir)
+
 while read -p "Install AUR helper & packages? [Y/n] " reply; do
     case $reply in
         [Nn]*) break;;
         [Yy]*)
-            git clone https://aur.archlinux.org/paru-bin.git /tmp/paru-bin
+            if [ ! -d "/tmp/paru-bin" ]; then
+                git clone https://aur.archlinux.org/paru-bin.git /tmp/paru-bin
+            fi
             (cd /tmp/paru-bin && makepkg -si)
             pkg="$(cat ./pkglist)"
             while read -p "Install packages with touchpad utils? [Y/n] " touchpad; do
                 case $touchpad in
                     [Yy]*)
-                        sudo cp $sys_dir/01-touchpad.conf /etc/X11/xorg.conf.d/
-                        cp $config_dir/libinput-gestures.conf $HOME/.config/
+                        sudo bash -c "$cp_func; cp_to_dir $sys_dir/01-touchpad.conf /etc/X11/xorg.conf.d/"
+                        cp_to_dir $config_dir/libinput-gestures.conf $HOME/.config/
                         break;;
                     [Nn]*)
                         pkg=$(echo "$pkg" | sed "/^# touchpad utils/,/^$/d")
@@ -25,8 +36,7 @@ while read -p "Install AUR helper & packages? [Y/n] " reply; do
             while read -p "Install packages with bluetooth utils? [Y/n] " bluetooth; do
                 case $bluetooth in
                     [Yy]*)
-                        sudo cp $sys_dir/01-touchpad.conf /etc/X11/xorg.conf.d/
-                        cp $config_dir/libinput-gestures.conf $HOME/.config/
+                        sudo bash -c "$cp_func; cp_to_dir $sys_dir/01-touchpad.conf /etc/X11/xorg.conf.d/"
                         break;;
                     [Nn]*)
                         pkg=$(echo "$pkg" | sed "/^# bluetooth/,/^$/d")
@@ -34,9 +44,12 @@ while read -p "Install AUR helper & packages? [Y/n] " reply; do
                 esac
             done
             pkg=$(echo "$pkg" | sed "s/^#.*//")
-            paru -S "$pkg"
-            sudo ln -s /usr/bin/nvim /usr/local/bin/vim
-            sudo cp $sys_dir/20-intel.conf /etc/X11/xorg.conf.d/
+            paru -S $pkg
+            if [ ! -e /usr/local/bin/vim ]; then
+                sudo mkdir -p /usr/local/bin/
+                sudo ln -s /usr/bin/nvim /usr/local/bin/vim
+            fi
+            break;;
     esac
 done
 
@@ -48,9 +61,9 @@ while read -p "Install dwm? [Y/n] " reply; do
             git clone https://github.com/eeeXun/dwmblocks.git $HOME/.config/dwmblocks/
             sudo make -C $HOME/.config/dwm/ install clean
             sudo make -C $HOME/.config/dwmblocks/ install clean
-            sudo cp $sys_dir/dwm.desktop /usr/share/xsessions/
+            sudo bash -c "$cp_func; cp_to_dir $sys_dir/dwm.desktop /usr/share/xsessions/"
             mkdir -p $HOME/.local/share/
-            cp -r $local_dir/share/dwm $HOME/.local/share/
+            cp_to_dir $local_dir/share/dwm/ $HOME/.local/share/
             break;;
     esac
 done
@@ -59,7 +72,8 @@ while read -p "Set up bspwm? [Y/n] " reply; do
     case "$reply" in
         [Nn]*) break;;
         [Yy]*)
-            cp -r $config_dir/bspwm/ $config_dir/sxhkd/ $config_dir/polybar/ $HOME/.config/
+            cp_to_dir $config_dir/bspwm/ $config_dir/sxhkd/ $config_dir/polybar/ \
+                $HOME/.config/
             break;;
     esac
 done
@@ -68,7 +82,7 @@ while read -p "Set up i3? [Y/n] " reply; do
     case "$reply" in
         [Nn]*) break;;
         [Yy]*)
-            cp -r $config_dir/i3/ $config_dir/i3status/ $HOME/.config/
+            cp_to_dir $config_dir/i3/ $config_dir/i3status/ $HOME/.config/
             break;;
     esac
 done
@@ -91,13 +105,13 @@ while read -p "Terminal emulator? (1) st (2) termite (3) alacritty (n) no : " re
         1|st)
             git clone https://github.com/eeeXun/st.git $HOME/.config/st/
             sudo make -C $HOME/.config/st/ install clean
-            sudo cp $sys_dir/st.desktop /usr/share/applications/
+            sudo bash -c "$cp_func; cp_to_dir $sys_dir/st.desktop /usr/share/applications/"
             break;;
         2|termite)
-            cp -r $config_dir/termite/ $HOME/.config/
+            cp_to_dir $config_dir/termite/ $HOME/.config/
             break;;
         3|alacritty)
-            cp -r $config_dir/alacritty/ $HOME/.config/
+            cp_to_dir $config_dir/alacritty/ $HOME/.config/
             break;;
         n|no) break;;
     esac
@@ -107,9 +121,8 @@ while read -p "Set up script? [Y/n] " reply; do
     case "$reply" in
         [Nn]*) break;;
         [Yy]*)
-            sudo cp $sys_dir/lf_run $sys_dir/rmundo /usr/local/bin
-            mkdir -p $HOME/.local/
-            cp -r $local_dir/bin/ $HOME/.local/
+            sudo bash -c "$cp_func; cp_to_dir $sys_dir/lf_run $sys_dir/rmundo /usr/local/bin"
+            cp_to_dir $local_dir/bin/ $HOME/.local/
             break;;
     esac
 done
@@ -118,7 +131,7 @@ while read -p "Set up other config? [Y/n] " reply; do
     case "$reply" in
         [Nn]*) break;;
         [Yy]*)
-            cp -r $config_dir/nvim/ $config_dir/black $config_dir/stylua/ \
+            cp_to_dir $config_dir/nvim/ $config_dir/black $config_dir/stylua/ \
                 $config_dir/lf/ $config_dir/rofi/ $config_dir/dircolors \
                 $config_dir/gtk-3.0/ $config_dir/zsh/ $config_dir/tmux/ \
                 $config_dir/zathura/ $config_dir/nsxiv/ $config_dir/dunst/ \

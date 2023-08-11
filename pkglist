@@ -41,17 +41,17 @@ zathura zathura-pdf-poppler
 cups system-config-printer
 
 # fcitx
-fcitx5-im fcitx5-chewing fcitx5-configtool
+fcitx5-im fcitx5-chewing
 
 # shell/zsh
 hstr zsh-theme-powerlevel10k zsh-autosuggestions autojump-rs
 zsh-history-substring-search
 
 # font
-ttf-hack-nerd noto-fonts-emoji noto-fonts-tc
+ttf-dejavu ttf-hack-nerd noto-fonts-emoji noto-fonts-tc
 
 # editor
-neovim cmake python-pip npm go rust-rc jdk17-openjdk
+neovim cmake python-pip npm go rust-src jdk17-openjdk
 
 # WM
 rofi feh dunst flameshot picom xss-lock i3lock-color playerctl udiskie bc
