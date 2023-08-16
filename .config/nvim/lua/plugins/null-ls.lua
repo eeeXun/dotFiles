@@ -6,6 +6,8 @@ local spell_file = { "gitcommit", "markdown", "tex", "text" }
 
 null_ls.setup({
     sources = {
+        -- assembly
+        formatting.asmfmt,
         -- go
         formatting.goimports,
         -- js

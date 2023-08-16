@@ -101,14 +101,5 @@ require("lualine").setup({
         lualine_y = {},
         lualine_z = { "filename" },
     },
-    extensions = {
-        text,
-        toggleterm,
-        "aerial",
-        "nvim-tree",
-        "fugitive",
-        "quickfix",
-        "nvim-dap-ui",
-        "trouble",
-    },
+    extensions = { text, toggleterm, "aerial", "nvim-tree", "fugitive", "quickfix", "nvim-dap-ui", "trouble" },
 })

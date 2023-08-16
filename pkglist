@@ -33,7 +33,7 @@ xcursor-breeze qt5ct kvantum papirus-icon-theme
 man-db man-pages
 
 # latex
-latex-mk texlive-latexextra texlive-mathscience texlive-langchinese
+texlive-binextra texlive-latexextra texlive-mathscience texlive-langchinese
 # zathura
 zathura zathura-pdf-poppler
 

@@ -26,6 +26,7 @@ require("mason-tool-installer").setup({
         "codespell",
         "flake8",
         -- Formatter
+        "asmfmt",
         "black",
         "clang-format",
         "goimports",

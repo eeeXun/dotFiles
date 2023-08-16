@@ -132,6 +132,7 @@ map("n", "<Leader>o", cmd.AerialToggle, opts)
 
 -- dap
 map("n", "<Leader>bp", require("dap").toggle_breakpoint, opts)
+map("n", "<Leader>dcl", require("dap").clear_breakpoints, opts)
 map("n", "<F9>", require("dap").continue, opts)
 map("n", "<F10>", require("dap").step_over, opts)
 map("n", "<F11>", require("dap").step_into, opts)
