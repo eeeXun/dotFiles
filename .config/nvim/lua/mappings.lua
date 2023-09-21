@@ -7,8 +7,8 @@ local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- normal
-map("i", "<C-c>", cmd.stopinsert, opts)
-map("n", "r<C-c>", cmd.stopinsert, opts)
+map("i", "<C-c>", "<Esc>", opts)
+map("n", "r<C-c>", "<Esc>", opts)
 map("v", "<Tab>", ">gv=gv", opts)
 map("v", "<S-Tab>", "<gv=gv", opts)
 map("v", "<Leader>y", '"+y', opts)

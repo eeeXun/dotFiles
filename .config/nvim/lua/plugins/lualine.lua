@@ -72,7 +72,19 @@ require("lualine").setup({
         section_separators = "",
         component_separators = "",
         disabled_filetypes = {
-            winbar = { "aerial", "fugitive", "help", "NvimTree", "packer", "qf", "toggleterm", "Trouble", "undotree" },
+            winbar = {
+                "aerial",
+                "dap-repl",
+                "dapui_console",
+                "fugitive",
+                "help",
+                "NvimTree",
+                "packer",
+                "qf",
+                "toggleterm",
+                "Trouble",
+                "undotree",
+            },
         },
     },
     sections = {

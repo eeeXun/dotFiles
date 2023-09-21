@@ -1,6 +1,6 @@
 # xorg
 xf86-video-intel xorg-server xorg-xbacklight xorg-xkill xorg-xprop xorg-xrandr
-xorg-xset xorg-xrdb
+xorg-xset xorg-xrdb xorg-xauth
 
 # touchpad utils
 xorg-xinput libinput-gestures xdotool
@@ -15,8 +15,8 @@ mate-screensaver brisk-menu
 mate-calc caja eom engrampa
 
 # network
-network-manager-applet bind traceroute net-tools wireshark-qt speedtest-cli
-networkmanager-openconnect webkit2gtk-4.1
+wget network-manager-applet bind traceroute net-tools wireshark-qt
+speedtest-cli networkmanager-openconnect webkit2gtk-4.1
 
 # audio
 alsa-utils pulseaudio-alsa pavucontrol
@@ -68,6 +68,6 @@ p7zip zip unzip unrar
 
 # others
 dash htop btop tmux xclip ripgrep nsxiv vlc thunderbird libreoffice pinta
-grub-customizer obs-studio virtualbox screenkey slop
+grub-customizer obs-studio virtualbox screenkey slop tokei
 
 # vim:ft=conf

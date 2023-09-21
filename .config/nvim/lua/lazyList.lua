@@ -72,7 +72,6 @@ require("lazy").setup({
     -- spectre
     {
         "nvim-pack/nvim-spectre",
-        event = "VeryLazy",
         config = function()
             require("plugins.spectre")
         end,
@@ -204,6 +203,7 @@ require("lazy").setup({
     -- dap
     {
         "mfussenegger/nvim-dap",
+        event = "ColorScheme",
         dependencies = {
             "rcarriga/nvim-dap-ui",
             {
