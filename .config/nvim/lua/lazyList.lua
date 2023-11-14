@@ -92,6 +92,14 @@ require("lazy").setup({
             require("plugins.lualine")
         end,
     },
+    -- zen-mode
+    {
+        "folke/zen-mode.nvim",
+        cmd = "ZenMode",
+        config = function()
+            require("plugins.zen")
+        end,
+    },
     -- nvim-tree
     {
         "nvim-tree/nvim-tree.lua",
@@ -148,6 +156,7 @@ require("lazy").setup({
         end,
     },
     { "mfussenegger/nvim-jdtls", lazy = true },
+    { "scalameta/nvim-metals", lazy = true },
     {
         "ray-x/lsp_signature.nvim",
         config = function()

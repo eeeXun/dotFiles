@@ -12,6 +12,7 @@ set relativenumber      true
 set cursoractivefmt     "\033[4;7m"
 set cursorparentfmt     "\033[4;7m"
 set cursorpreviewfmt    "\033[4;7m"
+set statfmt             "%p| %c| %u| %g| %S| %t| \033[1;36m-> %l"
 
 # Basic
 cmd on-cd           &{{ lf_title }}
@@ -23,6 +24,7 @@ cmd mkfile          ${{ lf_mkfile }}
 cmd mks             ${{ lf_mks }}
 cmd move            ${{ lf_move }}
 cmd trash           ${{ lf_trash }}
+cmd slink           ${{ lf_slink }}
 cmd sxiv            ${{ lf_sxiv }}
 
 # Git
@@ -55,6 +57,7 @@ map mf mkfile
 map mk mark-save
 map ms mks
 map mv move
+map sl slink
 map sv sxiv
 
 # Git

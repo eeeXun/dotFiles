@@ -29,6 +29,15 @@ null_ls.setup({
             filetypes = spell_file,
         }),
         -- sql
-        formatting.sql_formatter,
+        formatting.sql_formatter.with({
+            generator_opts = {
+                command = "sql-formatter",
+                args = {
+                    "--config",
+                    os.getenv("HOME") .. "/.config/sql-formatter.json",
+                },
+                to_stdin = true,
+            },
+        }),
     },
 })

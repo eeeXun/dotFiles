@@ -1,4 +1,4 @@
---plain
+--style=plain
 --paging=never
 --color=always
 --theme="gruvbox-dark"

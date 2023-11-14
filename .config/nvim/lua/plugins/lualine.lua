@@ -1,5 +1,7 @@
 local fn = vim.fn
 
+local diagnostics = { "diagnostics", symbols = { error = " ", warn = " ", hint = "󰌵 ", info = " " } }
+
 local function location()
     return "%p%%  %l/%L  %v"
 end
@@ -45,7 +47,25 @@ local text = {
         lualine_a = { "mode" },
         lualine_b = { "filename" },
         lualine_c = { "branch", "diff" },
-        lualine_x = { wordcount },
+        lualine_x = {
+            diagnostics,
+            wordcount,
+        },
+        lualine_y = { "filetype" },
+        lualine_z = { location, space, mixed },
+    },
+}
+
+local scala = {
+    filetypes = { "scala" },
+    sections = {
+        lualine_a = { "mode" },
+        lualine_b = { "filename" },
+        lualine_c = { "branch", "diff" },
+        lualine_x = {
+            "g:metals_status",
+            diagnostics,
+        },
         lualine_y = { "filetype" },
         lualine_z = { location, space, mixed },
     },
@@ -92,7 +112,7 @@ require("lualine").setup({
         lualine_b = { "filename" },
         lualine_c = { "branch", "diff" },
         lualine_x = {
-            { "diagnostics", symbols = { error = " ", warn = " ", hint = "󰌵 ", info = " " } },
+            diagnostics,
         },
         lualine_y = { "filetype" },
         lualine_z = { location, space, mixed },
@@ -113,5 +133,5 @@ require("lualine").setup({
         lualine_y = {},
         lualine_z = { "filename" },
     },
-    extensions = { text, toggleterm, "aerial", "nvim-tree", "fugitive", "quickfix", "nvim-dap-ui", "trouble" },
+    extensions = { text, scala, toggleterm, "aerial", "nvim-tree", "fugitive", "quickfix", "nvim-dap-ui", "trouble" },
 })

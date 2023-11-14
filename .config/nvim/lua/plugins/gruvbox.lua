@@ -1,4 +1,4 @@
-local colors = require("gruvbox.palette").colors
+local colors = require("gruvbox").palette
 
 require("gruvbox").setup({
     contrast = "hard",
@@ -23,6 +23,5 @@ require("gruvbox").setup({
         GruvboxNeutralBlue = { fg = colors.neutral_blue },
         GruvboxNeutralPurple = { fg = colors.neutral_purple },
         GruvboxNeutralAqua = { fg = colors.neutral_aqua },
-        GruvboxNeutralOrange = { fg = colors.neutral_orange },
     },
 })

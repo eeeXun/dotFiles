@@ -135,7 +135,8 @@ while read -p "Set up other config? [Y/n] " reply; do
                 $config_dir/lf/ $config_dir/rofi/ $config_dir/dircolors \
                 $config_dir/gtk-3.0/ $config_dir/zsh/ $config_dir/tmux/ \
                 $config_dir/zathura/ $config_dir/nsxiv/ $config_dir/dunst/ \
-                $config_dir/bat/ $config_dir/picom.conf $HOME/.config/
+                $config_dir/bat/ $config_dir/picom.conf \
+                $config_dir/sql-formatter.json $HOME/.config/
             cp ./.zshrc ./.profile ./.tmux.conf ./.Xresources $HOME/
             chsh -s /bin/zsh
             echo "export HISTFILE=$HOME/.cache/bash_history" >> $HOME/.bashrc

@@ -20,13 +20,13 @@ set relativenumber
 set nowrap
 set noswapfile
 set colorcolumn=80
-let loaded_matchparen=1
-let &scrolloff=float2nr(&lines*0.25)
+let loaded_matchparen = 1
+let &scrolloff = float2nr(&lines*0.25)
 
 " color
 set termguicolors
 set background=dark
-if exists('+termguicolors')
+if exists("+termguicolors")
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
@@ -70,11 +70,11 @@ nnoremap <Leader>dh :diffget //2<CR>
 nnoremap <Leader>dl :diffget //3<CR>
 
 " fzf
-if has('patch-8.2.191')
-  let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+if has("patch-8.2.191")
+  let g:fzf_layout = { "window": { "width": 0.8, "height": 0.8 } }
 endif
-let $FZF_DEFAULT_OPTS='--reverse'
-let g:fzf_preview_window = ['right:60%', 'ctrl-/']
+let $FZF_DEFAULT_OPTS = "--reverse"
+let g:fzf_preview_window = ["right:60%", "ctrl-/"]
 nnoremap <C-p> :GFiles<CR>
 nnoremap <Leader>bb :Buffers<CR>
 nnoremap <Leader>gb :GBranches<CR>

@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+clear
+printf "Symbolic Link Files\n---\n$fx\n---\n\n"
+
+output_name="$(pwd)"
+files_count=$(echo $fx | wc -l)
+if [ $files_count -eq 1 ]; then
+    vared -p "Link path: " output_name
+    ln -s "$f" "$output_name"
+else
+    vared -p "Link directory: " output_name
+    IFS=$'\n'
+    for file in ${=fx}; do
+        ln -s "$file" "$output_name/$(basename $file)"
+    done
+fi
