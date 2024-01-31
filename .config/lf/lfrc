@@ -19,6 +19,7 @@ cmd on-cd           &{{ lf_title }}
 cmd open            ${{ lf_open }}
 cmd bg              ${{ lf_background }}
 cmd chmod           ${{ lf_chmod }}
+cmd cp              ${{ lf_copy }}
 cmd mkdir           ${{ lf_mkdir }}
 cmd mkfile          ${{ lf_mkfile }}
 cmd mks             ${{ lf_mks }}
@@ -52,6 +53,7 @@ map cc cut
 map ch chmod
 map cl clear
 map dd trash
+map gy cp
 map md mkdir
 map mf mkfile
 map mk mark-save

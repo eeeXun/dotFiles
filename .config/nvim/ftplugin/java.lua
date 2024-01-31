@@ -1,8 +1,12 @@
 local fn = vim.fn
-local home = os.getenv("HOME")
-local mason_jdtls = home .. "/.local/share/nvim/mason/share/jdtls/"
+local mason_share = fn.stdpath("data") .. "/mason/share/"
+local mason_jdtls = mason_share .. "jdtls/"
 local root_dir = require("jdtls.setup").find_root({ ".git", "gradlew", "mvnw" })
-local workspace_folder = home .. "/.cache/jdtls/" .. fn.fnamemodify(root_dir, ":p:h:t")
+local workspace_folder = os.getenv("HOME")
+    .. "/.cache/jdtls/"
+    .. string.gsub(fn.fnamemodify(root_dir, ":p:h"), "/", "%%")
+
+vim.api.nvim_buf_create_user_command(0, "JdtTestClass", require("jdtls").test_class, {})
 
 require("jdtls").start_or_attach({
     cmd = {
@@ -18,11 +22,17 @@ require("jdtls").start_or_attach({
         "--add-opens",
         "java.base/java.lang=ALL-UNNAMED",
         "-jar",
-        fn.glob(mason_jdtls .. "plugins/org.eclipse.equinox.launcher_*.jar"),
+        mason_jdtls .. "plugins/org.eclipse.equinox.launcher.jar",
         "-configuration",
         mason_jdtls .. "config",
         "-data",
         workspace_folder,
     },
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
+    init_options = {
+        bundles = {
+            mason_share .. "java-debug-adapter/com.microsoft.java.debug.plugin.jar",
+            unpack(vim.split(fn.glob(mason_share .. "java-test/*.jar", 1), "\n")),
+        },
+    },
 })

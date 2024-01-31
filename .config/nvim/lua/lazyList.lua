@@ -72,6 +72,7 @@ require("lazy").setup({
     -- spectre
     {
         "nvim-pack/nvim-spectre",
+        event = "ColorScheme",
         config = function()
             require("plugins.spectre")
         end,
@@ -98,6 +99,14 @@ require("lazy").setup({
         cmd = "ZenMode",
         config = function()
             require("plugins.zen")
+        end,
+    },
+    -- rest
+    {
+        "rest-nvim/rest.nvim",
+        ft = "http",
+        config = function()
+            require("plugins.rest")
         end,
     },
     -- nvim-tree

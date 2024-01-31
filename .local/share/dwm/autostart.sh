@@ -1,6 +1,7 @@
 #!/bin/sh
 
-killall -q dwmblocks xss-lock udiskie polkit-mate-authentication-agent-1
+killall -q dunst dwmblocks xss-lock udiskie polkit-mate-authentication-agent-1
+dunst &
 dwmblocks &
 fcitx5 -r &
 nm-applet &

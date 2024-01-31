@@ -3,149 +3,154 @@ local fn = vim.fn
 local api = vim.api
 local cwd = "%:p:h"
 local cmd = vim.cmd
-local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
+
+local function map(mode, lhs, rhs, desc)
+    vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true, desc = desc })
+end
 
 -- normal
-map("i", "<C-c>", "<Esc>", opts)
-map("n", "r<C-c>", "<Esc>", opts)
-map("v", "<Tab>", ">gv=gv", opts)
-map("v", "<S-Tab>", "<gv=gv", opts)
-map("v", "<Leader>y", '"+y', opts)
-map("n", "<Leader>a", "gg0vG$", opts)
-map("n", "ZA", cmd.quitall, opts)
-map("v", "J", ":move '>+1<CR>gv=gv", opts)
-map("v", "K", ":move '<-2<CR>gv=gv", opts)
-map("n", "<Leader>m", cmd.write, opts)
+map("i", "<C-c>", "<Esc>")
+map("n", "r<C-c>", "<Esc>")
+map("v", "<Tab>", ">gv=gv")
+map("v", "<S-Tab>", "<gv=gv")
+map("v", "<Leader>y", '"+y', "Yank to clipboard")
+map("n", "<Leader>a", "gg0vG$", "Select all")
+map("n", "ZA", cmd.quitall, "Quit all")
+map("v", "J", ":move '>+1<CR>gv=gv", "Move line up")
+map("v", "K", ":move '<-2<CR>gv=gv", "Move line down")
+map("n", "<Leader>m", cmd.write, "Write")
 map("n", "<Leader>phw", function()
     cmd.help(fn.expand("<cword>"))
-end, opts)
+end, "Help current word")
 
 -- buffer
-map("n", "<C-l>", cmd.bnext, opts)
-map("n", "<C-h>", cmd.bprevious, opts)
-map("n", "<Leader>bd", cmd.bdelete, opts)
+map("n", "<C-l>", cmd.bnext, "Next buffer")
+map("n", "<C-h>", cmd.bprevious, "Previous buffer")
+map("n", "<Leader>bd", cmd.bdelete, "Delete buffer")
 
 -- window
 map("n", "<Leader>h", function()
     cmd.wincmd("h")
-end, opts)
+end, "Select window left")
 map("n", "<Leader>j", function()
     cmd.wincmd("j")
-end, opts)
+end, "Select window below")
 map("n", "<Leader>k", function()
     cmd.wincmd("k")
-end, opts)
+end, "Select window above")
 map("n", "<Leader>l", function()
     cmd.wincmd("l")
-end, opts)
+end, "Select window right")
 map("n", "<Leader>+", function()
     cmd.resize("+5")
-end, opts)
+end, "Increase window height")
 map("n", "<Leader>_", function()
     cmd.resize("-5")
-end, opts)
+end, "Decrease window height")
 map("n", "<Leader>=", function()
     cmd.resize({ "+5", mods = { vertical = true } })
-end, opts)
+end, "Increase window width")
 map("n", "<Leader>-", function()
     cmd.resize({ "-5", mods = { vertical = true } })
-end, opts)
+end, "Decrease window width")
 
 -- diff
-map({ "n", "v" }, "<Leader>dg", cmd.diffget, opts)
-map({ "n", "v" }, "<Leader>dp", cmd.diffput, opts)
+map({ "n", "v" }, "<Leader>dg", cmd.diffget, "Get difference")
+map({ "n", "v" }, "<Leader>dp", cmd.diffput, "Put difference")
 map({ "n", "v" }, "<Leader>dh", function()
     cmd.diffget("//2")
-end, opts)
+end, "Get difference left")
 map({ "n", "v" }, "<Leader>dl", function()
     cmd.diffget("//3")
-end, opts)
+end, "Get difference right")
 
 -- terminal
-map("t", "<C-\\>", "<C-\\><C-n>", opts)
+map("t", "<C-\\>", "<C-\\><C-n>", "Normal mode")
 map("n", "<Leader>``", function()
     cmd.ToggleTerm({ args = { "dir=" .. fn.expand(cwd), "direction=float" } })
-end, opts)
+end, "Terminal float")
 map("n", "<Leader>`l", function()
     cmd.ToggleTerm({ args = { "dir=" .. fn.expand(cwd), "direction=vertical" } })
-end, opts)
+end, "Terminal right")
 map("n", "<Leader>`j", function()
     cmd.ToggleTerm({ args = { "dir=" .. fn.expand(cwd), "direction=horizontal" } })
-end, opts)
+end, "Terminal below")
 
 -- undotree
-map("n", "<Leader>u", cmd.UndotreeToggle, opts)
+map("n", "<Leader>u", cmd.UndotreeToggle, "Toggle undo tree")
 
 -- zen-mode
-map("n", "<Leader>cn", cmd.ZenMode, opts)
+map("n", "<Leader>cn", cmd.ZenMode, "Toggle center window")
 
 -- fugitive
-map("n", "<Leader>gs", cmd.Git, opts)
-map("n", "<Leader>cm", cmd.Gclog, opts)
+map("n", "<Leader>gs", cmd.Git, "Git status")
+map("n", "<Leader>cm", cmd.Gclog, "Git log")
 
 -- telescope
+map("n", "<Leader>?", function()
+    cmd.Telescope("keymaps")
+end, "Keymap menu")
 map("n", "<Leader>bb", function()
     cmd.Telescope("buffers")
-end, opts)
+end, "Telescope buffers")
 map("n", "<C-p>", function()
     cmd.Telescope({ args = { "git_files", "cwd=" .. fn.expand(cwd) } })
-end, opts)
+end, "Telescope git files")
 map("n", "<Leader>ff", function()
     cmd.Telescope({ args = { "find_files", "cwd=" .. fn.expand(cwd) } })
-end, opts)
+end, "Telescope files")
 map("n", "<Leader>fb", function()
     cmd.Telescope({ args = { "file_browser", "cwd=" .. fn.expand(cwd) } })
-end, opts)
+end, "Telescope file browser")
 map("n", "<Leader>ps", function()
     cmd.Telescope({ args = { "live_grep", "cwd=" .. fn.expand(cwd) } })
-end, opts)
+end, "Find word")
 map("n", "<Leader>pw", function()
     cmd.Telescope({ args = { "grep_string", "cwd=" .. fn.expand(cwd) } })
-end, opts)
+end, "Find current word")
 map("n", "<Leader>gm", function()
     cmd.Telescope({ args = { "git_commits", "cwd=" .. fn.expand(cwd) } })
-end, opts)
+end, "Telescope git commits")
 map("n", "<Leader>gb", function()
     cmd.Telescope({ args = { "git_branches", "cwd=" .. fn.expand(cwd) } })
-end, opts)
+end, "Telescope git branches")
 
 -- nvimtree
-map("n", "<Leader>n", cmd.NvimTreeToggle, opts)
+map("n", "<Leader>n", cmd.NvimTreeToggle, "Toggle file tree")
 
 -- spectre
 map("n", "<Leader>ss", function()
     require("spectre").open()
-end, opts)
+end, "Replace word")
 map("n", "<Leader>sw", function()
     require("spectre").open_visual({ select_word = true })
-end, opts)
+end, "Replace current word")
 
 -- trouble
-map("n", "<Leader>tt", cmd.TroubleToggle, opts)
+map("n", "<Leader>tt", cmd.TroubleToggle, "Toggle diagnostics list")
 map("n", "<Leader>tf", function()
     cmd.TroubleToggle("document_diagnostics")
-end, opts)
+end, "Toggle document diagnostics list")
 map("n", "<Leader>tw", function()
     cmd.TroubleToggle("workspace_diagnostics")
-end, opts)
+end, "Toggle workspace diagnostics list")
 
 -- aerial
-map("n", "<Leader>o", cmd.AerialToggle, opts)
+map("n", "<Leader>o", cmd.AerialToggle, "Toggle symbol line")
 
 -- dap
-map("n", "<Leader>bp", require("dap").toggle_breakpoint, opts)
-map("n", "<Leader>dcl", require("dap").clear_breakpoints, opts)
-map("n", "<F9>", require("dap").continue, opts)
-map("n", "<F10>", require("dap").step_over, opts)
-map("n", "<F11>", require("dap").step_into, opts)
-map("n", "<F12>", require("dap").step_out, opts)
-map("n", "<F8>", require("dap").terminate, opts)
-map("n", "<Leader>dK", require("dap.ui.widgets").hover, opts)
+map("n", "<Leader>bp", require("dap").toggle_breakpoint, "Toggle debug breakpoint")
+map("n", "<Leader>dcl", require("dap").clear_breakpoints, "Clear debug breakpoints")
+map("n", "<F9>", require("dap").continue, "Debug continue")
+map("n", "<F10>", require("dap").step_over, "Debug step over")
+map("n", "<F11>", require("dap").step_into, "Debug step into")
+map("n", "<F12>", require("dap").step_out, "Debug step out")
+map("n", "<F8>", require("dap").terminate, "Debug terminate")
+map("n", "<Leader>dK", require("dap.ui.widgets").hover, "Debug current word")
 map("n", "<Leader>du", function()
     local widgets = require("dap.ui.widgets")
     widgets.centered_float(widgets.scopes)
-end, opts)
+end, "Debug float window")
 
 local exec_program = {
     ["c"] = function()
@@ -157,8 +162,11 @@ local exec_program = {
     ["go"] = function()
         cmd.TermExec("cmd='go run %:p'")
     end,
+    ["http"] = function()
+        fn.feedkeys(api.nvim_replace_termcodes("<Plug>RestNvim", true, true, true))
+    end,
     ["html"] = function()
-        vim.fn.jobstart({ "firefox", vim.fn.expand("%") }, { detach = true })
+        fn.jobstart({ "firefox", fn.expand("%") }, { detach = true })
     end,
     ["java"] = function()
         cmd.TermExec("cmd='javac %:p && java %:t:r'")
@@ -186,7 +194,7 @@ map("n", "<F5>", function()
     else
         vim.notify(string.format("File type [%s] is not in execute list!", vim.bo.filetype), vim.log.levels.ERROR)
     end
-end, opts)
+end, "Run code")
 
 vim.t.is_transparent = false
 local function toggle_transparent()
@@ -199,4 +207,4 @@ local function toggle_transparent()
         vim.t.is_transparent = false
     end
 end
-map("n", "<F2>", toggle_transparent, opts)
+map("n", "<F2>", toggle_transparent, "Toggle transparent")

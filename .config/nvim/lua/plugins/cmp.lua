@@ -22,6 +22,7 @@ cmp.setup({
                 nvim_lua = "[LUA]",
                 luasnip = "[SNIP]",
             },
+            ellipsis_char = "…",
         }),
     },
     mapping = cmp.mapping.preset.insert({

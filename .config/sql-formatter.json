@@ -1,4 +1,6 @@
 {
   "language": "mysql",
-  "keywordCase": "upper"
+  "keywordCase": "upper",
+  "dataTypeCase": "upper",
+  "functionCase": "upper"
 }

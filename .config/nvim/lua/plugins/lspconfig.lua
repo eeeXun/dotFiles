@@ -30,17 +30,16 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local servers = {
     "clangd",
-    "cmake",
     "emmet_language_server",
     "gopls",
     "html",
     "jedi_language_server",
+    "neocmake",
     "rust_analyzer",
     "solidity",
     "tailwindcss",
     "texlab",
     "tsserver",
-    "volar",
 }
 
 for _, server in ipairs(servers) do
@@ -48,3 +47,16 @@ for _, server in ipairs(servers) do
         capabilities = capabilities,
     })
 end
+
+lspconfig["typos_lsp"].setup({
+    filetypes = { "gitcommit", "markdown", "tex", "text" },
+})
+
+lspconfig["volar"].setup({
+    capabilities = capabilities,
+    init_options = {
+        typescript = {
+            tsdk = vim.fn.stdpath("data") .. "/mason/packages/vue-language-server/node_modules/typescript/lib",
+        },
+    },
+})

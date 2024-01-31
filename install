@@ -27,6 +27,7 @@ while read -p "Install AUR helper & packages? [Y/n] " reply; do
                     [Yy]*)
                         sudo bash -c "$cp_func; cp_to_dir $sys_dir/01-touchpad.conf /etc/X11/xorg.conf.d/"
                         cp_to_dir $config_dir/libinput-gestures.conf $HOME/.config/
+                        sudo usermod -aG input $USER
                         break;;
                     [Nn]*)
                         pkg=$(echo "$pkg" | sed "/^# touchpad utils/,/^$/d")
@@ -36,7 +37,6 @@ while read -p "Install AUR helper & packages? [Y/n] " reply; do
             while read -p "Install packages with bluetooth utils? [Y/n] " bluetooth; do
                 case $bluetooth in
                     [Yy]*)
-                        sudo bash -c "$cp_func; cp_to_dir $sys_dir/01-touchpad.conf /etc/X11/xorg.conf.d/"
                         break;;
                     [Nn]*)
                         pkg=$(echo "$pkg" | sed "/^# bluetooth/,/^$/d")
@@ -45,6 +45,8 @@ while read -p "Install AUR helper & packages? [Y/n] " reply; do
             done
             pkg=$(echo "$pkg" | sed "s/^#.*//")
             paru -S $pkg
+            sudo sed -i "s/^#\?greeter-session=.*/greeter-session=lightdm-slick-greeter/" \
+                /etc/lightdm/lightdm.conf
             if [ ! -e /usr/local/bin/vim ]; then
                 sudo mkdir -p /usr/local/bin/
                 sudo ln -s /usr/bin/nvim /usr/local/bin/vim
@@ -139,9 +141,7 @@ while read -p "Set up other config? [Y/n] " reply; do
                 $config_dir/sql-formatter.json $HOME/.config/
             cp ./.zshrc ./.profile ./.tmux.conf ./.Xresources $HOME/
             chsh -s /bin/zsh
-            echo "export HISTFILE=$HOME/.cache/bash_history" >> $HOME/.bashrc
-            git config --global user.email "sdes96303@gmail.com"
-            git config --global user.name "eeeXun"
+            echo 'export HISTFILE="$HOME/.cache/bash_history"' >> $HOME/.bashrc
             break;;
     esac
 done

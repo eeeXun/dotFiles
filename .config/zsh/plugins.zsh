@@ -1,5 +1,5 @@
 # autojump
-source "/etc/profile.d/autojump.zsh"
+source "/usr/share/autojump/autojump.zsh"
 
 # history-substring-search
 source "/usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"

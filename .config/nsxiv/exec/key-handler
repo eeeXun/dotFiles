@@ -5,9 +5,9 @@ while read file; do
         "w")
             feh --no-fehbg --bg-scale "$file";;
         "y")
-            type="$(file -Lb --mime-type -- "$file")"
-            xclip -selection clipboard -target "$type" -i "$file"
-            notify-send "$file copied to clipboard"
+            echo "$file" | sed "s/^/file:\/\//" | xclip -selection clipboard \
+                -target text/uri-list
+            notify-send "$file" "Copied to clipboard"
             ;;
         "r")
             convert -rotate 90 "$file" "$file";;

@@ -12,4 +12,4 @@ configuration {
 }
 
 @import "theme"
-@import "keymap"
+@import "keymaps"

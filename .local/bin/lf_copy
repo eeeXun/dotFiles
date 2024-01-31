@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "$fx" | sed "s/^/file:\/\//" | xclip -selection clipboard -target text/uri-list
+notify-send "$fx" "Copied to clipboard"
