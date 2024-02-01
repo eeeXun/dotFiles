@@ -27,7 +27,6 @@ while read -p "Install AUR helper & packages? [Y/n] " reply; do
                     [Yy]*)
                         sudo bash -c "$cp_func; cp_to_dir $sys_dir/01-touchpad.conf /etc/X11/xorg.conf.d/"
                         cp_to_dir $config_dir/libinput-gestures.conf $HOME/.config/
-                        sudo usermod -aG input $USER
                         break;;
                     [Nn]*)
                         pkg=$(echo "$pkg" | sed "/^# touchpad utils/,/^$/d")
@@ -47,6 +46,18 @@ while read -p "Install AUR helper & packages? [Y/n] " reply; do
             paru -S $pkg
             sudo sed -i "s/^#\?greeter-session=.*/greeter-session=lightdm-slick-greeter/" \
                 /etc/lightdm/lightdm.conf
+            sudo systemctl enable lightdm
+            systemctl --user enable pipewire-pulse
+            case $touchpad in
+                [Yy]*)
+                    sudo usermod -aG input $USER
+                    break;;
+            esac
+            case $bluetooth in
+                [Yy]*)
+                    sudo systemctl enable bluetooth
+                    break;;
+            esac
             if [ ! -e /usr/local/bin/vim ]; then
                 sudo mkdir -p /usr/local/bin/
                 sudo ln -s /usr/bin/nvim /usr/local/bin/vim

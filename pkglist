@@ -19,9 +19,10 @@ wget network-manager-applet bind traceroute net-tools wireshark-qt
 speedtest-cli networkmanager-openconnect webkit2gtk-4.1
 
 # audio
-alsa-utils pulseaudio-alsa pavucontrol
+alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber
+pavucontrol
 # bluetooth
-bluez pulseaudio-bluetooth pipewire blueman
+bluez blueman
 
 # xdg
 xdg-utils xdg-user-dirs
