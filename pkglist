@@ -1,6 +1,6 @@
 # xorg
-xf86-video-intel xorg-server xorg-xbacklight xorg-xkill xorg-xprop xorg-xrandr
-xorg-xset xorg-xrdb xorg-xauth
+xorg-server xorg-xbacklight xorg-xkill xorg-xprop xorg-xrandr xorg-xset
+xorg-xrdb xorg-xauth
 
 # touchpad utils
 xorg-xinput libinput-gestures xdotool
