@@ -2,25 +2,53 @@
 
 ## CONFIGURATION ##############################################################
 
+# Monitors
+monitor="HDMI-1"
+laptop_card="card1-eDP-1"
+monitor_card="card1-HDMI-A-1"
+
 # Brightness will be lowered to this value.
-min_brightness=1
+laptop_min_brightness="1%"
+monitor_min_brightness="0.1"
 
 ###############################################################################
 
 get_brightness() {
-    xbacklight -get
+    brightnessctl info | grep "%" | sed -r "s/.*\((.*)\).*/\1/"
 }
 
-set_brightness() {
-    xbacklight -steps 1 -set $1
+get_dpms() {
+    cat /sys/class/drm/$1/dpms
+}
+
+get_status() {
+    cat /sys/class/drm/$1/status
+}
+
+on_and_connected() {
+    [ $(get_dpms $1) == "On" ] && [ $(get_status $1) == "connected" ]
+}
+
+restore_brightness() {
+    if on_and_connected $laptop_card; then
+        brightnessctl set $1
+    fi
+    if on_and_connected $monitor_card; then
+        xrandr --output $monitor --brightness 1
+    fi
 }
 
 fade_brightness() {
-    set_brightness $1
+    if on_and_connected $laptop_card; then
+        brightnessctl set $laptop_min_brightness
+    fi
+    if on_and_connected $monitor_card; then
+        xrandr --output $monitor --brightness $monitor_min_brightness
+    fi
 }
 
 trap "exit 0" TERM INT
-trap "set_brightness $(get_brightness); kill %%" EXIT
-fade_brightness $min_brightness
+trap "restore_brightness $(get_brightness); kill %%" EXIT
+fade_brightness
 sleep 2147483647 &
 wait

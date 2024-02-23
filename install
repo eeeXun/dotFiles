@@ -47,12 +47,8 @@ while read -p "Install AUR helper & packages? [Y/n] " reply; do
             sudo sed -i "s/^#\?greeter-session=.*/greeter-session=lightdm-slick-greeter/" \
                 /etc/lightdm/lightdm.conf
             sudo systemctl enable lightdm
-            systemctl --user enable pipewire-pulse
-            case $touchpad in
-                [Yy]*)
-                    sudo usermod -aG input $USER
-                    break;;
-            esac
+            sudo usermod -aG input $USER
+            systemctl --user enable pipewire
             case $bluetooth in
                 [Yy]*)
                     sudo systemctl enable bluetooth
@@ -150,7 +146,7 @@ while read -p "Set up other config? [Y/n] " reply; do
                 $config_dir/zathura/ $config_dir/nsxiv/ $config_dir/dunst/ \
                 $config_dir/bat/ $config_dir/picom.conf \
                 $config_dir/sql-formatter.json $HOME/.config/
-            cp ./.zshrc ./.profile ./.tmux.conf ./.Xresources $HOME/
+            cp ./.zshrc ./.zprofile ./.xprofile ./.tmux.conf ./.Xresources $HOME/
             chsh -s /bin/zsh
             echo 'export HISTFILE="$HOME/.cache/bash_history"' >> $HOME/.bashrc
             break;;

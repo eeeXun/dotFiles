@@ -18,7 +18,7 @@ map("n", "<Leader>a", "gg0vG$", "Select all")
 map("n", "ZA", cmd.quitall, "Quit all")
 map("v", "J", ":move '>+1<CR>gv=gv", "Move line up")
 map("v", "K", ":move '<-2<CR>gv=gv", "Move line down")
-map("n", "<Leader>m", cmd.write, "Write")
+map("n", "<Leader>m", cmd.update, "Write")
 map("n", "<Leader>phw", function()
     cmd.help(fn.expand("<cword>"))
 end, "Help current word")
@@ -189,7 +189,7 @@ local exec_program = {
 }
 map("n", "<F5>", function()
     if exec_program[vim.bo.filetype] then
-        cmd.write()
+        cmd.update()
         exec_program[vim.bo.filetype]()
     else
         vim.notify(string.format("File type [%s] is not in execute list!", vim.bo.filetype), vim.log.levels.ERROR)

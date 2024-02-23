@@ -2,6 +2,6 @@
 
 color="^c#E6005E^"
 
-temperature=$(head -c 2 /sys/class/thermal/thermal_zone0/temp)
+temperature=$(rev /sys/class/thermal/thermal_zone0/temp | cut -c 4- | rev)
 
 echo "$color$temperature°C"

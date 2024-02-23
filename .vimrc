@@ -45,7 +45,7 @@ nnoremap Y y$
 inoremap <C-c> <Esc>
 nnoremap r<C-c> <Esc>
 nnoremap ZA :quitall<CR>
-nnoremap <Leader>m :write<CR>
+nnoremap <Leader>m :update<CR>
 nnoremap <Leader>+ :resize +5<CR>
 nnoremap <Leader>_ :resize -5<CR>
 nnoremap <Leader>= :vertical resize +5<CR>

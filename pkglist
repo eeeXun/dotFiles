@@ -1,6 +1,8 @@
 # xorg
-xorg-server xorg-xbacklight xorg-xkill xorg-xprop xorg-xrandr xorg-xset
-xorg-xrdb xorg-xauth
+xorg-server xorg-xkill xorg-xprop xorg-xrandr xorg-xset xorg-xrdb xorg-xauth
+
+# brightness
+brightnessctl
 
 # touchpad utils
 xorg-xinput libinput-gestures xdotool
