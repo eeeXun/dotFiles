@@ -48,7 +48,7 @@ cups system-config-printer
 fcitx5-im fcitx5-chewing
 
 # shell/zsh
-hstr zsh-theme-powerlevel10k zsh-autosuggestions autojump-rs
+hstr zsh-theme-powerlevel10k zsh-autosuggestions zoxide
 zsh-history-substring-search
 
 # font
