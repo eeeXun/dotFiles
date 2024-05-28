@@ -36,7 +36,7 @@ local servers = {
     "jedi_language_server",
     "neocmake",
     "rust_analyzer",
-    "solidity",
+    "solidity_ls",
     "tailwindcss",
     "texlab",
     "tsserver",

@@ -42,9 +42,9 @@ while read -p "Install AUR helper & packages? [Y/n] " reply; do
                         break;;
                 esac
             done
-            pkg=$(echo "$pkg" | sed "s/^#.*//")
+            pkg=$(echo "$pkg" | sed "/^#/d")
             paru -S $pkg
-            sudo sed -i "s/^#\?greeter-session=.*/greeter-session=lightdm-slick-greeter/" \
+            sudo sed -i -E "/^#greeter-session=/s/^#([[:alpha:]-]+)=.*/\1=lightdm-slick-greeter/"
                 /etc/lightdm/lightdm.conf
             sudo systemctl enable lightdm
             sudo usermod -aG input $USER
@@ -105,7 +105,7 @@ while read -p "Defalut session? (1) dwm (2) bspwm (3) mate (4) i3 (n) no : " rep
         n|no) break;;
         *) continue;;
     esac
-    sudo sed -i "s/^#\?user-session=.*/user-session=$session/" /etc/lightdm/lightdm.conf
+    sudo sed -i -E "/^#user-session=/s/^#([[:alpha:]-]+)=.*/\1=$session/" /etc/lightdm/lightdm.conf
     break
 done
 

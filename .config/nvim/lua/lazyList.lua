@@ -14,9 +14,10 @@ end
 vim.opt.rtp:prepend(lazy_path)
 
 require("lazy").setup({
-    -- icons/utils
+    -- libraries
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
+    "nvim-neotest/nvim-nio",
     -- fugitive
     "tpope/vim-fugitive",
     -- gruvbox
@@ -104,6 +105,7 @@ require("lazy").setup({
     -- rest
     {
         "rest-nvim/rest.nvim",
+        tag = "v1.2.1",
         ft = "http",
         config = function()
             require("plugins.rest")

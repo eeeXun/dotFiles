@@ -1,5 +1,6 @@
 require("nvim-treesitter.configs").setup({
     ensure_installed = {
+        "asm",
         "bash",
         "bibtex",
         "c",
@@ -21,7 +22,6 @@ require("nvim-treesitter.configs").setup({
         "javascript",
         "json",
         "latex",
-        "lua",
         "markdown",
         "markdown_inline",
         "python",
@@ -34,12 +34,14 @@ require("nvim-treesitter.configs").setup({
         "tsx",
         "typescript",
         "vim",
-        "vimdoc",
         "vue",
         "yaml",
+        "zathurarc",
     },
     highlight = {
         enable = true,
-        disable = { "latex" },
+        disable = function(lang, buf)
+            return lang == "latex" or vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ":t") == "diffpanel_3"
+        end,
     },
 })

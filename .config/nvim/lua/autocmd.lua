@@ -80,7 +80,7 @@ autocmd("BufEnter", {
 
 -- quit
 autocmd("FileType", {
-    pattern = { "dap-float", "help", "qf" },
+    pattern = { "dap-float", "help", "httpResult", "qf" },
     callback = function()
         map("n", "q", function()
             api.nvim_win_close(0, false)
@@ -92,55 +92,18 @@ autocmd("FileType", {
 autocmd("LspAttach", {
     group = augroup("LspConfig", { clear = true }),
     callback = function()
-        map("n", "K", lsp.hover, "Lsp hover")
         map("n", "<Leader>rn", lsp.rename, "Lsp rename")
         map("n", "<C-k>", lsp.signature_help, "Lsp signature help")
         map("n", "<space>ca", lsp.code_action, "Lsp code action")
         map("n", "<Leader>gr", function()
-            lsp_request(0, "textDocument/references", lsp_params(0), function(_, result, _, _)
-                if not result then
-                    notify_error("No lsp reference!")
-                    return
-                end
-
-                if #result == 1 then
-                    cmd.vsplit()
-                end
-                cmd.Telescope("lsp_references")
-            end)
+            cmd.Telescope({ args = { "lsp_references", "jump_type=vsplit" } })
         end, "Lsp reference")
         map("n", "<Leader>gi", function()
-            lsp_request(0, "textDocument/implementation", lsp_params(0), function(_, result, _, _)
-                if not result then
-                    notify_error("No lsp implementation!")
-                    return
-                end
-
-                if #result > 1 then
-                    cmd.Telescope("lsp_implementations")
-                else
-                    cmd.vsplit()
-                    lsp.implementation()
-                end
-            end)
+            cmd.Telescope({ args = { "lsp_implementations", "jump_type=vsplit" } })
         end, "Lsp implementation")
         map("n", "<Leader>gd", function()
-            lsp_request(0, "textDocument/definition", lsp_params(0), function(_, result, _, _)
-                if not result then
-                    notify_error("No lsp definition!")
-                    return
-                end
-
-                if #result > 1 then
-                    cmd.Telescope("lsp_definitions")
-                else
-                    cmd.vsplit()
-                    lsp.definition()
-                end
-            end)
+            cmd.Telescope({ args = { "lsp_definitions", "jump_type=vsplit" } })
         end, "Lsp definition")
-        map("n", "[d", diagnostic.goto_prev, "Lsp diagnostic previous")
-        map("n", "]d", diagnostic.goto_next, "Lsp diagnostic next")
         map("n", "<Leader>e", diagnostic.open_float, "Lsp diagnostic float window")
         map("n", "<Leader>q", diagnostic.setloclist, "Lsp diagnostic list")
         map("n", "<Leader>fm", function()

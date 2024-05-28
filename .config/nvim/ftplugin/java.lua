@@ -1,7 +1,7 @@
 local fn = vim.fn
 local mason_share = fn.stdpath("data") .. "/mason/share/"
 local mason_jdtls = mason_share .. "jdtls/"
-local root_dir = require("jdtls.setup").find_root({ ".git", "gradlew", "mvnw" })
+local root_dir = vim.fs.root(0, { ".git", "gradlew", "mvnw" })
 local workspace_folder = os.getenv("HOME")
     .. "/.cache/jdtls/"
     .. string.gsub(fn.fnamemodify(root_dir, ":p:h"), "/", "%%")

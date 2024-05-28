@@ -14,12 +14,12 @@ require("nvim-tree").setup({
         icons = {
             glyphs = {
                 git = {
-                    unstaged = "",
-                    staged = "",
+                    unstaged = "󱈸",
+                    staged = "󱇬",
                     unmerged = "",
-                    renamed = "➜",
+                    renamed = "󰁕",
                     untracked = "",
-                    deleted = "",
+                    deleted = "󱘹",
                     ignored = "◌",
                 },
             },

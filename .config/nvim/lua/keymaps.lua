@@ -200,10 +200,9 @@ vim.t.is_transparent = false
 local function toggle_transparent()
     if not vim.t.is_transparent then
         api.nvim_set_hl(0, "Normal", { bg = nil })
-        api.nvim_set_hl(0, "WinSeparator", { link = "GruvboxBg3" })
         vim.t.is_transparent = true
     else
-        vim.opt.background = "dark"
+        cmd.colorscheme(vim.g.colors_name)
         vim.t.is_transparent = false
     end
 end

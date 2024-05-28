@@ -9,8 +9,8 @@ case $1 in
         amixer set Master 5%-;;
 esac
 
-volume=$(amixer get Master | tail -n1 | sed -r "s/.*\[(.*)%\].*/\1/")
-mode=$(amixer get Master | tail -n1 | sed -r "s/.*\[.*\].*\[(.*)\]/\1/")
+volume=$(amixer get Master | tail -n1 | sed -E "s/.*\[([[:digit:]]+)%\].*/\1/")
+mode=$(amixer get Master | tail -n1 | sed -E "s/.*\[([[:alpha:]]+)\]/\1/")
 dunst_tag="volume"
 
 if [ "$mode" = "off" ]; then

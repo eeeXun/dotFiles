@@ -1,8 +1,7 @@
-set sandbox none
 set font "Monospace 15"
-set statusbar-home-tilde
-set window-title-basename
-set selection-clipboard clipboard
+set statusbar-home-tilde true
+set window-title-basename true
+set selection-clipboard "clipboard"
 set selection-notification false
 unmap s
 unmap a
@@ -40,8 +39,8 @@ set inputbar-bg                 "#1D2021" # bg0_h
 set inputbar-fg                 "#EBDBB2" # fg
 set statusbar-bg                "#3C3836" # bg1
 set statusbar-fg                "#EBDBB2" # fg
-set highlight-color             "#FABD2F" # bright:yellow
-set highlight-active-color      "#FE8019" # bright:orange
+set highlight-color             rgba(250,189,47,0.5) # bright:yellow
+set highlight-active-color      rgba(254,128,25,0.5) # bright:orange
 set default-bg                  "#1D2021" # bg0_h
 set default-fg                  "#EBDBB2" # fg
 set render-loading              true
@@ -50,4 +49,4 @@ set render-loading-fg           "#EBDBB2" # fg
 set recolor-lightcolor          "#1D2021" # bg0_h
 set recolor-darkcolor           "#EBDBB2" # fg
 
-# vim:ft=conf
+# vim:ft=zathurarc

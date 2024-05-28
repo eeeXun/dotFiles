@@ -1,5 +1,3 @@
-&{{ lf_ratio }}
-&{{ lf_scrolloff }}
 set previewer   lf_preview
 set cleaner     lf_cleaner
 
@@ -27,6 +25,7 @@ cmd move            ${{ lf_move }}
 cmd trash           ${{ lf_trash }}
 cmd slink           ${{ lf_slink }}
 cmd sxiv            ${{ lf_sxiv }}
+cmd on-redraw       %{{ lf_redraw }}
 
 # Git
 cmd gitBranch       ${{ lf_gitBranch }}

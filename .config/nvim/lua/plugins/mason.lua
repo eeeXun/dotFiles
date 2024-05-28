@@ -17,12 +17,11 @@ require("mason-tool-installer").setup({
         "jedi-language-server",
         "neocmakelsp",
         "rust-analyzer",
-        "solidity",
-        "solidity-ls",
         "texlab",
         "tailwindcss-language-server",
         "typescript-language-server",
         "typos-lsp",
+        "vscode-solidity-server",
         "vue-language-server",
         -- Linter
         "flake8",

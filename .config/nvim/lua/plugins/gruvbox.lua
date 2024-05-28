@@ -24,5 +24,6 @@ require("gruvbox").setup({
         GruvboxNeutralPurple = { fg = colors.neutral_purple },
         GruvboxNeutralAqua = { fg = colors.neutral_aqua },
         QuickFixLine = { link = "DiffText" },
+        WinSeparator = { link = "GruvboxBg3" },
     },
 })

@@ -1,3 +1,0 @@
-#!/bin/sh
-
-lf -remote "send $id set scrolloff $((lf_height / 5))"

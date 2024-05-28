@@ -6,8 +6,8 @@ configuration {
     font: "Hack Nerd Font Propo 15";
     icon-theme: "Papirus";
 
-    display-drun: " Apps";
-    display-window: " Window";
+    display-drun: "󰀻 Apps";
+    display-window: "󰖲 Window";
     display-run: " Run";
 }
 

@@ -18,7 +18,7 @@ mate-calc caja eom engrampa
 
 # network
 wget network-manager-applet bind traceroute net-tools wireshark-qt
-speedtest-cli networkmanager-openconnect webkit2gtk-4.1
+speedtest-cli networkmanager-openconnect webkit2gtk-4.1 gcr
 
 # audio
 alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber
@@ -30,7 +30,7 @@ bluez blueman
 xdg-utils xdg-user-dirs
 
 # gtk/qt
-xcursor-breeze qt5ct kvantum papirus-icon-theme
+xcursor-breeze qt5ct kvantum kvantum-qt5 papirus-icon-theme
 
 # man
 man-db man-pages
@@ -55,7 +55,8 @@ zsh-history-substring-search
 ttf-dejavu ttf-hack-nerd noto-fonts-emoji noto-fonts-tc gnu-free-fonts
 
 # editor
-neovim cmake python-pip npm go rust-src jdk17-openjdk sbt coursier
+neovim tree-sitter-cli cmake python-pip npm go rust-src jdk17-openjdk sbt
+coursier
 
 # WM
 rofi feh dunst flameshot picom xss-lock i3lock-color playerctl udiskie
