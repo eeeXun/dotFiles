@@ -44,11 +44,20 @@ while read -p "Install AUR helper & packages? [Y/n] " reply; do
             done
             pkg=$(echo "$pkg" | sed "/^#/d")
             paru -S $pkg
+            # lightdm
             sudo sed -i -E "/^#greeter-session=/s/^#([[:alpha:]-]+)=.*/\1=lightdm-slick-greeter/"
                 /etc/lightdm/lightdm.conf
             sudo systemctl enable lightdm
+            # touchpad
             sudo usermod -aG input $USER
+            # weylus
+            sudo groupadd -r uinput
+            sudo usermod -aG uinput $USER
+            echo 'KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"' \
+                | sudo tee /etc/udev/rules.d/60-weylus.rules
+            # pipewire
             systemctl --user enable pipewire
+            # bluetooth
             case $bluetooth in
                 [Yy]*)
                     sudo systemctl enable bluetooth
@@ -130,7 +139,7 @@ while read -p "Set up script? [Y/n] " reply; do
     case "$reply" in
         [Nn]*) break;;
         [Yy]*)
-            sudo bash -c "$cp_func; cp_to_dir $sys_dir/lf_run $sys_dir/rmundo /usr/local/bin"
+            sudo bash -c "$cp_func; cp_to_dir $sys_dir/lf_run /usr/local/bin"
             cp_to_dir $local_dir/bin/ $HOME/.local/
             break;;
     esac
@@ -140,13 +149,13 @@ while read -p "Set up other config? [Y/n] " reply; do
     case "$reply" in
         [Nn]*) break;;
         [Yy]*)
-            cp_to_dir $config_dir/nvim/ $config_dir/black $config_dir/stylua/ \
+            cp_to_dir $config_dir/nvim/ $config_dir/ruff/ $config_dir/stylua/ \
                 $config_dir/lf/ $config_dir/rofi/ $config_dir/dircolors \
                 $config_dir/gtk-3.0/ $config_dir/zsh/ $config_dir/tmux/ \
                 $config_dir/zathura/ $config_dir/nsxiv/ $config_dir/dunst/ \
-                $config_dir/bat/ $config_dir/picom.conf \
-                $config_dir/sql-formatter.json $HOME/.config/
-            cp ./.zshrc ./.zprofile ./.xprofile ./.tmux.conf ./.Xresources $HOME/
+                $config_dir/bat/ $config_dir/picom.conf $config_dir/tex-fmt/ \
+                $config_dir/sqlfluff/ $config_dir/gradle/ $HOME/.config/
+            cp ./.zshrc ./.zprofile ./.xprofile ./.Xresources $HOME/
             chsh -s /bin/zsh
             echo 'export HISTFILE="$HOME/.cache/bash_history"' >> $HOME/.bashrc
             break;;

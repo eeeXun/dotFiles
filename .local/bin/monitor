@@ -2,31 +2,44 @@
 
 laptop="eDP-1"
 monitor="HDMI-1"
+monitor_card="card1-HDMI-A-1"
 background="$HOME/.local/share/background.jpg"
+
+test_monitor() {
+    if [ $(cat /sys/class/drm/$monitor_card/status) != "connected" ]; then
+        echo "Monitor not found!"
+        exit 1
+    fi
+}
 
 case $1 in
     "left")
+        test_monitor
         xrandr --output $monitor --auto
         xrandr --output $monitor --left-of $laptop
         feh --no-fehbg --bg-scale $background
         ;;
     "right")
+        test_monitor
         xrandr --output $monitor --auto
         xrandr --output $monitor --right-of $laptop
         feh --no-fehbg --bg-scale $background
         ;;
     "only")
+        test_monitor
         xrandr --output $monitor --auto
         xrandr --output $laptop --off
         feh --no-fehbg --bg-scale $background
         ;;
     "same")
+        test_monitor
         xrandr --output $monitor --auto
         xrandr --output $laptop --auto
         xrandr --output $monitor --same-as $laptop
         feh --no-fehbg --bg-scale $background
         ;;
     "on")
+        test_monitor
         xrandr --output $monitor --auto
         feh --no-fehbg --bg-scale $background
         ;;

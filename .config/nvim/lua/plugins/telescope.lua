@@ -15,6 +15,7 @@ require("telescope").setup({
         },
     },
     defaults = {
+        history = false,
         prompt_prefix = " ",
         selection_caret = "󰁕 ",
         sorting_strategy = "ascending",
@@ -39,6 +40,22 @@ require("telescope").setup({
         },
     },
     pickers = {
+        live_grep = {
+            additional_args = {
+                "--hidden",
+                "--glob",
+                "!**/.git/*",
+            },
+        },
+        find_files = {
+            find_command = {
+                "rg",
+                "--files",
+                "--hidden",
+                "--glob",
+                "!**/.git/*",
+            },
+        },
         buffers = {
             mappings = {
                 i = {

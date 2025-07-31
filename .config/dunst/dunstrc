@@ -3,24 +3,16 @@
 
     # general
     width = (200, 500)
-    height = 300
-    origin = top-right
-    offset = 10x30
+    height = (0, 300)
+    offset = (10, 30)
     transparency = 20
     font = Hack Nerd Font 15
     corner_radius = 10
 
-    # full screen
-    layer = top
-
     # limit
     notification_limit = 5
-    indicate_hidden = yes
 
     # progress bar
-    progress_bar = true
-    progress_bar_height = 10
-    progress_bar_frame_width = 1
     progress_bar_min_width = 200
     progress_bar_max_width = 500
     progress_bar_corner_radius = 4
@@ -28,18 +20,9 @@
     # padding
     padding = 5
     horizontal_padding = 5
-    text_icon_padding = 0
 
     # frame
-    frame_width = 3
     frame_color = "#FBF1C7"
-
-    # separator
-    separator_height = 2
-    separator_color = frame
-
-    # Sort by urgency
-    sort = yes
 
     # Disable idle threshold
     idle_threshold = 0
@@ -47,42 +30,15 @@
 
     # format
     markup = full
-    format = "<b>%s</b>\n%b"
-    ignore_newline = no
-
-    # alignment
-    alignment = left
-    vertical_alignment = center
-
-    # ellipsis
-    ellipsize = middle
-
-    # duplicates
-    stack_duplicates = true
-    hide_duplicate_count = false
-
-    # Display indicators for URLs (U) and actions (A)
-    show_indicators = yes
 
     # icon
-    icon_position = left
-    min_icon_size = 16
+    icon_theme = "Papirus-Dark"
+    min_icon_size = 22
     max_icon_size = 32
     enable_recursive_icon_lookup = true
 
-    # dmenu path.
+    # dmenu path
     dmenu = /usr/bin/rofi -monitor -4 -no-show-icons -dmenu -p Action
-
-    # Browser for opening urls in context menu.
-    browser = /usr/bin/xdg-open
-
-    # Always run rule-defined scripts, even if the notification is suppressed
-    always_run_script = true
-
-    ### mouse
-    mouse_left_click = close_current
-    mouse_middle_click = do_action, open_url, close_current
-    mouse_right_click = close_all
 
 [urgency_low]
     background = "#1D2021"

@@ -17,12 +17,11 @@ mate-screensaver brisk-menu
 mate-calc caja eom engrampa
 
 # network
-wget network-manager-applet bind traceroute net-tools wireshark-qt
+wget network-manager-applet bind traceroute mtr net-tools wireshark-qt
 speedtest-cli networkmanager-openconnect webkit2gtk-4.1 gcr
 
 # audio
-alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber
-pavucontrol
+pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber pavucontrol
 # bluetooth
 bluez blueman
 
@@ -30,7 +29,7 @@ bluez blueman
 xdg-utils xdg-user-dirs
 
 # gtk/qt
-xcursor-breeze qt5ct kvantum kvantum-qt5 papirus-icon-theme
+xcursor-breeze qt5ct qt6ct kvantum-qt5 papirus-icon-theme
 
 # man
 man-db man-pages
@@ -53,10 +52,11 @@ zsh-history-substring-search
 
 # font
 ttf-dejavu ttf-hack-nerd noto-fonts-emoji noto-fonts-tc gnu-free-fonts
+otf-unifont ttf-ancient-fonts cantarell-fonts
 
 # editor
-neovim tree-sitter-cli cmake python-pip npm go rust-src jdk17-openjdk sbt
-coursier
+neovim tree-sitter-cli cmake python-pip npm go rust-src sbt coursier
+intellij-idea-community-edition
 
 # WM
 rofi feh dunst flameshot picom xss-lock i3lock-color playerctl udiskie
@@ -65,14 +65,14 @@ rofi feh dunst flameshot picom xss-lock i3lock-color playerctl udiskie
 google-chrome firefox brave-bin
 
 # lf
-lf-bin bat glow ueberzug atool odt2txt docx2txt jq libcdio ffmpegthumbnailer
+lf bat glow ueberzug atool odt2txt docx2txt jq libcdio ffmpegthumbnailer
 imagemagick
 
 # archive
-p7zip zip unzip unrar
+7zip zip unzip unrar
 
 # others
-htop btop tmux xclip ripgrep nsxiv vlc thunderbird libreoffice pinta
-grub-customizer obs-studio virtualbox screenkey slop tokei
+htop btop tmux xclip tokei ripgrep nsxiv vlc vlc-plugin-ffmpeg thunderbird
+libreoffice xournalpp weylus-bin obs-studio virtualbox screenkey slop
 
 # vim:ft=conf

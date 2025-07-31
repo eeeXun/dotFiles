@@ -4,7 +4,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" plug
+" plugin
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
@@ -20,8 +20,8 @@ set relativenumber
 set nowrap
 set noswapfile
 set colorcolumn=80
-let loaded_matchparen = 1
-let &scrolloff = float2nr(&lines*0.25)
+let loaded_matchparen=1
+let &scrolloff=float2nr(&lines*0.25)
 
 " color
 set termguicolors
@@ -40,7 +40,7 @@ set expandtab
 set smartindent
 
 " map
-let mapleader = " "
+let mapleader=" "
 nnoremap Y y$
 inoremap <C-c> <Esc>
 nnoremap r<C-c> <Esc>
@@ -71,10 +71,10 @@ nnoremap <Leader>dl :diffget //3<CR>
 
 " fzf
 if has("patch-8.2.191")
-  let g:fzf_layout = { "window": { "width": 0.8, "height": 0.8 } }
+  let g:fzf_layout={ "window": { "width": 0.8, "height": 0.8 } }
 endif
-let $FZF_DEFAULT_OPTS = "--reverse"
-let g:fzf_preview_window = ["right:60%", "ctrl-/"]
+let $FZF_DEFAULT_OPTS="--reverse"
+let g:fzf_preview_window=["right:60%", "ctrl-h"]
 nnoremap <C-p> :GFiles<CR>
 nnoremap <Leader>bb :Buffers<CR>
 nnoremap <Leader>gb :GBranches<CR>

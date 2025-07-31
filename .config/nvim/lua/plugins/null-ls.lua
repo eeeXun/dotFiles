@@ -1,6 +1,6 @@
 local null_ls = require("null-ls")
-local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
+local formatting = null_ls.builtins.formatting
 
 null_ls.setup({
     sources = {
@@ -11,24 +11,31 @@ null_ls.setup({
         -- js
         formatting.prettierd,
         formatting.rustywind,
-        -- json
-        formatting.jq,
         -- lua
         formatting.stylua,
         -- python
-        diagnostics.flake8,
-        formatting.black,
         formatting.isort,
         -- sql
-        formatting.sql_formatter.with({
-            generator_opts = {
-                command = "sql-formatter",
-                args = {
-                    "--config",
-                    os.getenv("HOME") .. "/.config/sql-formatter.json",
-                },
-                to_stdin = true,
-            },
-        }),
+        diagnostics.sqlfluff,
+        formatting.sqlfluff,
     },
+})
+
+null_ls.register({
+    method = null_ls.methods.FORMATTING,
+    filetypes = { "json" },
+    generator = null_ls.formatter({
+        command = "jq",
+        to_stdin = true,
+    }),
+})
+
+null_ls.register({
+    method = null_ls.methods.FORMATTING,
+    filetypes = { "tex" },
+    generator = null_ls.formatter({
+        command = "tex-fmt",
+        args = { "-s" },
+        to_stdin = true,
+    }),
 })

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-icon="󰍛"
+icon=""
 color="^c#A1EFE4^"
 
 usage=$(free -m | awk '/^Mem/{printf "%.2fG", $3/1024}')

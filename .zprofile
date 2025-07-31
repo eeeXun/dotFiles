@@ -15,3 +15,12 @@ export LESS_TERMCAP_se="${ESC}[m"           # end standout-mode
 
 # MAN
 export MANROFFOPT="-c"
+
+# Python
+export PYTHON_HISTORY="$HOME/.cache/python_history"
+# JavaScript
+export NPM_CONFIG_CACHE="$HOME/.cache/npm"
+# Java
+export GRADLE_USER_HOME="$HOME/.config/gradle"
+# Rust
+export CARGO_HOME="$HOME/.cache/cargo"

@@ -9,10 +9,10 @@ color_low="^c#689D6A^"
 color_mid="^c#D79921^"
 color_high="^c#FE8019^"
 
-volume=$(amixer get Master | tail -n1 | sed -E "s/.*\[([[:digit:]]+)%\].*/\1/")
-mode=$(amixer get Master | tail -n1 | sed -E "s/.*\[([[:alpha:]]+)\]/\1/")
+volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{printf "%d", $2*100}')
+mode=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $3}')
 
-if [ "$mode" = "off" ]; then
+if [ "$mode" = "[MUTED]" ]; then
     echo "$color_off$icon_off $volume%"
 elif [ $volume -le 33 ]; then
     echo "$color_low$icon_low $volume%"

@@ -3,13 +3,14 @@ set cleaner     lf_cleaner
 
 # Style
 set hidden              true
-set drawbox             true
 set icons               true
 set mouse               true
+set drawbox             true
+set roundbox            true
 set relativenumber      true
-set cursoractivefmt     "\033[4;7m"
-set cursorparentfmt     "\033[4;7m"
-set cursorpreviewfmt    "\033[4;7m"
+set cursoractivefmt     "\033[4:0;7m"
+set cursorparentfmt     "\033[4:3m"
+set cursorpreviewfmt    "\033[4:3m"
 set statfmt             "%p| %c| %u| %g| %S| %t| \033[1;36m-> %l"
 
 # Basic
@@ -25,7 +26,8 @@ cmd move            ${{ lf_move }}
 cmd trash           ${{ lf_trash }}
 cmd slink           ${{ lf_slink }}
 cmd sxiv            ${{ lf_sxiv }}
-cmd on-redraw       %{{ lf_redraw }}
+cmd on-redraw       &{{ lf_redraw }}
+cmd on-init         on-redraw
 
 # Git
 cmd gitBranch       ${{ lf_gitBranch }}

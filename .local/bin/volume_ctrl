@@ -2,18 +2,18 @@
 
 case $1 in
     "toggle")
-        amixer set Master toggle;;
+        wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle;;
     "up")
-        amixer set Master 5%+;;
+        wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+;;
     "down")
-        amixer set Master 5%-;;
+        wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-;;
 esac
 
-volume=$(amixer get Master | tail -n1 | sed -E "s/.*\[([[:digit:]]+)%\].*/\1/")
-mode=$(amixer get Master | tail -n1 | sed -E "s/.*\[([[:alpha:]]+)\]/\1/")
+volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{printf "%d", $2*100}')
+mode=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $3}')
 dunst_tag="volume"
 
-if [ "$mode" = "off" ]; then
+if [ "$mode" = "[MUTED]" ]; then
     dunstify -t 1500 \
         -h int:value:$volume \
         -h string:fgcolor:#A89984 \

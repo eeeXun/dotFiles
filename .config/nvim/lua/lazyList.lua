@@ -1,13 +1,13 @@
 local fn = vim.fn
 
 local lazy_path = fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazy_path) then
+if not vim.uv.fs_stat(lazy_path) then
     fn.system({
         "git",
         "clone",
         "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
         "--branch=stable",
+        "https://github.com/folke/lazy.nvim.git",
         lazy_path,
     })
 end
@@ -20,28 +20,11 @@ require("lazy").setup({
     "nvim-neotest/nvim-nio",
     -- fugitive
     "tpope/vim-fugitive",
-    -- gruvbox
+    -- dressing
     {
-        "ellisonleao/gruvbox.nvim",
-        event = "ColorSchemePre",
+        "stevearc/dressing.nvim",
         config = function()
-            require("plugins.gruvbox")
-        end,
-    },
-    -- undotree
-    {
-        "mbbill/undotree",
-        cmd = "UndotreeToggle",
-        config = function()
-            require("plugins.undotree")
-        end,
-    },
-    -- terminal
-    {
-        "akinsho/toggleterm.nvim",
-        cmd = { "ToggleTerm", "TermExec" },
-        config = function()
-            require("plugins.term")
+            require("plugins.dressing")
         end,
     },
     -- treesitter
@@ -62,6 +45,29 @@ require("lazy").setup({
             require("plugins.treesitter")
         end,
     },
+    -- gruvbox
+    {
+        "ellisonleao/gruvbox.nvim",
+        priority = 1000,
+        config = function()
+            require("plugins.gruvbox")
+            vim.cmd.colorscheme("gruvbox")
+        end,
+    },
+    -- lualine
+    {
+        "nvim-lualine/lualine.nvim",
+        config = function()
+            require("plugins.lualine")
+        end,
+    },
+    -- bufferline
+    {
+        "akinsho/nvim-bufferline.lua",
+        config = function()
+            require("plugins.bufferline")
+        end,
+    },
     -- comment
     {
         "numToStr/Comment.nvim",
@@ -70,45 +76,11 @@ require("lazy").setup({
             require("plugins.comment")
         end,
     },
-    -- spectre
+    -- indent
     {
-        "nvim-pack/nvim-spectre",
-        event = "ColorScheme",
+        "lukas-reineke/indent-blankline.nvim",
         config = function()
-            require("plugins.spectre")
-        end,
-    },
-    -- bufferline
-    {
-        "akinsho/nvim-bufferline.lua",
-        event = "ColorScheme",
-        config = function()
-            require("plugins.bufferline")
-        end,
-    },
-    -- lualine
-    {
-        "nvim-lualine/lualine.nvim",
-        event = "ColorScheme",
-        config = function()
-            require("plugins.lualine")
-        end,
-    },
-    -- zen-mode
-    {
-        "folke/zen-mode.nvim",
-        cmd = "ZenMode",
-        config = function()
-            require("plugins.zen")
-        end,
-    },
-    -- rest
-    {
-        "rest-nvim/rest.nvim",
-        tag = "v1.2.1",
-        ft = "http",
-        config = function()
-            require("plugins.rest")
+            require("plugins.indent")
         end,
     },
     -- nvim-tree
@@ -117,6 +89,38 @@ require("lazy").setup({
         cmd = { "NvimTreeOpen", "NvimTreeToggle" },
         config = function()
             require("plugins.nvim-tree")
+        end,
+    },
+    -- undotree
+    {
+        "mbbill/undotree",
+        cmd = "UndotreeToggle",
+        config = function()
+            require("plugins.undotree")
+        end,
+    },
+    -- terminal
+    {
+        "akinsho/toggleterm.nvim",
+        cmd = { "ToggleTerm", "TermExec" },
+        config = function()
+            require("plugins.term")
+        end,
+    },
+    -- spectre
+    {
+        "nvim-pack/nvim-spectre",
+        lazy = true,
+        config = function()
+            require("plugins.spectre")
+        end,
+    },
+    -- zen-mode
+    {
+        "folke/zen-mode.nvim",
+        cmd = "ZenMode",
+        config = function()
+            require("plugins.zen")
         end,
     },
     -- telescope
@@ -151,7 +155,7 @@ require("lazy").setup({
     },
     -- lsp
     {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
         dependencies = {
             { "WhoIsSethDaniel/mason-tool-installer.nvim" },
         },
@@ -161,7 +165,6 @@ require("lazy").setup({
     },
     {
         "neovim/nvim-lspconfig",
-        dependencies = { "hrsh7th/cmp-nvim-lsp" },
         config = function()
             require("plugins.lspconfig")
         end,
@@ -170,21 +173,37 @@ require("lazy").setup({
     { "scalameta/nvim-metals", lazy = true },
     {
         "ray-x/lsp_signature.nvim",
+        event = "InsertEnter",
         config = function()
             require("plugins.lsp-signature")
         end,
     },
     {
-        "jose-elias-alvarez/null-ls.nvim",
+        "nvimtools/none-ls.nvim",
         config = function()
             require("plugins.null-ls")
         end,
     },
     {
         "folke/trouble.nvim",
-        cmd = "TroubleToggle",
+        cmd = "Trouble",
         config = function()
             require("plugins.trouble")
+        end,
+    },
+    -- todo
+    {
+        "folke/todo-comments.nvim",
+        config = function()
+            require("plugins.todo")
+        end,
+    },
+    -- annotation
+    {
+        "danymat/neogen",
+        cmd = "Neogen",
+        config = function()
+            require("plugins.neogen")
         end,
     },
     -- snippet
@@ -223,7 +242,7 @@ require("lazy").setup({
     -- dap
     {
         "mfussenegger/nvim-dap",
-        event = "ColorScheme",
+        lazy = true,
         dependencies = {
             "rcarriga/nvim-dap-ui",
             {
@@ -255,6 +274,11 @@ require("lazy").setup({
         config = function()
             require("plugins.markdown")
         end,
+    },
+    -- rest
+    {
+        "rest-nvim/rest.nvim",
+        ft = "http",
     },
 }, {
     lockfile = fn.stdpath("state") .. "/lazy-lock.json",

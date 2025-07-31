@@ -5,6 +5,7 @@ vim.fn.sign_define("DapBreakpointRejected", { text = "🔵" })
 vim.fn.sign_define("DapStopped", { text = "🟢" })
 
 dapui.setup({
+    expand_lines = false,
     layouts = {
         {
             elements = {
@@ -17,7 +18,7 @@ dapui.setup({
             size = 0.3,
         },
         {
-            elements = { { id = "repl", size = 0.5 }, { id = "console", size = 0.5 } },
+            elements = { { id = "console", size = 0.5 }, { id = "repl", size = 0.5 } },
             position = "bottom",
             size = 0.25,
         },
@@ -51,10 +52,9 @@ dap.configurations.cpp = {
         type = "codelldb",
         request = "launch",
         program = function()
-            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+            return vim.fn.input("Path to executable: ", vim.fn.expand("%:p:h") .. "/", "file")
         end,
         cwd = "${workspaceFolder}",
-        stopOnEntry = false,
     },
 }
 dap.configurations.c = dap.configurations.cpp
@@ -103,15 +103,7 @@ dap.configurations.python = {
         request = "launch",
         name = "Launch file",
         program = "${file}",
-        pythonPath = function()
-            local cwd = vim.fn.getcwd()
-            if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
-                return cwd .. "/venv/bin/python"
-            elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
-                return cwd .. "/.venv/bin/python"
-            else
-                return "/usr/bin/python"
-            end
-        end,
+        console = "integratedTerminal",
+        pythonPath = "python",
     },
 }

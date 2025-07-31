@@ -1,0 +1,42 @@
+" plugin
+set NERDTree
+set commentary
+
+" settings
+set incsearch
+set scrolloff=5
+set nocursorline
+set colorcolumn=80
+set relativenumber
+
+" map
+let mapleader=" "
+nnoremap Y y$
+vnoremap <Leader>y "+y
+nnoremap <Leader>a ggvG$
+nnoremap <Leader>m :update<CR>
+vnoremap J :move '>+1<CR>gv=gv
+vnoremap K :move '<-2<CR>gv=gv
+nnoremap <Leader>bd :bdelete<CR>
+nnoremap <Leader>n :NERDTree<CR>
+
+" window
+nnoremap <Leader>h <C-w>h
+nnoremap <Leader>j <C-w>j
+nnoremap <Leader>k <C-w>k
+nnoremap <Leader>l <C-w>l
+nnoremap <C-l> :action NextTab<CR>
+nnoremap <C-h> :action PreviousTab<CR>
+
+" action
+nnoremap ]d :action GotoNextError<CR>
+nnoremap [d :action GotoPreviousError<CR>
+nnoremap <Leader>ff :action GotoFile<CR>
+nnoremap <Leader>sm :action GotoSymbol<CR>
+nnoremap <Leader>gr :action ShowUsages<CR>
+nnoremap <Leader>fm :action ReformatCode<CR>
+nnoremap <Leader>rn :action RenameElement<CR>
+nnoremap <Leader>ps :action SearchEverywhere<CR>
+nnoremap <Leader>gd :action GotoImplementation<CR>
+nnoremap <Leader>ca :action ShowIntentionActions<CR>
+nnoremap <Leader>e :action ShowErrorDescription<CR>

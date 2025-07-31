@@ -13,7 +13,7 @@ cmp.setup({
     },
     formatting = {
         format = require("lspkind").cmp_format({
-            maxwidth = 30,
+            maxwidth = { abbr = 30 },
             mode = "symbol_text",
             menu = {
                 path = "[PATH]",
@@ -62,7 +62,14 @@ cmp.setup({
             name = "buffer",
             option = {
                 get_bufnrs = function()
-                    return vim.api.nvim_list_bufs()
+                    local bufs = {}
+                    for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+                        local stats = vim.uv.fs_stat(vim.api.nvim_buf_get_name(bufnr))
+                        if vim.bo[bufnr].buflisted and (not stats or stats.size < 1e6) then
+                            table.insert(bufs, bufnr)
+                        end
+                    end
+                    return bufs
                 end,
             },
         },

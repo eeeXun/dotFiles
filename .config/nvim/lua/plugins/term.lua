@@ -3,14 +3,6 @@ require("toggleterm").setup({
     persist_size = false,
     start_in_insert = false,
     shade_terminals = false,
-    highlights = {
-        Normal = {
-            link = "Normal",
-        },
-        NormalFloat = {
-            link = "Normal",
-        },
-    },
     size = function(term)
         if term.direction == "horizontal" then
             return vim.o.lines * 0.25

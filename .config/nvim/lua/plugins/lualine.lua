@@ -7,11 +7,21 @@ local function location()
 end
 
 local function space()
+    local bufnr = vim.api.nvim_get_current_buf()
+    local stats = vim.uv.fs_stat(vim.api.nvim_buf_get_name(bufnr))
+    if not vim.bo[bufnr].buflisted or (stats and stats.size >= 1e6) then
+        return ""
+    end
     local space = fn.search([[\s\+$]], "nwc")
     return space ~= 0 and "TW:" .. space or ""
 end
 
 local function mixed()
+    local bufnr = vim.api.nvim_get_current_buf()
+    local stats = vim.uv.fs_stat(vim.api.nvim_buf_get_name(bufnr))
+    if not vim.bo[bufnr].buflisted or (stats and stats.size >= 1e6) then
+        return ""
+    end
     local space_pat = [[\v^ +]]
     local tab_pat = [[\v^\t+]]
     local space_indent = fn.search(space_pat, "nwc")
@@ -93,15 +103,16 @@ require("lualine").setup({
         component_separators = "",
         disabled_filetypes = {
             winbar = {
+                "NvimTree",
                 "aerial",
                 "dap-repl",
                 "dapui_console",
                 "fugitive",
                 "help",
-                "NvimTree",
                 "qf",
+                "rest_nvim_result",
                 "toggleterm",
-                "Trouble",
+                "trouble",
                 "undotree",
             },
         },

@@ -1,3 +1,5 @@
+local colors = require("gruvbox").palette
+
 require("bufferline").setup({
     options = {
         tab_size = 10,
@@ -35,15 +37,15 @@ require("bufferline").setup({
         },
         close_button = {
             bg = { attribute = "fg", highlight = "GruvboxBg0" },
-            fg = { attribute = "fg", highlight = "GruvboxNeutralRed" },
+            fg = colors.neutral_red,
         },
         close_button_selected = {
             bg = { attribute = "fg", highlight = "GruvboxFg4" },
-            fg = { attribute = "fg", highlight = "GruvboxNeutralRed" },
+            fg = colors.neutral_red,
         },
         close_button_visible = {
             bg = { attribute = "fg", highlight = "GruvboxBg1" },
-            fg = { attribute = "fg", highlight = "GruvboxNeutralRed" },
+            fg = colors.neutral_red,
         },
         duplicate = {
             bg = { attribute = "fg", highlight = "GruvboxBg0" },
@@ -71,15 +73,15 @@ require("bufferline").setup({
         },
         modified = {
             bg = { attribute = "fg", highlight = "GruvboxBg0" },
-            fg = { attribute = "fg", highlight = "GruvboxFadedBlue" },
+            fg = colors.faded_blue,
         },
         modified_selected = {
             bg = { attribute = "fg", highlight = "GruvboxFg4" },
-            fg = { attribute = "fg", highlight = "GruvboxFadedBlue" },
+            fg = colors.faded_blue,
         },
         modified_visible = {
             bg = { attribute = "fg", highlight = "GruvboxBg1" },
-            fg = { attribute = "fg", highlight = "GruvboxFadedBlue" },
+            fg = colors.faded_blue,
         },
         numbers = {
             bg = { attribute = "fg", highlight = "GruvboxBg0" },

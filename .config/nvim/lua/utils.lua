@@ -1,5 +1,4 @@
 local opt = vim.opt
-local cmd = vim.cmd
 
 -- number
 opt.number = true
@@ -19,12 +18,11 @@ opt.smartcase = true
 -- style
 opt.wrap = false
 opt.guicursor = ""
+opt.winborder = "rounded"
 opt.termguicolors = true
 opt.cursorline = true
 opt.cursorlineopt = "number"
 opt.colorcolumn = "80"
-cmd.colorscheme("gruvbox")
-cmd.NoMatchParen()
 
 -- file
 opt.undofile = true
@@ -34,11 +32,8 @@ opt.swapfile = false
 opt.mouse = "a"
 opt.title = true
 opt.hidden = true
-opt.updatetime = 50
 opt.showmode = false
 opt.shortmess:append("c")
-opt.splitkeep = "topline"
-opt.scrolloff = math.floor(vim.o.lines * 0.25)
 
 -- clipboard
 vim.g.clipboard = {

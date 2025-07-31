@@ -1,5 +1,3 @@
-require("nvim-tree.view").View.winopts.cursorlineopt = "number"
-
 require("nvim-tree").setup({
     git = {
         ignore = false,
@@ -9,6 +7,7 @@ require("nvim-tree").setup({
         relativenumber = true,
         signcolumn = "no",
         width = "22.5%",
+        cursorlineopt = "number",
     },
     renderer = {
         icons = {

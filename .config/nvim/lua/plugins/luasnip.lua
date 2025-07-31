@@ -7,7 +7,7 @@ require("luasnip.loaders.from_snipmate").lazy_load()
 
 ls.config.setup({
     history = false,
-    region_check_events = "InsertEnter",
+    region_check_events = { "CursorHold", "InsertEnter" },
     ext_opts = {
         [types.choiceNode] = {
             active = {

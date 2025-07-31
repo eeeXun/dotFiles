@@ -8,9 +8,12 @@ snippet patch
 	PATCH
 snippet delete
 	DELETE
-snippet app
+snippet cont
 	Content-Type: application/json
 snippet auth
 	Authorization: Bearer ${0}
 snippet cookie
-	--cookie ${0}
+	Cookie: ${0}
+snippet sep
+	###
+	${0}

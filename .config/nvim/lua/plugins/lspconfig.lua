@@ -1,62 +1,77 @@
-local lspconfig = require("lspconfig")
+local lsp = vim.lsp
 
-vim.lsp.set_log_level("warn")
-
-local signs = { Error = "", Warn = "", Hint = "󰌵", Info = "" }
-for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
+lsp.set_log_level("OFF")
 
 vim.diagnostic.config({
-    underline = true,
-    update_in_insert = false,
-    float = {
-        source = "always",
-        border = "rounded",
-    },
+    float = { source = true },
     virtual_text = {
         spacing = 2,
         prefix = "●",
-        source = "always",
+        source = true,
+    },
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN] = "",
+            [vim.diagnostic.severity.HINT] = "󰌵",
+            [vim.diagnostic.severity.INFO] = "",
+        },
+        numhl = {
+            [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+            [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+            [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+            [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+        },
     },
 })
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
-})
-
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-local servers = {
+lsp.enable({
     "clangd",
     "emmet_language_server",
     "gopls",
     "html",
     "jedi_language_server",
     "neocmake",
+    "ruff",
     "rust_analyzer",
     "solidity_ls",
     "tailwindcss",
+    "taplo",
     "texlab",
-    "tsserver",
-}
+    "typos_lsp",
+    "vtsls",
+    "vue_ls",
+})
+lsp.config("*", {
+    capabilities = require("cmp_nvim_lsp").default_capabilities(lsp.protocol.make_client_capabilities()),
+})
 
-for _, server in ipairs(servers) do
-    lspconfig[server].setup({
-        capabilities = capabilities,
-    })
-end
-
-lspconfig["typos_lsp"].setup({
+lsp.config("typos_lsp", {
     filetypes = { "gitcommit", "markdown", "tex", "text" },
 })
 
-lspconfig["volar"].setup({
-    capabilities = capabilities,
-    init_options = {
-        typescript = {
-            tsdk = vim.fn.stdpath("data") .. "/mason/packages/vue-language-server/node_modules/typescript/lib",
+lsp.config("vtsls", {
+    settings = {
+        vtsls = {
+            tsserver = {
+                globalPlugins = {
+                    {
+                        name = "@vue/typescript-plugin",
+                        location = vim.fn.expand(
+                            "$MASON/packages/vue-language-server/node_modules/@vue/language-server"
+                        ),
+                        languages = { "vue" },
+                        configNamespace = "typescript",
+                    },
+                },
+            },
         },
+    },
+    filetypes = {
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "vue",
     },
 })

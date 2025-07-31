@@ -1,7 +1,6 @@
 require("mason").setup({
     ui = {
         height = 0.75,
-        border = "rounded",
         check_outdated_packages_on_open = false,
     },
 })
@@ -16,25 +15,25 @@ require("mason-tool-installer").setup({
         "jdtls",
         "jedi-language-server",
         "neocmakelsp",
+        "ruff",
         "rust-analyzer",
-        "texlab",
         "tailwindcss-language-server",
-        "typescript-language-server",
+        "taplo",
+        "texlab",
         "typos-lsp",
         "vscode-solidity-server",
+        "vtsls",
         "vue-language-server",
-        -- Linter
-        "flake8",
         -- Formatter
         "asmfmt",
-        "black",
-        "clang-format",
         "goimports",
         "isort",
         "prettierd",
         "rustywind",
-        "sql-formatter",
         "stylua",
+        "tex-fmt",
+        -- Linter
+        "sqlfluff",
         -- DAP
         "codelldb",
         "debugpy",

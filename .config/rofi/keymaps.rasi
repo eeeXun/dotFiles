@@ -10,4 +10,5 @@ configuration {
     kb-cancel: "Control+c,Control+bracketleft,Escape";
     kb-remove-to-eol: "";
     kb-mode-complete: "";
+    kb-secondary-copy: "";
 }
