@@ -1,6 +1,0 @@
-#!/bin/sh
-
-case "$(file --mime-type "$f" -bL)" in
-    text/*|application/json|inode/x-empty) vi "$f";;
-    *) nohup xdg-open "$f" > /dev/null 2>&1 &;;
-esac

@@ -1,0 +1,13 @@
+#!/bin/sh
+
+clear
+if [ $(git rev-parse --is-inside-work-tree 2>/dev/null) ]; then
+    printf "Git Remotes\n---\n$(git remote -v)\n---\n"
+    echo "Git Remote Add"
+    read -p "name: " name
+    read -p "url: " url
+    git remote add "$name" "$url"
+else
+    echo "Not in git repo"
+fi
+read -p "Press any key to continue ... " -n 1 -r

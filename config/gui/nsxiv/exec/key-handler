@@ -1,0 +1,21 @@
+#!/bin/sh
+
+while read file; do
+    case "$1" in
+        "w")
+            feh --no-fehbg --bg-scale "$file";;
+        "y")
+            echo "$file" | sed "s/^/file:\/\//" | xclip -selection clipboard \
+                -target text/uri-list
+            notify-send "$file" "Copied to clipboard"
+            ;;
+        "r")
+            magick "$file" -rotate 90 "$file";;
+        "R")
+            magick "$file" -rotate -90 "$file";;
+        "h")
+            magick "$file" -flop "$file";;
+        "v")
+            magick "$file" -flip "$file";;
+    esac
+done

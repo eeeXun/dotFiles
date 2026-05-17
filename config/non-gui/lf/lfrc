@@ -1,0 +1,84 @@
+set previewer   ~/.config/lf/scripts/previewer
+set cleaner     ~/.config/lf/scripts/cleaner
+
+# Style
+set hidden              true
+set icons               true
+set mouse               true
+set drawbox             true
+set roundbox            true
+set relativenumber      true
+set cursoractivefmt     "\033[4:0;7m"
+set cursorparentfmt     "\033[4:3m"
+set cursorpreviewfmt    "\033[4:3m"
+set timefmt             "2006-01-02(Mon) 15:04:05"
+set rulerfile           ~/.config/lf/ruler
+
+# Init
+cmd on-cd               &{{ ~/.config/lf/scripts/title }}
+cmd on-redraw           &{{ ~/.config/lf/scripts/redraw }}
+cmd on-init             :on-cd; on-redraw
+
+# Misc
+cmd open                ${{ ~/.config/lf/scripts/open }}
+cmd bg                  ${{ ~/.config/lf/scripts/background }}
+cmd chmod               ${{ ~/.config/lf/scripts/chmod }}
+cmd cp                  ${{ ~/.config/lf/scripts/copy }}
+cmd mkdir               ${{ ~/.config/lf/scripts/mkdir }}
+cmd mkfile              ${{ ~/.config/lf/scripts/mkfile }}
+cmd mks                 ${{ ~/.config/lf/scripts/mks }}
+cmd move                ${{ ~/.config/lf/scripts/move }}
+cmd trash               ${{ ~/.config/lf/scripts/trash }}
+cmd slink               ${{ ~/.config/lf/scripts/slink }}
+cmd sxiv                ${{ ~/.config/lf/scripts/sxiv }}
+
+# Git
+cmd git-branch          ${{ ~/.config/lf/scripts/git_branch }}
+cmd git-log             ${{ ~/.config/lf/scripts/git_log }}
+cmd git-pull            ${{ ~/.config/lf/scripts/git_pull }}
+cmd git-status          ${{ ~/.config/lf/scripts/git_status }}
+cmd git-remote-verbos   ${{ ~/.config/lf/scripts/git_remote_verbos }}
+cmd git-remote-add      ${{ ~/.config/lf/scripts/git_remote_add }}
+cmd git-remote-change   ${{ ~/.config/lf/scripts/git_remote_change }}
+cmd git-remote-delete   ${{ ~/.config/lf/scripts/git_remote_delete }}
+
+# Archive
+cmd archive             ${{ ~/.config/lf/scripts/archive }}
+cmd unarchive           ${{ ~/.config/lf/scripts/unarchive }}
+
+# Disable default keybindings
+map c
+map d
+map m
+
+# Basic
+map <enter> open
+map bg bg
+map cc cut
+map ch chmod
+map cl clear
+map dd trash
+map gy cp
+map md mkdir
+map mf mkfile
+map mk mark-save
+map ms mks
+map mv move
+map sl slink
+map sv sxiv
+
+# Git
+map gb git-branch
+map gl git-log
+map gp git-pull
+map gs git-status
+map grv git-remote-verbos
+map gra git-remote-add
+map grc git-remote-change
+map grd git-remote-delete
+
+# Archive
+map ak archive
+map au unarchive
+
+# vim:ft=conf

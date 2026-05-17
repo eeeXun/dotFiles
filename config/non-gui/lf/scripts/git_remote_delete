@@ -1,0 +1,12 @@
+#!/bin/sh
+
+clear
+if [ $(git rev-parse --is-inside-work-tree 2>/dev/null) ]; then
+    printf "Git Remotes\n---\n$(git remote -v)\n---\n"
+    echo "Git Remote Delete"
+    read -p "name: " name
+    git remote remove "$name"
+else
+    echo "Not in git repo"
+fi
+read -p "Press any key to continue ... " -n 1 -r

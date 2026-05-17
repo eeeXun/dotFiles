@@ -1,8 +1,0 @@
-#!/bin/sh
-
-icon=""
-color="^c#A1EFE4^"
-
-usage=$(free -m | awk '/^Mem/{printf "%.2fG", $3/1024}')
-
-echo "$color$icon $usage"

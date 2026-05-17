@@ -1,0 +1,22 @@
+{{with .Message -}}
+    {{. -}}
+{{else with .Stat -}}
+    {{.Permissions -}}
+    {{printf " {%s %s}" .User .Group -}}
+    {{with .ModTime}} {{.}}{{end -}}
+    {{with .Target}} {{. | printf "\033[1;36m-> %s\033[0m"}}{{end -}}
+{{end -}}
+
+{{.SPACER -}}
+
+{{with .Keys}} {{.}}{{end -}}
+{{with .Progress}} {{join . " "}}{{end -}}
+{{with .Copy}} {{len . | printf "%s %d \033[0m" $.Options.copyfmt}}{{end -}}
+{{with .Cut}} {{len . | printf "%s %d \033[0m" $.Options.cutfmt}}{{end -}}
+{{with .Select}} {{len . | printf "%s %d \033[0m" $.Options.selectfmt}}{{end -}}
+{{with .Stat -}}
+    {{.Size | humanize | printf " %5s" -}}
+{{end -}}
+{{printf " %d/%d" .Index .Total}}
+
+{{/* vim: set ft=gotmpl: */}}

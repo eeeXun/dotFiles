@@ -1,5 +1,5 @@
 ! cursor
-Xcursor.theme:              Breeze
+Xcursor.theme:              breeze_cursors
 
 ! nsxiv
 Nsxiv.bar.font:             Monospace:size=15

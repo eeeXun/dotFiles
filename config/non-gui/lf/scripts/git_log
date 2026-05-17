@@ -1,0 +1,22 @@
+#!/bin/bash
+
+clear
+if [ $(git rev-parse --is-inside-work-tree 2>/dev/null) ]; then
+    default_branch=$(git branch --show-current)
+    branches=($(git branch --format="%(refname:short)"))
+    printf "Git Branches\n---\n$(git --no-pager branch -vv --color=always)\n---\n"
+    read -p "Check log of branch? (Default is current HEAD): " select_branch
+    if [[ -z "$select_branch" ]]; then
+        git log --graph --color=always --pretty=format:"%C(yellow)(%cs) %C(brightred)%h%Creset - %s %C(brightblue)<%an> %C(auto)%d" | less -MR
+        exit 0
+    fi
+    if ! printf "%s\n" "${branches[@]}" | grep -qx "$select_branch"; then
+        echo "Branch \"$select_branch\" did not exist"
+        read -p "Press any key to continue ... " -n 1 -r
+        exit 1
+    fi
+    git log --graph --color=always --pretty=format:"%C(yellow)(%cs) %C(brightred)%h%Creset - %s %C(brightblue)<%an> %C(auto)%d" $select_branch | less -MR
+else
+    echo "Not in git repo"
+    read -p "Press any key to continue ... " -n 1 -r
+fi

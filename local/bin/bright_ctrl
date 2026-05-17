@@ -1,0 +1,17 @@
+#!/bin/sh
+
+case $1 in
+    "up")
+        brightnessctl --quiet set +5%;;
+    "down")
+        brightnessctl --quiet set 5%-;;
+esac
+
+brightness=$(brightnessctl info | sed -En "s/.*\(([[:digit:]]+)%.*/\1/p")
+dunst_tag="bright"
+
+dunstify -t 1500 \
+    -h int:value:$brightness \
+    -h string:fgcolor:#83A598 \
+    -h string:hlcolor:#83A598 "󰃟 $brightness" \
+    -h string:x-dunst-stack-tag:$dunst_tag
