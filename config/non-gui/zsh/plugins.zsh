@@ -1,3 +1,6 @@
+# pyenv
+eval "$(pyenv init - zsh)"
+
 # zoxide
 eval "$(zoxide init zsh --cmd j)"
 

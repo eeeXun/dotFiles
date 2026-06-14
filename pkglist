@@ -28,8 +28,8 @@ network-manager-applet networkmanager-openconnect wireshark-qt
 fcitx5-im fcitx5-chewing
 
 # font
-ttf-dejavu ttf-hack-nerd noto-fonts-emoji noto-fonts-tc gnu-free-fonts
-otf-unifont ttf-ancient-fonts cantarell-fonts
+ttf-dejavu ttf-hack-nerd noto-fonts-emoji noto-fonts-tc otf-unifont
+ttf-ancient-fonts cantarell-fonts
 
 # gtk/qt
 breeze-cursors qt5ct qt6ct kvantum-qt5 papirus-icon-theme
@@ -56,12 +56,12 @@ virtualbox screenkey slop
 ### GUI
 
 # shell
-hstr zsh-theme-powerlevel10k zsh-autosuggestions zoxide
+hstr zsh-theme-powerlevel10k-bin-git zsh-autosuggestions zoxide
 zsh-history-substring-search
 
 # editor
-neovim tree-sitter-cli cmake python-pip npm go rust-src jdk-openjdk gradle maven
-sbt coursier-bin
+neovim tree-sitter-cli cmake python-pip pyenv npm go rust-src jdk-openjdk gradle
+maven sbt coursier-bin
 
 # lf
 lf bat glow atool odt2txt docx2txt jq libcdio

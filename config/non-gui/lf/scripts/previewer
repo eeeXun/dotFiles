@@ -60,11 +60,11 @@ esac
 
 case "$(file -Lb --mime-type -- "$1")" in
     text/troff)
-        man -- "$1" | col -b | bat --language man
+        man -- "$1" | bat --language man
         exit 0
         ;;
     text/*)
-        bat --line-range=:100 --color=always "$1"
+        bat --line-range=:100 "$1"
         exit 0
         ;;
     application/json)

@@ -54,7 +54,8 @@ require("nvim-treesitter").install(ensure_installed)
 
 vim.api.nvim_create_autocmd("FileType", {
     callback = function(event)
-        if not vim.tbl_contains(ensure_installed, vim.treesitter.language.get_lang(event.match)) then
+        local treesitter_lang = vim.treesitter.language.get_lang(event.match)
+        if not vim.tbl_contains(ensure_installed, treesitter_lang) or treesitter_lang == "latex" then
             return
         end
         vim.treesitter.start()

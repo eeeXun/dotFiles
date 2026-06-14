@@ -28,6 +28,9 @@ common_setup() {
     cp_to_dir $local_dir/bin/ $HOME/.local/
     chsh -s /bin/zsh
     echo 'export HISTFILE="$HOME/.cache/bash_history"' >> $HOME/.bashrc
+    # gradle
+    mkdir -p $HOME/.cache/gradle/
+    echo 'org.gradle.daemon=false' > $HOME/.cache/gradle/gradle.properties
 }
 
 while read -p "Install with GUI? [Y/n] " reply; do

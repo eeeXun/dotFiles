@@ -18,10 +18,13 @@ export MANROFFOPT="-c"
 
 # Python
 export PYTHON_HISTORY="$HOME/.cache/python_history"
+export PYENV_ROOT="$HOME/.local/share/pyenv"
 # Java
-export GRADLE_USER_HOME="$HOME/.config/gradle"
+export GRADLE_USER_HOME="$HOME/.cache/gradle"
 export MAVEN_OPTS="-Dmaven.repo.local=$HOME/.cache/maven"
 # JavaScript
 export NPM_CONFIG_CACHE="$HOME/.cache/npm"
+# Go
+export GOPATH="$HOME/.cache/go"
 # Rust
 export CARGO_HOME="$HOME/.cache/cargo"

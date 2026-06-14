@@ -3,6 +3,7 @@ local map = vim.keymap.set
 
 require("aerial").setup({
     show_guides = true,
+    disable_max_lines = math.huge,
     keymaps = {
         ["<"] = "actions.prev",
         [">"] = "actions.next",

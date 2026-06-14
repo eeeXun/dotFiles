@@ -6,6 +6,10 @@ vim.fn.sign_define("DapStopped", { text = "🟢" })
 
 dapui.setup({
     expand_lines = false,
+    mappings = {
+        edit = "c",
+        watch = "@",
+    },
     layouts = {
         {
             elements = {

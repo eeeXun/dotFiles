@@ -34,6 +34,7 @@ local function setup_jdtls()
         settings = {
             java = {
                 autobuild = { enabled = false },
+                signatureHelp = { enabled = true },
                 configuration = {
                     maven = { userSettings = fn.expand("$HOME/.config/maven/settings.xml") },
                 },
