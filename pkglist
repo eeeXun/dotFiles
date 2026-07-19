@@ -22,7 +22,7 @@ pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber pavucontrol
 bluez blueman
 
 # network
-network-manager-applet networkmanager-openconnect wireshark-qt
+network-manager-applet wireshark-qt
 
 # fcitx
 fcitx5-im fcitx5-chewing

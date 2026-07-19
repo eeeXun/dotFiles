@@ -14,10 +14,6 @@ cp_to_dir() {
 cp_func=$(declare -f cp_to_dir)
 
 common_setup() {
-    if [ ! -d "/tmp/yay-bin" ]; then
-        git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin
-    fi
-    (cd /tmp/yay-bin && makepkg -si)
     if [ ! -L /usr/local/bin/vim ]; then
         sudo mkdir -p /usr/local/bin/
         sudo ln -s /usr/bin/nvim /usr/local/bin/vim
@@ -34,6 +30,10 @@ common_setup() {
 }
 
 while read -p "Install with GUI? [Y/n] " reply; do
+    if [ ! -d "/tmp/yay-bin" ]; then
+        git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin
+    fi
+    (cd /tmp/yay-bin && makepkg -si)
     case $reply in
         [Nn]*)
             pkg="$(cat ./pkglist | sed "1,/^### GUI/d" | sed "/^#/d")"
@@ -42,12 +42,14 @@ while read -p "Install with GUI? [Y/n] " reply; do
             exit 0;;
         [Yy]*)
             pkg="$(cat ./pkglist)"
+            cp_to_dir $local_dir/share/dwm/ /tmp/
             while read -p "Install with bluetooth? [Y/n] " bluetooth; do
                 case $bluetooth in
                     [Yy]*)
                         break;;
                     [Nn]*)
                         pkg=$(echo "$pkg" | sed "/^# bluetooth/,/^$/d")
+                        sed -i "/blueman-applet/d" /tmp/dwm/autostart.sh
                         break;;
                 esac
             done
@@ -60,6 +62,7 @@ while read -p "Install with GUI? [Y/n] " reply; do
                         break;;
                     [Nn]*)
                         pkg=$(echo "$pkg" | sed "/^# laptop utils/,/^$/d")
+                        sed -i "/libinput-gestures-setup/d" /tmp/dwm/autostart.sh
                         break;;
                 esac
             done
@@ -68,17 +71,12 @@ while read -p "Install with GUI? [Y/n] " reply; do
             common_setup
             cp_to_dir $config_dir/gui/* $HOME/.config/
             cp ./.xprofile ./.Xresources $HOME/
-            # dark theme
-            gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
             # xdg user-dirs
             xdg-user-dirs-update
-            sudo sed -i "s/^enabled=True/enabled=False/" /etc/xdg/user-dirs.conf
+            sudo sed -i -E "s/^(enabled)=.*/\1=False/" /etc/xdg/user-dirs.conf
             # lightdm
-            sudo sed -i -E "/^#greeter-session=/s/^#([[:alpha:]-]+)=.*/\1=lightdm-slick-greeter/" \
-                /etc/lightdm/lightdm.conf
+            sudo sed -i -E "s/^#(greeter-session)=.*/\1=lightdm-slick-greeter/" /etc/lightdm/lightdm.conf
             sudo systemctl enable lightdm
-            # pipewire
-            systemctl --user enable pipewire
             # wireshark
             sudo usermod -aG wireshark $USER
             # bluetooth
@@ -107,7 +105,7 @@ while read -p "Install dwm? [Y/n] " reply; do
             sudo make -C $HOME/.config/dwm/ install clean
             sudo make -C $HOME/.config/dwmblocks/ install clean
             sudo bash -c "$cp_func; cp_to_dir $other_dir/dwm.desktop /usr/share/xsessions/"
-            cp_to_dir $local_dir/share/dwm/ $HOME/.local/share/
+            cp_to_dir /tmp/dwm/ $HOME/.local/share/
             break;;
     esac
 done
@@ -119,7 +117,7 @@ while read -p "Defalut login session? (1) dwm (2) mate (n) no : " reply; do
         n|no) break;;
         *) continue;;
     esac
-    sudo sed -i -E "/^#user-session=/s/^#([[:alpha:]-]+)=.*/\1=$session/" /etc/lightdm/lightdm.conf
+    sudo sed -i -E "s/^#(user-session)=.*/\1=$session/" /etc/lightdm/lightdm.conf
     break
 done
 

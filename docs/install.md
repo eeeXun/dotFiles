@@ -4,7 +4,7 @@
 
 > https://wiki.archlinux.org/title/USB_flash_installation_medium
 
-- sudo dd if=(isoImg) of=/dev/sdc bs=4M status=progress
+- sudo dd if=(isoImg) of=/dev/usb_disk bs=4M status=progress
 
 ## Check boot mode (BIOS or UEFI)
 
@@ -15,24 +15,29 @@
 ## partitions
 
 - `cfdisk`
-- If it's BIOS
-  - 1M BIOS boot (512M EFI System)
-- 4G Linux swap
-- Linux root
-- Linux home
+- BIOS / UEFI
+  - 1M BIOS boot
+  - 512M EFI System
+- disk 1
+  - Linux root
+  - Linux swap
+- disk 2
+  - Linux home
 - `lsblk` check
 
 ### format
 
 - UEFI
-  - mkfs.fat -F 32 /dev/sdb1
-- mkfs.ext4 /dev/sda2
-- mkswap /dev/sda3
+  - mkfs.fat -F 32 /dev/disk1_partition1
+- root / home
+  - mkfs.ext4 /dev/disk1_partition2
+  - mkfs.btrfs /dev/disk1_partition2
+- mkswap /dev/disk1_partition3
   - swapon -a
 
 ## wifi
 
-```shell
+```
 $ iwctl
 > device list
 > station wlan0 scan
@@ -42,31 +47,35 @@ $ iwctl
 
 ## mount
 
-- mount /dev/sda2 /mnt
+### ext4
+
+- mount /dev/disk1_partition2 /mnt
+- mkdir -p /mnt/home
+- mount /dev/disk2_partition1 /mnt/home
+
+### Btrfs
+
+- disk1
+  - mount /dev/disk1_partition2 /mnt
+  - btrfs subvolume create /mnt/@
+  - btrfs subvolume create /mnt/@pkg
+  - umount /mnt
+- disk2
+  - mount /dev/disk2_partition1 /mnt
+  - btrfs subvolume create /mnt/@home
+  - umount /mnt
+- mkdir -p /mnt/{home,var/cache/pacman/pkg}
+- mount -o subvol=@ /dev/disk1_partition2 /mnt
+- mount -o subvol=@pkg /dev/disk1_partition2 /mnt/var/cache/pacman/pkg
+- mount -o subvol=@home /dev/disk2_partition1 /mnt/home
+
+## pacstrap
+
 - pacman -Syy
 - pacman -S archlinux-keyring
-- pacstrap /mnt base linux linux-firmware base-devel neovim grub (dhcpcd | networkmanager) git
-- UEFI
-  - pacstrap /mnt efibootmgr os-prober
-- HOME
-  - mount /dev/sda1 /mnt/home
+- pacstrap /mnt base linux linux-firmware base-devel neovim grub git (btrfs-progs) (dhcpcd | networkmanager) (efibootmgr) (os-prober)
 - genfstab -U /mnt >> /mnt/etc/fstab
   - blkid (Get disk UUID)
-
-The result will looks like
-
-```fstab
-# Static information about the filesystems.
-# See fstab(5) for details.
-
-# <file system> <dir> <type> <options> <dump> <pass>
-
-# /dev/sdb3
-UUID=6f7777f6-ba84-4610-8d5d-64d1e07d5d8b	/         	ext4      	rw,relatime	0 1
-
-# /dev/sda1
-UUID=c74f1a59-c570-4c4f-b1b1-7c47149e4c3e	/home     	ext4      	rw,relatime	0 2
-```
 
 ## mirrorlist
 
@@ -79,21 +88,32 @@ reflector --country Taiwan --sort rate --save /mnt/etc/pacman.d/mirrorlist
 - arch-chroot /mnt
 - passwd
 
-### grub install
+## grub install
 
-#### BIOS
+### BIOS
 
 ```sh
-grub-install /dev/sda
+grub-install /dev/disk1
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-#### UEFI
+### UEFI
 
 ```sh
 mkdir /efi
-mount /dev/sdb2 /efi
+mount /dev/disk1_partition1 /efi
 ```
+
+- Verbose boot
+
+```diff
+--- /etc/default/grub
++++ /etc/default/grub
+-#GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"
++GRUB_CMDLINE_LINUX_DEFAULT=""
+```
+
+- OS prober
 
 ```diff
 --- /etc/default/grub
@@ -118,7 +138,7 @@ grub-install --target=x86_64-efi --efi-directory=/efi/ --bootloader-id=GRUB --re
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-### timezone
+## timezone
 
 ```sh
 ln -s /usr/share/zoneinfo/Asia/Taipei /etc/localtime
@@ -126,11 +146,11 @@ hwclock --systohc
 timedatectl set-ntp true
 ```
 
-### network
+## network
 
 - systemctl enable (dhcpcd | NetworkManager)
 
-### host
+## host
 
 ```diff
 +++ /etc/hostname
@@ -139,12 +159,12 @@ timedatectl set-ntp true
 
 ```diff
 +++ /etc/hosts
-+127.0.0.1   localhost
+ 127.0.0.1   localhost
+ ::1         localhost
 +127.0.0.1   xun-arch
-+::1         localhost
 ```
 
-### locale
+## locale
 
 ```diff
 +++ /etc/locale.conf
@@ -160,7 +180,7 @@ timedatectl set-ntp true
 
 - locale-gen
 
-### pacamn
+## pacamn
 
 ```diff
 --- /etc/pacman.conf
@@ -171,7 +191,7 @@ timedatectl set-ntp true
 +Color
 ```
 
-## Wheel
+## wheel user
 
 - useradd -m xun -G wheel
 - passwd xun
@@ -210,6 +230,8 @@ systemctl restart systemd-logind
 ```
 
 [See misc](misc.md)
+
+[Btrfs](btrfs.md)
 
 [See GPU settings](gpu.md)
 

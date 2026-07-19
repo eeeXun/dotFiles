@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Run this script after logging into the graphical desktop and after p10k has been initialized
+
+# pipewire
+systemctl --user enable pipewire
+
+# dark theme
+gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+
+# p10k
+sed -i -E "s/(POWERLEVEL9K_SHORTEN_DIR_LENGTH)=.*/\1=80/" $HOME/.p10k.zsh
+sed -i -E "s/(POWERLEVEL9K_VIRTUALENV_SHOW_WITH_PYENV)=.*/\1=true/" $HOME/.p10k.zsh
