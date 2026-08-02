@@ -6,8 +6,8 @@ set hidden              true
 set icons               true
 set mouse               true
 set drawbox             true
-set roundbox            true
 set relativenumber      true
+set borderstyle         "roundbox"
 set cursoractivefmt     "\033[4:0;7m"
 set cursorparentfmt     "\033[4:3m"
 set cursorpreviewfmt    "\033[4:3m"

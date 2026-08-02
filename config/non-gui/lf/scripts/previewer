@@ -33,7 +33,7 @@ case "$1" in
         exit 0
         ;;
     *.md)
-        glow -s dark "$1"
+        mcat --sc "${width}x${height}" --theme gruvbox --color always "$1"
         exit 0
         ;;
     *.iso)

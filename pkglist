@@ -64,7 +64,7 @@ neovim tree-sitter-cli cmake python-pip pyenv npm go rust-src jdk-openjdk gradle
 maven sbt coursier-bin
 
 # lf
-lf bat glow atool odt2txt docx2txt jq libcdio
+lf bat mcat-bin atool odt2txt docx2txt jq libcdio
 
 # archive
 7zip zip unzip unrar
