@@ -79,20 +79,6 @@ autocmd("FileType", {
     end,
 })
 
--- tree-sitter
-autocmd("User", {
-    pattern = "TSUpdate",
-    callback = function()
-        require("nvim-treesitter.parsers").zathurarc = {
-            install_info = {
-                url = "https://github.com/Freed-Wu/tree-sitter-zathurarc",
-                branch = "main",
-                queries = "queries",
-            },
-        }
-    end,
-})
-
 -- lsp
 autocmd("LSPAttach", {
     group = augroup("LSPConfig", { clear = true }),

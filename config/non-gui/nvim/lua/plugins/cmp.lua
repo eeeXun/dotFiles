@@ -40,9 +40,7 @@ cmp.setup({
             end
         end, { "i" }),
         ["<C-l>"] = cmp.mapping(function(fallback)
-            if require("copilot.suggestion").is_visible() then
-                require("copilot.suggestion").accept()
-            elseif require("luasnip").expandable() then
+            if require("luasnip").expandable() then
                 require("luasnip").expand()
             elseif cmp.visible() then
                 cmp.confirm({ select = true })
@@ -119,7 +117,3 @@ cmp.setup.cmdline(":", {
         { name = "cmdline" },
     },
 })
-
-cmp.event:on("menu_closed", function()
-    vim.b.copilot_suggestion_hidden = false
-end)

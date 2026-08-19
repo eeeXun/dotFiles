@@ -46,7 +46,6 @@ local ensure_installed = {
     "vue",
     "xresources",
     "yaml",
-    "zathurarc",
     "zsh",
 }
 

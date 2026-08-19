@@ -209,14 +209,6 @@ require("lazy").setup({
     },
     -- completion
     {
-        "zbirenbaum/copilot.lua",
-        cmd = "Copilot",
-        event = "InsertEnter",
-        config = function()
-            require("plugins.copilot")
-        end,
-    },
-    {
         "hrsh7th/nvim-cmp",
         event = { "InsertEnter", "CmdlineEnter" },
         dependencies = {
